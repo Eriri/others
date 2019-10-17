@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 #define rep(i,s,t) for(int i=(s);i<(t);i++)
+#define per(i,s,t) for(int i=((t)-1);i>=s;i--)
 #define sz(x) ((int)x.size())
 #define all(x) x.begin(),x.end()
 #define pb push_back
@@ -59,9 +60,9 @@ ull feistel(ull x,ull k){
 	return permutation(y,P);}
 
 ull enciphering(ull x,vector<vu> k,int o){
-	x=permutation(x,IP[o]);pair<ull,ull> lr=mp(x&((1ull<<32)-1),x>>32);
-	rep(i,0,16)lr=mp(lr.second,lr.first^feistel(lr.second,k[o][i]));
-	return permutation(lr.second|(lr.first<<32),IP[!o]);}
+	x=permutation(x,IP[0]);pair<ull,ull> lr=mp(x&((1ull<<32)-1),x>>32);
+	rep(i,0,16)lr=mp(lr.se,lr.fi^feistel(lr.se,k[o][i]));
+	return permutation(lr.se|(lr.fi<<32),IP[1]);}
 
 ull leftshift(ull x){
 	return ((x<<1)&((1ull<<28)-1))|(x>>27);}
@@ -76,7 +77,7 @@ vector<vu> schedule(ull k){
 vu input_text(){
     string s;vu t;ull x;
     while(sz(s)==0)getline(cin,s);s+=string(8-sz(s)%8,0);
-    rep(i,0,s.size()/8){x=0;rep(j,0,8)x|=((ull)s[i*8+j])<<(8*j);t.pb(x);}
+    rep(i,0,sz(s)/8){x=0;rep(j,0,8)x|=((ull)s[i*8+j])<<(8*j);t.pb(x);}
 	return t;}
 
 vu input_data(){
@@ -87,76 +88,55 @@ vu input_data(){
 
 void output_text(vu s){
 	string t;
-	rep(i,0,sz(s))rep(j,0,8)t+=(char)(s[i]>>(8*j));
+	rep(i,0,sz(s))rep(j,0,8)t+=(char)((s[i]>>(8*j))&255ull);
 	cout<<t<<endl;}
 
 void output_data(vu s){
 	rep(i,0,sz(s))cout<<hex<<s[i]<<" ";cout<<endl;}
 
+int select_mode(vector<string> vs){
+	int o;
+	while(true){
+		cout<<"请选择";rep(i,0,sz(vs))cout<<"["<<i<<"-"<<vs[i]<<"]";
+		cout<<":";cin>>o;
+		if(0<=o&&o<sz(vs)){
+			cout<<"已选择:"<<vs[o]<<endl;
+			return o;}}}
+	
+	
+
 int main(){
-	int o,t;string ct;
-	ull key;vu x;vector<vu> ks;
-	cout<<"选择模式(0-加密|1-解密):";
-	cin>>o;
-	if(o==0)
-	{
-		while(true)
-		{
-			cout<<"输入明文:";
-			x=input_text();
-			cout<<"请确认明文为:";output_text(x);
-			cout<<"输入是否正确[y]/N:";
-			cin>>ct;
-			if(ct=="y")break;
-		}
-		while(true)
-		{
-			cout<<"选择密钥生成方式(0-随机生成|1-手动输入):";
-			cin>>t;
-			if(t==0)
-			{
-				random_device rd;uniform_int_distribution<ull> dis(0ull,~0ull);
-				key=dis(rd);
-				ks=schedule(key);
-				cout<<"随机密钥为(16进制):"<<hex<<key<<endl;
-				break;
-			}
-			if(t==1)
-			{
-				cout<<"输入密钥(16进制):";
-				cin>>hex>>key;
-				ks=schedule(key);
-				cout<<"输入密钥为(16进制):"<<hex<<key<<endl;
-				break;
-			}
-		}
-		while(true)
-		{
-			cout<<"选择加密模式(0-ECB|1-CBC):";
-			cin>>t;
-			if(t==0)
-			{
-				cout<<"加密后密文为(16进制):";
-				rep(i,0,sz(x))x[i]=enciphering(x[i],ks,0);
-				output_data(x);
-				break;
-			}
-			if(t==1)
-			{
-				break;
-			}
-		}
-		
-	}
-	if(o==1)
-	{
-		while(true)
-		{
-			cout<<"输入密文(分组16位16进制数):";
-			
-		}
-	}
-}
+	ull key,iv;vu x;vector<vu> ks;int o;
+	random_device rd;uniform_int_distribution<ull> dis(0ull,~0ull);key=dis(rd);
+	while(true){
+		o=select_mode({"加密","解密","退出"});
+		if(o==0){
+			cout<<"输入明文:";x=input_text();
+			cout<<"明文为:";output_text(x);
+			if(select_mode({"随机生成密钥","手动输入密钥"})==0){key=dis(rd);}
+			else{cout<<"输入密钥(16位16进制数):";cin>>hex>>key;}
+			cout<<"密钥为(16位16进制数):"<<hex<<key<<endl;
+			ks=schedule(key);
+			if(select_mode({"ECB","CBC"})==0){rep(i,0,sz(x))x[i]=enciphering(x[i],ks,0);}
+			else{
+				if(select_mode({"随机生成初始化向量","手动输入初始化向量"})==0){iv=dis(rd);}
+				else{cout<<"输入初始化向量(16位16进制数):";cin>>hex>>iv;}
+				cout<<"初始化向量(16位16进制数)为:"<<hex<<iv<<endl;
+				x[0]=enciphering(x[0]^iv,ks,0);rep(i,1,sz(x))x[i]=enciphering(x[i]^x[i-1],ks,0);}
+			cout<<"加密后密文为(分组16位16进制数):";output_data(x);}
+		if(o==1){
+			cout<<"输入分组密文(分组16位16进制数):";x=input_data();
+			cout<<"分组密文(分组16位16进制数)为:";output_data(x);
+			cout<<"输入密钥(16位16进制数):";cin>>hex>>key;
+			cout<<"密钥(16位16进制数)为:"<<hex<<key<<endl;
+			ks=schedule(key);
+			if(select_mode({"ECB","CBC"})==0){rep(i,0,sz(x))x[i]=enciphering(x[i],ks,1);}
+			else{
+				cout<<"输入初始化向量(16位16进制数):";cin>>hex>>iv;
+				cout<<"初始化向量(16位16进制数)为:"<<hex<<iv<<endl;
+				per(i,1,sz(x))x[i]=x[i-1]^enciphering(x[i],ks,1);x[0]=iv^enciphering(x[0],ks,1);}
+			cout<<"解密后明文为:";output_text(x);}
+		if(o==2)break;}}
 
 
 
