@@ -9,12 +9,16 @@
 #define se second
 using namespace std;
 
-using us=unsigned short;
+using uc=unsigned char;
+using ui=unsigned int;
 using u128 = unsigned __int128;
-using block=vector<vector<us>>;
+using block=vector<vector<uc>>;
 using vb=vector<block>;
+using keys=vector<vb>;
 
-vb zero={{0,0,0,0},{0,0,0,0},{0,0,0,0},{0,0,0,0}};
+block zero={{0,0,0,0},{0,0,0,0},{0,0,0,0},{0,0,0,0}};
+block rcon={{0,0,0,0},{1,0,0,0},{2,0,0,0},{4,0,0,0},{8,0,0,0},{16,0,0,0},
+			{32,0,0,0},{64,0,0,0},{128,0,0,0},{27,0,0,0},{54,0,0,0}};
 block S_BOX[2] = {
 	{{0x63,0x7C,0x77,0x7B,0xF2,0x6B,0x6F,0xC5,0x30,0x01,0x67,0x2B,0xFE,0xD7,0xAB,0x76},
 	{0xCA,0x82,0xC9,0x7D,0xFA,0x59,0x47,0xF0,0xAD,0xD4,0xA2,0xAF,0x9C,0xA4,0x72,0xC0},
@@ -49,35 +53,80 @@ block S_BOX[2] = {
 	{0xA0,0xE0,0x3B,0x4D,0xAE,0x2A,0xF5,0xB0,0xC8,0xEB,0xBB,0x3C,0x83,0x53,0x99,0x61},
 	{0x17,0x2B,0x04,0x7E,0xBA,0x77,0xD6,0x26,0xE1,0x69,0x14,0x63,0x55,0x21,0x0C,0x7D}}};
 
-vb add_round_key(vb a,vb k){
-	rep(i,0,4)rep(j,0,4)a[i][j]^=k[i][j];return a;}
+uc mul(ui a,ui b){
+	ui c=0u,d=0x11b;
+	while(b){c^=(b&1u)*a;b>>=1;a<<=1;}
+	while(c>>8)c^=d<<(__builtin_clz(d)-__builtin_clz(c));
+	return (uc)c;}
 
-vb sub_bytes(vb a,int o){
+block excu(u128 x){block a=zero;rep(i,0,16)a[i>>2][i&3]=(uc)(x>>(i*8));return a;}
+u128 excu(block x){u128 a=0;rep(i,0,16)a|=((u128)x[i>>2][i&3])<<(i*8);return a;}
+block xor_block(block a,block b){rep(i,0,16)a[i>>2][i&3]^=b[i>>2][i&3];return a;}
+
+block add_round_key(block a,block k){return xor_block(a,k);}
+
+block sub_bytes(block a,int o){
 	rep(i,0,4)rep(j,0,4)a[i][j]=S_BOX[o][a[i][j]>>4][a[i][j]&15];return a;}
 
-vb shift_rows(vb a){
-	rep(i,0,3)swap(a[1][i],a[1][i+1]);
-	rep(i,0,2)swap(a[2][i],a[2][i+2]);
-	rep(i,0,3)swap(a[3][0],a[3][i+1]);
-	return a;}
+block shift_rows(block a,int o){
+	block b=zero;rep(i,0,4)rep(j,0,4)b[i][j]=a[i][o?(j+4-i)%4:(j+i)%4];return a;}
 	
-vb mix_columns(vb a){
+block mix_columns(block a,int o){
+	block b=zero;uc c[2][4]={{2,3,1,1},{14,11,13,9}};
+	rep(j,0,4)rep(i,0,4)rep(k,0,4)b[i][j]^=mul(a[k][j],c[o][(k+4-i)%4]);
+	return b;}
 
-}
+vector<uc> rot_word(vector<uc> a){vector<uc> b;rep(i,0,4)b.pb(a[(i+1)%4]);return b;}
+vector<uc> sub_word(vector<uc> a){rep(i,0,4)a[i]=S_BOX[0][a[i]>>4][a[i]&15];return a;}
+vector<uc> xor_word(vector<uc> a,vector<uc> b){rep(i,0,4)a[i]^=b[i];return a;}
 
+keys key_schedule(block a){
+	int N=4,R=11;block W;vb t,s;
+	rep(i,0,4*R){
+		if(i<N)W.pb(a[i]);
+		else if(i>=N&&i%N==0)W.pb(xor_word(W[i-N],xor_word(sub_word(rot_word(W[i-1])),rcon[i/N])));
+		else if(i>=N&&N>6&&i%N==4)W.pb(xor_word(W[i-N],sub_word(W[i-1])));
+		else W.pb(xor_word(W[i-N],W[i-1]));}
+	rep(i,0,R)t.pb({W[4*i],W[4*i+1],W[4*i+2],W[4*i+3]});
+	s=t;reverse(all(s));return {t,s};}
+
+block enciphering(block a,keys k,int o){
+	a=add_round_key(a,k[o][0]);
+	rep(i,1,10){
+		a=o?shift_rows(sub_bytes(a,o),o):sub_bytes(shift_rows(a,o),o);
+		a=o?mix_columns(add_round_key(a,k[o][i]),o):add_round_key(mix_columns(a,o),k[o][i]);}
+	a=o?sub_bytes(shift_rows(a,o),o):shift_rows(sub_bytes(a,o),o);
+	return add_round_key(a,k[o][10]);}
+
+u128 input_u128(){
+	u128 x=0;string s;cin>>s;
+	for(auto c:s){
+		if('0'<=c&&c<='9')x=(x<<4)|(u128)(c-'0');
+		if('a'<=c&&c<='f')x=(x<<4)|(u128)(c-'a'+10);
+		if('A'<=c&&c<='F')x=(x<<4)|(u128)(c-'A'+10);}
+	return x;}
 
 u128 input_u128(string s){
 	u128 x=0;
 	for(auto c:s){
 		if('0'<=c&&c<='9')x=(x<<4)|(u128)(c-'0');
-		else x=(x<<4)|(u128)(c-'a'+10);}
+		if('a'<=c&&c<='f')x=(x<<4)|(u128)(c-'a'+10);
+		if('A'<=c&&c<='F')x=(x<<4)|(u128)(c-'A'+10);}
 	return x;}
+	
+void output_u128(u128 x){
+	string s;int y;
+	rep(i,0,32){
+		y=x&15;x>>=4;
+		if(y<10)s+=(char)('0'+y);
+		else s+=(char)('a'+y-10);}
+	reverse(all(s));cout<<s;}
 
 vb input_text(){
     string s;vb t;block x;
     while(sz(s)==0)getline(cin,s);s+=string(16-sz(s)%16,0);
-    rep(i,0,s.size()/16){
-    	x=zero;rep(j,0,16)x[j>>2][j&3]=(us)s[i+j];t.pb(x);}
+    rep(i,0,sz(s)/16){
+    	x=zero;rep(j,0,16)x[j>>2][j&3]=(uc)s[i+j];t.pb(x);}
 	return t;}
 
 vb input_data(){
@@ -85,7 +134,7 @@ vb input_data(){
 	while(sz(s)==0)getline(cin,s);
 	ss.clear();ss<<s;
 	while(ss>>s){
-		x=input_u128(s);y=zero;rep(j,0,16)y[j>>2][j&3](us)(x>>(j*8));t.pb(y);}
+		x=input_u128(s);y=zero;rep(j,0,16)y[j>>2][j&3]=(uc)(x>>(j*8));t.pb(y);}
 	return t;}
 
 void output_text(vb s){
@@ -94,7 +143,7 @@ void output_text(vb s){
 	cout<<t<<endl;}
 
 void output_data(vb s){
-	rep(i,0,sz(s))rep(j,0,16)cout<<hex<<s[i][j>>2][j&3]<<" ";cout<<endl;}
+	rep(i,0,sz(s)){output_u128(excu(s[i]));cout<<" ";}cout<<endl;}
 
 int select_mode(vector<string> vs){
 	int o;
@@ -106,35 +155,38 @@ int select_mode(vector<string> vs){
 			return o;}}}
 
 int main(){
-	/*
-	int o;
-	random_device rd;uniform_int_distribution<ull> dis(0ull,~0ull);key=dis(rd);
+	int o;random_device rd;u128 key,tiv;vb x;keys ks;block iv;
 	while(true){
 		o=select_mode({"加密","解密","退出"});
 		if(o==0){
 			cout<<"输入明文:";x=input_text();
 			cout<<"明文为:";output_text(x);
-			if(select_mode({"随机生成密钥","手动输入密钥"})==0){key=dis(rd);}
-			else{cout<<"输入密钥(16位16进制数):";cin>>hex>>key;}
-			cout<<"密钥为(16位16进制数):"<<hex<<key<<endl;
-			if(select_mode({"ECB","CBC"})==0){}
+			if(select_mode({"随机生成密钥","手动输入密钥"})==0){
+				rep(i,0,128)key=key*2+rd();}
+			else{cout<<"输入密钥(32位16进制数):";key=input_u128();}
+			cout<<"密钥为(32位16进制数):";output_u128(key);cout<<endl;
+			ks=key_schedule(excu(key));
+			if(select_mode({"ECB","CBC"})==0)rep(i,0,sz(x))x[i]=enciphering(x[i],ks,0);
 			else{
-				if(select_mode({"随机生成初始化向量","手动输入初始化向量"})==0){iv=dis(rd);}
-				else{cout<<"输入初始化向量(16位16进制数):";cin>>hex>>iv;}
-				cout<<"初始化向量(16位16进制数)为:"<<hex<<iv<<endl;}
-			cout<<"加密后密文为(分组16位16进制数):";output_data(x);}
+				if(select_mode({"随机生成初始化向量","手动输入初始化向量"})==0){
+					rep(i,0,128)tiv=tiv*2+rd();iv=excu(tiv);}
+				else{cout<<"输入初始化向量(32位16进制数):";iv=excu(input_u128());}
+				cout<<"初始化向量(32位16进制数)为:";output_u128(excu(iv));cout<<endl;
+				x[0]=enciphering(xor_block(x[0],iv),ks,0);
+				rep(i,1,sz(x))x[i]=enciphering(xor_block(x[i],x[i-1]),ks,0);}
+			cout<<"加密后密文为(分组32位16进制数):";output_data(x);}
 		if(o==1){
-			cout<<"输入分组密文(分组16位16进制数):";x=input_data();
-			cout<<"分组密文(分组16位16进制数)为:";output_data(x);
-			cout<<"输入密钥(16位16进制数):";cin>>hex>>key;
-			cout<<"密钥(16位16进制数)为:"<<hex<<key<<endl;
-			if(select_mode({"ECB","CBC"})==0){}
+			cout<<"输入分组密文(分组32位16进制数):";x=input_data();
+			cout<<"分组密文(分组32位16进制数)为:";output_data(x);
+			cout<<"输入密钥(32位16进制数):";key=input_u128();
+			cout<<"密钥(32位16进制数)为:";output_u128(key);cout<<endl;
+			if(select_mode({"ECB","CBC"})==0)rep(i,0,sz(x))x[i]=enciphering(x[i],ks,1);
 			else{
-				cout<<"输入初始化向量(16位16进制数):";cin>>hex>>iv;
-				cout<<"初始化向量(16位16进制数)为:"<<hex<<iv<<endl;}
+				cout<<"输入初始化向量(32位16进制数):";iv=excu(input_u128());
+
+				cout<<"初始化向量(32位16进制数)为:";output_u128(excu(iv));cout<<endl;
+				per(i,1,sz(x))x[i]=xor_block(x[i-1],enciphering(x[i],ks,1));
+				x[0]=xor_block(iv,enciphering(x[0],ks,1));}
 			cout<<"解密后明文为:";output_text(x);}
-		if(o==2)break;}*/
-}
-
-
+		if(o==2)break;}}
 
