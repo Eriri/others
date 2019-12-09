@@ -1,0 +1,4 @@
+unrar e		解压到当前目录
+unrar x		解压到当前文件名文件夹
+
+for i in $(seq 0 9); do ./gen $i.in; done

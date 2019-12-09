@@ -1,0 +1,13 @@
+numpy
+取第x行		[x,:]
+取x到y行	[x:y,:]
+取x和y和z行	[[x,y,z],:]
+取第x列 	[:,x]
+取x到y列	[:,x:y]
+取x和y和z列	[:,[x,y,z]]
+
+multiprocessing
+result = pool.apply_sync(func,(para,))
+p.close(), p.join()
+result.get()
+
