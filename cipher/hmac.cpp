@@ -31,14 +31,13 @@ ui Kt(int t){
 	if(t<80)return 0xca62c1d6;}
 	
 ui H0[5]={0x67452301,0xefcdab89,0x98badcfe,0x10325476,0xc3d2e1f0};
+map<char,uc> M;
 
-vb padding(string s){
+vb padding(string s){//[None,512(32ui*16,64bytes)]
 	ull l=sz(s)*8;block b;vb v;ui t;
 	s.pb((uc)(0x80));
 	while(sz(s)*8%512!=448)s.pb((uc)(0x00));
 	rep(i,0,8)s.pb((uc)(l>>((7-i)<<3)));
-	de(sz(s));
-	rep(i,0,sz(s))cout<<hex<<(ui)(s[i])<<endl;
 	rep(i,0,sz(s)/64){
 		b.clear();
 		rep(j,0,16){
@@ -47,9 +46,25 @@ vb padding(string s){
 		v.pb(b);}
 	return v;}
 
+vb keypadding(string k){
+	string s;ull l=sz(k)*4;block b;vb v;ui t;
+	rep(i,0,sz(k)/2)s.pb(M[k[i<<1]]<<4|M[k[i<<1|1]]);
+	if(sz(k)&1)s.pb(M[k.back()]<<4|(uc)(0x08)),s.pb((uc)(0x00));
+	else s.pb((uc)(0x80));
+	while(sz(s)*8%512!=448)s.pb((uc)(0x00));
+	rep(i,0,8)s.pb((uc)(l>>((7-i)<<3)));
+	rep(i,0,sz(s)/64){
+		b.clear();
+		rep(j,0,16){
+			rep(k,0,4)((t<<=8)|=(uc)(s[i+64+j*8+k]));
+			b.pb(t);}
+		v.pb(b);}
+	return v;}
+
+
 ui rotl(int n,ui x){rep(i,0,n)x=(x<<n)|(x>>(32-n));return x;}
 
-vector<ui> schedule(vb M){
+vector<ui> schedule(vb M){//[5,32]
 	vector<ui> w,h;ui a,b,c,d,e,T;
 	w.resize(80);rep(i,0,5)h.pb(H0[i]);
 	rep(t,0,sz(M)){
@@ -62,12 +77,32 @@ vector<ui> schedule(vb M){
 		rep(i,0,5)h[i]+=a;}
 	return h;}
 
+void init(){
+	for(char i='0';i<='9';i++)M[i]=(uc)(i-'0');
+	for(char i='a';i<='f';i++)M[i]=(uc)(i-'a'+10);
+	for(char i='A';i<='F';i++)M[i]=(uc)(i-'A'+10);}
 
 int main(){
-	string s;vector<ui> md;
-	cout<<"请输入需要哈希的数据:"<<endl;
+	init();
+	string s,k,im,om;vector<ui> t,md; block ok,ik;
+	cout<<"请输入认证的数据:"<<endl;
 	do getline(cin,s); while(sz(s)==0);
-//	block t=padding(s)[0];rep(i,0,16)cout<<hex<<t[i]<<" ";cout<<endl;
-	md=schedule(padding(s));
-	cout<<"160位的信息摘要为:"<<endl;
+	cout<<"请输入密钥(任意长度16进制数):"<<endl;
+	do getline(cin,k); while(sz(k)==0);
+	if(sz(k)>128)t=schedule(keypadding(k));
+	else{
+		while(sz(k)<128)k.pb('0');t.resize(16);
+		rep(i,0,16)rep(j,0,8)t[i]|=((ui)(M[k[(i<<3)+j]])<<(j<<2));}
+	ok.resize(16);ik.resize(16);
+	rep(i,0,sz(t))ok[i]=t[i]^0x5c,ik[i]=t[i]^0x36;
+	rep(i,sz(t),16)ok[i]=0x5c,ik[i]=0x36;
+	
+	rep(i,0,16)rep(j,0,4)im.pb((uc)(ik[i]>>(j<<3)));im+=s;
+	t=schedule(padding(im));
+	
+	rep(i,0,16)rep(j,0,4)om.pb((uc)(ok[i]>>(j<<3)));
+	rep(i,0,sz(t))rep(j,0,4)om.pb((uc)(t[i]>>(j<<3)));
+
+	md=schedule(padding(om));
+	cout<<"密钥散列消息认证码为:"<<endl;
 	rep(i,0,5)cout<<hex<<md[i]<<" ";cout<<endl;}

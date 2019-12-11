@@ -5,7 +5,7 @@ using namespace std;
 typedef long long ll;
 typedef pair<ll,ll> pt;
 
-ll A,B,P=8161;//8161 9871 5227 9109 2081 3557 887
+ll A,B,P;//8161 9871 5227 9109 2081 3557 887
 ll fpow(ll a,ll b){ll c=1;for(;b;b>>=1,(a*=a)%=P)if(b&1)(c*=a)%=P;return c;}
 ll add(ll a,ll b){return (a+b)%P;}
 ll sub(ll a,ll b){return (a-b+P)%P;}
@@ -22,7 +22,9 @@ pt add(pt a,pt b){
 	cy=sub(mul(m,sub(a.x,cx)),a.y);
 	return pt(cx,cy);}
 
+pt fpow(pt a,ll b){pt c=inf;for(;b;b>>=1,a=add(a,a))if(b&1)c=add(a,c);return c;}
 
 int main(){
+	cout<<"随机生成椭圆曲线与基点G......"<<endl;
 	
 }
