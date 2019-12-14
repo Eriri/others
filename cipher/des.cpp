@@ -54,6 +54,9 @@ ull permutation(ull x,vi p){
 ull substitution(ull x,vi sb){
 	return sb[16*(((x&32ull)>>4)+(x&1ull))+((x&30ull)>>1)];}
 
+ull leftshift(ull x){
+	return ((x<<1)&((1ull<<28)-1))|(x>>27);}
+
 ull feistel(ull x,ull k){
 	x=permutation(x,E)^k;ull y=0;
 	rep(i,0,8)y|=substitution((x>>(6*i))&63ull,S_BOX[i])<<(4*i);
@@ -63,9 +66,6 @@ ull enciphering(ull x,vector<vu> k,int o){
 	x=permutation(x,IP[0]);pair<ull,ull> lr=mp(x&((1ull<<32)-1),x>>32);
 	rep(i,0,16)lr=mp(lr.se,lr.fi^feistel(lr.se,k[o][i]));
 	return permutation(lr.se|(lr.fi<<32),IP[1]);}
-
-ull leftshift(ull x){
-	return ((x<<1)&((1ull<<28)-1))|(x>>27);}
 
 vector<vu> schedule(ull k){
 	k=permutation(k,PC_1);vu t,s;pair<ull,ull> cd=mp(k&((1ull<<28)-1),k>>28);
