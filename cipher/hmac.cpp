@@ -33,17 +33,16 @@ ui Kt(int t){
 ui H0[5]={0x67452301,0xefcdab89,0x98badcfe,0x10325476,0xc3d2e1f0};
 map<char,uc> M;
 
-vb padding(string s){//[None,512(32ui*16,64bytes)]
+vb padding(string s){
 	ull l=sz(s)*8;block b;vb v;ui t;
 	s.pb((uc)(0x80));
 	while(sz(s)*8%512!=448)s.pb((uc)(0x00));
-	rep(i,0,8)s.pb((uc)(l>>((7-i)<<3)));
-	rep(i,0,sz(s)/64){
-		b.clear();
-		rep(j,0,16){
-			rep(k,0,4)((t<<=8)|=(uc)(s[i*64+j*8+k]));
-			b.pb(t);}
-		v.pb(b);}
+	rep(i,0,8)s.pb((uc)(l>>((7-i)*8)));
+	rep(i,0,sz(s)){
+		t=(t<<8)|(uc)(s[i]);
+		if((i+1)%4==0){
+			b.pb(t);
+			if(sz(b)==16){v.pb(b);b.clear();}}}
 	return v;}
 
 vb keypadding(string k){
@@ -52,29 +51,28 @@ vb keypadding(string k){
 	if(sz(k)&1)s.pb(M[k.back()]<<4|(uc)(0x08)),s.pb((uc)(0x00));
 	else s.pb((uc)(0x80));
 	while(sz(s)*8%512!=448)s.pb((uc)(0x00));
-	rep(i,0,8)s.pb((uc)(l>>((7-i)<<3)));
-	rep(i,0,sz(s)/64){
-		b.clear();
-		rep(j,0,16){
-			rep(k,0,4)((t<<=8)|=(uc)(s[i+64+j*8+k]));
-			b.pb(t);}
-		v.pb(b);}
+	rep(i,0,8)s.pb((uc)(l>>((7-i)*8)));
+	rep(i,0,sz(s)){
+		t=(t<<8)|(uc)(s[i]);
+		if((i+1)%4==0){
+			b.pb(t);
+			if(sz(b)==16){v.pb(b);b.clear();}}}
 	return v;}
 
 
-ui rotl(int n,ui x){rep(i,0,n)x=(x<<n)|(x>>(32-n));return x;}
+ui rotl(int n,ui x){return x=(x<<n)|(x>>(32-n));}
 
-vector<ui> schedule(vb M){//[5,32]
+vector<ui> schedule(vb M){
 	vector<ui> w,h;ui a,b,c,d,e,T;
 	w.resize(80);rep(i,0,5)h.pb(H0[i]);
-	rep(t,0,sz(M)){
-		rep(i,0,16)w[i]=M[t][i];
-		rep(i,16,80)w[i]=rotl(1,w[i-3]^w[t-8]^w[t-14]^w[t-16]);
+	rep(i,0,sz(M)){
+		rep(t,0,16)w[t]=M[i][t];
+		rep(t,16,80)w[t]=rotl(1,w[t-3]^w[t-8]^w[t-14]^w[t-16]);
 		a=h[0],b=h[1],c=h[2],d=h[3],e=h[4];
-		rep(i,0,80){
-			T=rotl(5,a)+f(b,c,d,i)+e+Kt(i)+w[i];
+		rep(t,0,80){
+			T=rotl(5,a)+f(b,c,d,t)+e+Kt(t)+w[t];
 			e=d;d=c;c=rotl(30,b);b=a;a=T;}
-		rep(i,0,5)h[i]+=a;}
+		h[0]+=a;h[1]+=b;h[2]+=c;h[3]+=d;h[4]+=e;}
 	return h;}
 
 void init(){
