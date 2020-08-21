@@ -33,15 +33,18 @@ Commerce under Grant BS123456.''}
 \corresp{Corresponding author: First A. Author (e-mail: author@ boulder.nist.gov).}
 
 \begin{abstract}
+
 The belief-rule-base(BRB) inference methodology using evidential reasonging(ER) 
 approach is widely used in different fields, such as  fault diagnosis, system 
-identification and decision analysis. In this paper, we propose a new belief rule 
-structure and its traning method, aiming to solve zero activation during the inference 
-process and improve inference accuray. We first omitted the belief distribution conversion 
-for the input data, and used the Gaussian function to calculate the similarity of each 
-attribute. Then we introduce corresponding attribute weight for each rule and omit the rule 
-weight parameter at the same time. Finally, we use the stochastic gradient descent method to 
-train the parameters of the inference system. 
+identification and decision analysis. 
+In this paper, we propose a new belief rule structure and its training method, 
+aiming to solve zero activation during the inference process and improve inference accuray. 
+We first used the Gaussian function to calculate the similarity of each attribute instead of the original method. 
+Then we introduce corresponding attribute weight for each rule and cancel the rule weight parameter at the same time. 
+Finally, we use the stochastic gradient descent method for parameters training based on the new rule structure. 
+Experiments on several public classification datasets are conducted to validate the proposed approach compared with some recent existing works. 
+The experimental results show that the proposed approach have a better performence in accuray and time consumption.
+
 \end{abstract}
 
 \begin{keywords}
@@ -54,61 +57,18 @@ belief rule base, structure optimization, stochastic gradient descent, momentum 
 
 \section{Introduction}
 \label{sec:introduction}
-\PARstart{T}{his} document is a template for \LaTeX. If you are 
-reading a paper or PDF version of this document, please download the 
-electronic file, trans\_jour.tex, from the IEEE Web site at \underline
-{http://ieeeauthorcenter.ieee.org/create-your-ieee-article/}\break\underline{use-authoring-tools-and-ieee-article-templates/ieee-article-}\break\underline{templates/} so you can use it to prepare your manuscript. If 
-you would prefer to use LaTeX, download IEEE's LaTeX style and sample files 
-from the same Web page. You can also explore using the Overleaf editor at 
-\underline
-{https://www.overleaf.com/blog/278-how-to-use-overleaf-}\break\underline{with-ieee-collabratec-your-quick-guide-to-getting-started}\break\underline{\#.xsVp6tpPkrKM9}
 
-If your paper is intended for a conference, please contact your conference 
-editor concerning acceptable word processor formats for your particular 
-conference. 
+The belief rule-based inference methodology using evidential reasonging approach(RIMER) proposed by Yang 
+baesd on traditional IF-THEN rules, Dempster-Shafer theory of evidence, decision theory and fuzzy set theory. 
+By introducing a belief distribution structure in the rules, this methodology can effectively handle incomplete 
+and uncertain information involved in the datasets and widely used in various problem in different fields such as 
+oil pipeline leak detection, military capability estimation, consumer behavior prediction and so on. 
+    
+    In the inference process of the BRB system, the attribute weight, rule weight, belief distribution and other parameters 
+directly affect the final accuray. Yang proposed optimization models for training BRB system using fmincon solver in Matlab, 
+Chang proposed an algorithm for training parameters in BRB system based on gradient and dichotomy methods, Wu used the 
+accelerating of gradient algorithm to improve the convergence accuray and convergence speed. Su 
 
-IEEE will do the final formatting of your paper. If your paper is intended 
-for a conference, please observe the conference page limits. 
-
-\subsection{Abbreviations and Acronyms}
-Define abbreviations and acronyms the first time they are used in the text, 
-even after they have already been defined in the abstract. Abbreviations 
-such as IEEE, SI, ac, and dc do not have to be defined. Abbreviations that 
-incorporate periods should not have spaces: write ``C.N.R.S.,'' not ``C. N. 
-R. S.'' Do not use abbreviations in the title unless they are unavoidable 
-(for example, ``IEEE'' in the title of this article).
-
-\subsection{Other Recommendations}
-Use one space after periods and colons. Hyphenate complex modifiers: 
-``zero-field-cooled magnetization.'' Avoid dangling participles, such as, 
-``Using \eqref{eq}, the potential was calculated.'' [It is not clear who or what 
-used \eqref{eq}.] Write instead, ``The potential was calculated by using \eqref{eq},'' or 
-``Using \eqref{eq}, we calculated the potential.''
-
-Use a zero before decimal points: ``0.25,'' not ``.25.'' Use 
-``cm$^{3}$,'' not ``cc.'' Indicate sample dimensions as ``0.1 cm 
-$\times $ 0.2 cm,'' not ``0.1 $\times $ 0.2 cm$^{2}$.'' The 
-abbreviation for ``seconds'' is ``s,'' not ``sec.'' Use 
-``Wb/m$^{2}$'' or ``webers per square meter,'' not 
-``webers/m$^{2}$.'' When expressing a range of values, write ``7 to 
-9'' or ``7--9,'' not ``7$\sim $9.''
-
-A parenthetical statement at the end of a sentence is punctuated outside of 
-the closing parenthesis (like this). (A parenthetical sentence is punctuated 
-within the parentheses.) In American English, periods and commas are within 
-quotation marks, like ``this period.'' Other punctuation is ``outside''! 
-Avoid contractions; for example, write ``do not'' instead of ``don't.'' The 
-serial comma is preferred: ``A, B, and C'' instead of ``A, B and C.''
-
-If you wish, you may write in the first person singular or plural and use 
-the active voice (``I observed that $\ldots$'' or ``We observed that $\ldots$'' 
-instead of ``It was observed that $\ldots$''). Remember to check spelling. If 
-your native language is not English, please get a native English-speaking 
-colleague to carefully proofread your paper.
-
-Try not to use too many typefaces in the same article. You're writing
-scholarly papers, not ransom notes. Also please remember that MathJax
-can't handle really weird typefaces.
 
 \subsection{Equations}
 Number equations consecutively with equation numbers in parentheses flush 
