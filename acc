@@ -1,0 +1,99 @@
+              rn,bs,ep,lr       base     ep,sub      gb           liu      dra      sra      vp       mvp 
+iris          16,128,2000       96.50(1) 500|200,10  95.67(3)     95.33(5) 95.50(4) 94.80(7) 95.13(6) 95.87(2)    
+wine          32,64,1000        97.44(1) 1000|500,10 96.85(3)     96.32(5) 96.46(4) 96.85(3) 93.01(6) 97.02(2) 
+pima/diabetes 32,128,1500       73.64(1) 1000|500,10 74.93(1)     73.39(3) 71.44(7) 71.71(6) 71.89(5) 72.59(4)
+ecoli         128,64,2000       85.43(3)             85.44(2)     81.61(7) 83.76(6) 84.85(5) 84.87(4) 85.61(1) 
+glass         64,128,3000       69.91(3)             68.87(5)     67.85(6) 69.65(4) 73.08(1) 71.75(3) 72.06(2) 
+seeds         32,128,3000       94.02(1)             93.00(2)     91.33(6) 92.02(5) 91.24(7) 92.57(3) 92.38(4) 
+yeast         64,128,2000       59.49(1)             60.52(1)     45.61(7) 54.13(6) 56.85(5) 58.15(3) 57.49(4)
+transfusion   32,128,3000       79.45(3)             80.52(1)     76.14(6) 76.57(5)          77.33(4) 80.36(2)
+
+16 128 1000
+32 64  2000
+64 32  4000
+
+thyroid       32,128,4000       95.95(2)             94.89(3)     81.47(4) 97.19(1)
+
+trans		80.36		79.45
+	SRA 	MVP	BA	OUR
+irsi	94.80	95.87	95.26	96.50
+wine	96.85		97.02	97.44
+pima	71.71	72.59	72.32	75.29
+ecoli	84.85	85.61		85.43
+glass	73.08	72.06	72.32	69.91
+seeds	91.24	92.38	93.95	94.02
+yeast	56.85	57.49	58.63	59.49
+mass	82.53		79.81	77.31
+
+shrinkage
+subsample
+
+iris	94.71
+wine
+pima	
+
+
+cce 50%,0.69 75%,0.28 90%,0.1
+
+mean
+knn
+mice
+missforest
+
+
+
+
+% Render CV header
+% Needs \@firstname, \@lastname and \@tagline to be defined
+\newcommand*{\makecvheader}{
+	\ifundef{\@alternative}{
+		 
+		\ifundef{\@photodiameter}{
+			\begin{minipage}{\linewidth}    	      	
+		}{
+			\begin{minipage}{\dimexpr\linewidth-\@photodiameter-2em}        	
+		}
+				\color{accentcolor}\user{\@firstname}{\@lastname}\color{black} \vspace*{0.3cm}\\				 	
+				\small{\@socialinfo}
+			\end{minipage}  
+		\ifdef{\@photodiameter}{
+			\begin{minipage}{\@photodiameter}
+				\begin{tikzpicture}%
+				\node[circle, text=white, minimum size=2.5cm,
+				path picture={\node at (path picture bounding box.center){
+						\includegraphics[width=2.5cm]{\@photo}
+					};
+				}]{ };
+				\end{tikzpicture}				
+			\end{minipage}
+		}{}
+	    \resumetitle{\@tagline}
+	}{
+	    \ifundef{\@photodiameter}{
+			\begin{minipage}{\linewidth}     	
+	    }{
+			\begin{minipage} {\dimexpr\linewidth-\@photodiameter-2em}    	
+	    }
+				\user{\@firstname}{\@lastname} \vspace*{0.3cm}\\
+				\resumetitle{\@tagline}
+				\smallskip\\
+				\small{\@socialinfo}
+			\end{minipage}  	    
+		\ifdef{\@photodiameter}{
+			\begin{minipage}{\@photodiameter}
+			      \begin{tikzpicture}%
+					\node[circle, text=white, minimum size=2.5cm,
+						path picture={\node at (path picture bounding box.center){
+							\includegraphics[width=2.5cm]{\@photo}
+						};
+					}]{ };
+			      \end{tikzpicture}				
+			\end{minipage} 			
+%      \begin{minipage}{\@photodiameter}
+%      	\tikz\path[fill overzoom image={\@photo}]circle[radius=0.5\linewidth];
+%      \end{minipage}
+      			     	
+		}{}
+		\bigskip
+	}
+}
