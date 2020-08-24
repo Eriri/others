@@ -1,5 +1,4 @@
 网络
-select，poll，epoll
 tcp，udp，ip协议头部
 tcp选择重传，可靠，不可靠，流量控制，拥塞控制，粘包
 http，https，get，post，http 1.1 2.0
@@ -12,6 +11,7 @@ socket
 浏览器输入url过程
 
 操作系统
+select，poll，epoll
 锁和死锁
 容器
 进程，线程，线程池，fork
@@ -52,8 +52,6 @@ B+树
 空间索引树
 小球称重找出问题小球 
 贪心算法实现一个LRU缓存，超时淘汰和LRU淘汰：双向链表+hashmap 
-KMP字符串查找算法
-两个人轮流拿牌的题目 从相加相等的数入手
 
 服务器
 webserver流程
@@ -63,5 +61,4 @@ webserver流程
 浏览器的请求从发送到返回都经历了什么
 linux常用命令 netstat, top, tcpdump, ipcs, ipcrm
 服务器CPU 100% 怎么定位 
-协程有哪些好处
 linux查看共享内存的情况
