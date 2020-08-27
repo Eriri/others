@@ -93,7 +93,7 @@
 \maketitle
 
 \section{引言}
-置信规则库\cite{a3}及其推理方法是Yang等在传统IF-THEN\cite{a5}生成式规则的基础上通过引入置信分布结构解决不确定信息的专家系统。Yang使用D-S证据理论\cite{a1,a2}、决策理论\cite{b1}、模糊理论\cite{a4}建模对该专家系统进行见建模，使其可以有效的综合不同定量、定性信息与模糊不确定信息，广泛的应用于不同领域的各种难题包括输油管道泄漏检测\cite{a6}、军事能力预估\cite{a7}、消费者行为预测\cite{a8}等。 
+置信规则库\cite{a3}及其推理方法是Yang等在传统IF-THEN\cite{a5}生成式规则的基础上通过引入置信分布结构解决不确定信息的专家系统。Yang使用D-S证据理论\cite{a1,a2}、决策理论\cite{b1}、模糊理论\cite{a4}建模对该专家系统进行见建模，使其可以有效的综合不同定量、定性信息与模糊不确定信息，广泛的应用于不同领域的各种难题包括输油管道泄漏检测\cite{a6}、军事能力预估\cite{a7}、消费者行为预测\cite{a8}等。
 
 在置信规则库推理过程中，系统中属性权重、规则权重、置信度分布等参数直接影响了最终推理预测结果的精度，为了避免人为设给定参数影响推理精度，Yang使用Fmincon\cite{a9}函数优化模型参数以提升系统的推理精度。Chang\cite{a10}首先使用了优化步长的梯度法直接寻找梯度下降方向进行参数训练优化步长信息，随后Chang\cite{a11}使用梯度法与二分法结合分别求解模型参数梯度下降方向并根据约束条件二分寻找最大步长实现了对模型参数的快速优化，Wu\cite{a12}提出更全面的加速梯度法优化模型参数，提升了梯度法训练下推理模型的精度。同时还有Su\cite{a13}提出的粒子群算法，Wang\cite{a14}提出的差分进化算法等一系列智能算法对置信规则库推理系统进行参数训练。 在传统置信规则库推理系统的基础上，Liu\cite{a15}引入了置信分布结构的前件属性形式并使用训练数据构建规则额的扩展置信规则推理系统，简化了规则库的构建过程并提高了推理速度。
 
@@ -119,14 +119,14 @@ $$\alpha_{it}^k=0,t=1,\cdots,(j-1),(j+2),\cdots,J_i$$
 
 由输入数据转化生成规则的过程需要人为设定前件属性信息的参考值并消耗计算资源，同时需要额外空间存储具有置信分布结构的规则前件属性信息。为了解决上述问题，本文提出了改进的置信规则形式，通过取消前件属性置信分布结构，简化构建置信规则形式如下：
 \begin{small}
-	$$R_k:if(x_1^k , \cdots , x_{T_k}^k)then\{(D_1,\beta_1^k),\cdots,(D_N,\beta_N^k)\},\sum_{i=1}^N\beta_i^k\leq1$$	
+    $$R_k:if(x_1^k , \cdots , x_{T_k}^k)then\{(D_1,\beta_1^k),\cdots,(D_N,\beta_N^k)\},\sum_{i=1}^N\beta_i^k\leq1$$
 \end{small}
 简化后使用训练数据生成规则前件属性时仅需存储原始信息而无需转换为置信分布结构，避免人为设定前件属性参考等级，节省了计算资源与存储空间。
 \subsection{高斯函数优化的证据推理合成方法}
 对规则库的规则进行激活合成是置信规则库推理系统的核心内容。整个过程主要包括两个步骤：计算激活权重、激活规则合成，整个流程如图1所示。
 \begin{figure}
-	\includegraphics[width=\linewidth]{1brb.png}
-	\caption{置信规则库证据合成推理流程}
+    \includegraphics[width=\linewidth]{1brb.png}
+    \caption{置信规则库证据合成推理流程}
 \end{figure}
 
 传统扩展置信规则库中每条规则激活权重的计算可看作两个置信分布之间相似度的计算，使用欧式距离对于第$i$个属性的个体匹配度度进行计算，将输入数据对应属性信息转换为置信分布形式后该属性个体匹配度为：
@@ -153,7 +153,9 @@ $$w_k=\frac{\theta_k\alpha_k}{\sum_{i=1}^L\theta_i\alpha_i},\alpha_k=\prod_{i=1}
 $$m_{j,k}=w_k\beta_j^k,j=1,\cdots,N$$
 $$m_{D,k}=1-\sum_{j=1}^Nm_{j,k}=1-w_k\sum_{j=1}^{N}\beta_j^k$$
 $$\overline{m}_{D,k}=1-w_k,\quad\widetilde{m}_{D,k}=w_k(1-\sum_{j=1}^N\beta_j^k)$$
-其中$m_{j,k}$代表第$k$条规则在第$j$个结果属性上的可信度，$\overline{m}_{D,k}$代表第$k$条规则未分配给任何结果属性的可信度，$\widetilde{m}_{D,k}$代表第$k$条规则结果参考属性不完备导致缺失的可信度，不确定性可信度总和由$m_{D,k}=\overline{m}_{D,k}+\widetilde{m}_{D,k}$给出。
+其中$m_{j,k}$代表第$k$条规则在第$j$个结果属性上的可信度，$\overline{m}_{D,k}$代表第$k$条规则未分配给任何结果属性的可信度，
+$\widetilde{m}_{D,k}$代表第$k$条规则结果参考属性不完备导致缺失的可信度，
+不确定性可信度总和由$m_{D,k}=\overline{m}_{D,k}+\widetilde{m}_{D,k}$给出。
 根据每条规则的可信度信息进行合成，得到第个$j$结果属性最终置信度结果：
 $$m_j=k[\prod_{i=1}^L(m_{j,i}+m_{D,i})-\prod_{i=1}^Lm_{D,i}]$$
 $$\overline{m}_D=n[\prod_{i=1}^L\overline{m}_{D,i}],\quad\widetilde{m}_D=k[\prod_{i=1}^Lm_{D,i}-\prod_{i=1}^L\overline{m}_{H,i}]$$
@@ -169,7 +171,7 @@ $$\beta_j=\frac{m_j}{1-\overline{m}_D},\quad\beta_D=\frac{\widetilde{m}_D}{1-\ov
 置信规则库推理的最终置信分布形式由公式给出，展开得到第$j$个结果属性数值：
 $$\beta_j=\frac{m_j}{1-\overline{m}_D}$$
 \begin{small}
-$$=\frac{\prod_{i=1}^L(m_{j,i}+m_{D,i})-\prod_{i=1}^Lm_{D,i}}{\sum_{t=1}^N\prod_{i=1}^L(m_{t,i}+m_{D,i})-(N-1)\prod_{i=1}^Lm_{D,i}-\prod_{i=1}^L\overline{m}_{D,i}}$$
+    $$=\frac{\prod_{i=1}^L(m_{j,i}+m_{D,i})-\prod_{i=1}^Lm_{D,i}}{\sum_{t=1}^N\prod_{i=1}^L(m_{t,i}+m_{D,i})-(N-1)\prod_{i=1}^Lm_{D,i}-\prod_{i=1}^L\overline{m}_{D,i}}$$
 \end{small}
 本文推理系统的实现及相关实验均是在信息完整情况下进行，规则结果属性的置信分布中不包括不确定信息：
 $$\sum_{i=1}^N\overline{\beta}_{ik}=1(k=1,\cdots,L),m_{D,i}=\overline{m}_{D,i},\widetilde{m}_{D,i}=0$$
@@ -195,26 +197,26 @@ $$\frac{dloss}{d\beta_{j,t}}=\sum_{i=1}^N\sum_{j=1}^N\frac{dloss}{d\beta_i}\frac
 根据上述导数与选定的损失函数，可以得到损失结果在模型各部分参数上的梯度。
 损失函数在所有规则前件属性参数上的梯度是：
 $$\nabla_{x}loss=\left[\begin{matrix}
-\frac{dloss}{dx_1^1} & \cdots & \frac{dloss}{dx_{T_k}^1}\\
-\vdots & \ddots & \vdots \\
-\frac{dloss}{dx_1^L}  & \cdots & \frac{dloss}{dx_{T_k}^L}
-\end{matrix}\right]$$
+            \frac{dloss}{dx_1^1} & \cdots & \frac{dloss}{dx_{T_k}^1} \\
+            \vdots               & \ddots & \vdots                   \\
+            \frac{dloss}{dx_1^L} & \cdots & \frac{dloss}{dx_{T_k}^L}
+        \end{matrix}\right]$$
 损失函数在所有规则属性辅助参数上的梯度是：
 $$\nabla_{\delta}loss=\left[\begin{matrix}
-\frac{dloss}{d\delta_1} & \cdots & \frac{dloss}{d\delta_{T_k}}
-\end{matrix}\right]$$
+            \frac{dloss}{d\delta_1} & \cdots & \frac{dloss}{d\delta_{T_k}}
+        \end{matrix}\right]$$
 损失函数在所有规则权重上的梯度是：
 $$\nabla_{\theta}loss=\left[\begin{matrix}
-\frac{dloss}{d\theta_1} & \cdots & \frac{dloss}{d\theta_L}
-\end{matrix}\right]$$
+            \frac{dloss}{d\theta_1} & \cdots & \frac{dloss}{d\theta_L}
+        \end{matrix}\right]$$
 损失函数在所有规则结果置信度分布上的梯度是：
 $$\nabla_{\beta}loss=\left[\begin{matrix}
-\frac{dloss}{d\beta_{1,1}} & \cdots &  \frac{dloss}{d\beta_{N,1}}\\
-\vdots & \ddots & \vdots\\
-\frac{dloss}{d\beta_{1,L}} & \cdots &  \frac{dloss}{d\beta_{N,L}}\\
-\end{matrix}\right]$$
+            \frac{dloss}{d\beta_{1,1}} & \cdots & \frac{dloss}{d\beta_{N,1}} \\
+            \vdots                     & \ddots & \vdots                     \\
+            \frac{dloss}{d\beta_{1,L}} & \cdots & \frac{dloss}{d\beta_{N,L}} \\
+        \end{matrix}\right]$$
 
-根据推理系统输出的置信分布与结果的损失函数对各部分参数的梯度，通过沿着负梯度方向更新参数进行模型优化。由于推理模型的参数有各自的约束条件，使用概率归一化函数和线性整流函数对受约束参数进行预处理避免训练过程中破坏特定的参数约束条件。  
+根据推理系统输出的置信分布与结果的损失函数对各部分参数的梯度，通过沿着负梯度方向更新参数进行模型优化。由于推理模型的参数有各自的约束条件，使用概率归一化函数和线性整流函数对受约束参数进行预处理避免训练过程中破坏特定的参数约束条件。
 为了满足结果置信度和为1且各个置信度非负，使用指数归一化函数：
 $$\beta_j^k=\frac{e^{\overline{\beta_j^k}}}{\sum_{i=1}^Ne^{\overline{\beta_i^k}}}(\sum_{i=1}^N\beta_j^k=1,\beta_j^k>0)$$
 为了满足规则权重和属性辅助参数的非负约束，使用激活函数处理可能出现的负数情况，可使用线性整流函数SoftPlus：
@@ -225,7 +227,7 @@ $$M_{new}(x,\beta,\theta,\delta)=M_{old}-\mu\nabla_{M_{old}}loss$$
 其中梯度信息根据最终置信度分布的损失函数给出，学习率$\mu$即更新的步长信息需要设定。Chang\cite{a10}与Wu\cite{a12}给出的梯度训练过程中使用二分法在约束空间中迭代寻找最优步长，在梯度为0时还需添加摄动参数避免训练过程停滞。上文提到新的梯度参数模型使用了概率归一化函数和线性整流函数预处理受约束参数，在满足约束条件的同时对步长无限制要求。为了提高训练的速度，本文使用了动量优化随机梯度下降的方法。
 
 随机梯度下降法\cite{a17}是一种在目标函数可微分条件下的迭代优化方法，使用数据的随机子集计算得到的梯度作为整个数据集梯度的估算值，在高维优化问题中降低了计算负担，更新步长由学习率与当前梯度大小综合决定，离最优解越远梯度越大，更新步长越大，离最优解越近则梯度越小，更新步长越小，使得更新步长能有效的适应不同的训练阶段并避免了传统梯度法中对步长参数的优化求解。
-  
+
 对于所有数据样本，其损失函数输出由所有样本的决定并根据其梯度更新模型参数
 $$loss=\frac{1}{n}\sum_i^nLoss(\beta_i),M_{new}=M_{old}-\mu\nabla_{M_{old}}loss$$
 随机梯度下降法随机选取了单个样本作为所有输出样本损失函数的预估值进行参数更新
@@ -238,7 +240,7 @@ $$v_t=\nu v_{t-1}+\mu\nabla_HM,M=M-v_t$$
 \section{实验与结果}
 本文引入非线性多极值函数及多个公共数据分类集，研究验证梯度训练下改进的置信规则库推理模型的训练效率与精确度。实验中模型使用TensorFlow 2搭建，运行于Intel$^{\copyright}$ Core$^{\texttrademark}$ i5 8500@3GHz，16GB内存，Nvidia 1060 6GB显卡，Ubuntu 20.04操作系统。
 \subsection{非线性函数拟合}
-Liu\cite{a15}证明了置信规则库可以逼近任意函数，本节通过引入一个非线性多极值函数进行训练验证模型的推理性能。  
+Liu\cite{a15}证明了置信规则库可以逼近任意函数，本节通过引入一个非线性多极值函数进行训练验证模型的推理性能。
 非线性多极值函数如下所示：
 $$f(x)=e^{-(x-2)^2}+0.5e^{-(x+2)^2},-5\leq x\leq 5$$
 在其定义域上均匀的选取$1000$组数据作为训练数据，使用均方误差作为损失函数，由函数曲线图所显示的各个极值点可设置规则库结果属性评价等级与相应的效用值：
@@ -247,91 +249,91 @@ $$\{D_1,D_2,D_3,D_4,D_5\}=\{-0.5,0,0.5,1,1.5\}$$
 
 对比图2拓展置信规则库、图3使用随机梯度下降法训练的置信规则库与图4动量优化梯度法训练的置信规则库上不同用的推理效果，证明了梯度下降法能有效的提高推理系统的精确度。
 \begin{figure}
-	\includegraphics[width=\linewidth]{ebrb_fit.png}
-	\caption{拓展置信规则库拟合图像}
+    \includegraphics[width=\linewidth]{ebrb_fit.png}
+    \caption{拓展置信规则库拟合图像}
 \end{figure}
 
 \begin{figure}
-	\includegraphics[width=\linewidth]{sgd_brb_fit.png}
-	\caption{随机梯度法训练的拓展置信规则库拟合图像}
+    \includegraphics[width=\linewidth]{sgd_brb_fit.png}
+    \caption{随机梯度法训练的拓展置信规则库拟合图像}
 \end{figure}
 
 \begin{figure}
-	\includegraphics[width=\linewidth]{momentum_brb_fit.png}
-	\caption{动量优化随机梯度法训练的拓展置信规则库拟合图像}
+    \includegraphics[width=\linewidth]{momentum_brb_fit.png}
+    \caption{动量优化随机梯度法训练的拓展置信规则库拟合图像}
 \end{figure}
 
 图5与图6分别为随机梯度法和动量优化随机梯度法在每批次训练样本上的损失函数值，可以发现动量优化的随机梯度下降法训练速度极快，在第10秒均方差损失就下降到$2\times10^{-5}$水平。
 \begin{figure}
-	\includegraphics[width=\linewidth]{sgd_loss.png}
-	\caption{随机梯度法训练过程中每批次样本上的损失函数值}
+    \includegraphics[width=\linewidth]{sgd_loss.png}
+    \caption{随机梯度法训练过程中每批次样本上的损失函数值}
 \end{figure}
 
 \begin{figure}
-	\includegraphics[width=\linewidth]{momentum_loss.png}
-	\caption{动量优化的随机梯度法训练过程中每批次样本上的损失函数值}
+    \includegraphics[width=\linewidth]{momentum_loss.png}
+    \caption{动量优化的随机梯度法训练过程中每批次样本上的损失函数值}
 \end{figure}
 
 表1中对比了本文方法与Fmincon方法、Chen的局部优化参数训练方法、Wang的专家干预差分进化法及Li的布谷鸟搜索法，可以发现新方法无论在精度还是速度上都较以往方法有极大提升。在相同训练参数设置的前提下，随机梯度下降法损失函数下降较为平滑，最终的均方误差较大，当提升了训练批次后均方误差结果可以达到动量优化后的梯度法的水平。
 \begin{table}
-	\centering
-	\caption{不同参数训练方法训练结果}
-	\small
-	\begin{tabular}{ccc}
-		\toprule
-	 	& MSE均方误差 & 运行时间  \\
-		\midrule
-		Fmincon & 5.16$\times 10^{-5}$ & 496.71\\
-		Chen-BRB & 6.3228$\times 10^{-5}$ & -\\
-		Wang-BRB & 3.9284$\times 10^{-5}$ & 386.63\\
-		Li-BRB & 3.3322$\times 10^{-5}$ & 357\\
-		SGD-BRB(1000) & 5.410$\times 10^{-3}$ & 35.38\\
-		SGD-BRB(2000) & 1.2024$\times 10^{-5}$ & 66.06\\
-		momentum-BRB & 1.3691$\times 10^{-6}$ & 37.72\\
-		\bottomrule
-	\end{tabular}
+    \centering
+    \caption{不同参数训练方法训练结果}
+    \small
+    \begin{tabular}{ccc}
+        \toprule
+                      & MSE均方误差            & 运行时间 \\
+        \midrule
+        Fmincon       & 5.16$\times 10^{-5}$   & 496.71   \\
+        Chen-BRB      & 6.3228$\times 10^{-5}$ & -        \\
+        Wang-BRB      & 3.9284$\times 10^{-5}$ & 386.63   \\
+        Li-BRB        & 3.3322$\times 10^{-5}$ & 357      \\
+        SGD-BRB(1000) & 5.410$\times 10^{-3}$  & 35.38    \\
+        SGD-BRB(2000) & 1.2024$\times 10^{-5}$ & 66.06    \\
+        momentum-BRB  & 1.3691$\times 10^{-6}$ & 37.72    \\
+        \bottomrule
+    \end{tabular}
 \end{table}
 
 \subsection{公共分类数据集测试}
 本文从UCI上选择了9种较为常见的公共分类数据集进行测试，数据集详细信息见表2。使用10折交叉验证实验方法生成训练数据与测试数据，并重复实验10次求平均实验结果减少误差波动。模型使$32$条规则，为了简化前件属性参数生成过程，对训练数据所有属性信息进行标准化去量纲预处理，并使用标准正态分布随机生成所有前件属性参数值，同时使用标准正态分布随机生成结果置信分布并进行指数归一化预处理，初始化所有属性辅助参数与规则权重为$1$。梯度训练过程中批次大小设置为$128$，训练$1000$批次后终止，学习率与动量优化参数分别设置为$0.01$与$0.9$，使用交叉熵作为分类结果的损失函数。表3中使用准确率作为衡量分类结果评价指标，统计对比本文方法与SRA-BRB\cite{a21}、MVP-BRB\cite{a22}与BA-BRB\cite{a23}这几种置信规则库系统的分类效果。
 \begin{table}
-	\centering
-	\caption{分类数据集信息}
-	\begin{tabular}{cccc}
-		\toprule
-		数据集 & 类别数目 & 属性数目 & 样本数目  \\
-		\midrule
-		iris & 3 & 4 & 150 \\
-		wine & 3 & 13 & 178 \\
-		diabetes & 2 & 8 & 768 \\
-		ecoli & 8 & 7 & 336 \\
-		seeds & 3 & 7 & 210 \\
-		yeast & 10 & 8 & 1484 \\
-		transfusion & 2 & 4 & 748 \\
-		\bottomrule
-	\end{tabular}
+    \centering
+    \caption{分类数据集信息}
+    \begin{tabular}{cccc}
+        \toprule
+        数据集      & 类别数目 & 属性数目 & 样本数目 \\
+        \midrule
+        iris        & 3        & 4        & 150      \\
+        wine        & 3        & 13       & 178      \\
+        diabetes    & 2        & 8        & 768      \\
+        ecoli       & 8        & 7        & 336      \\
+        seeds       & 3        & 7        & 210      \\
+        yeast       & 10       & 8        & 1484     \\
+        transfusion & 2        & 4        & 748      \\
+        \bottomrule
+    \end{tabular}
 \end{table}
 
 从表3中可以发现本文方法在超过一半的数据集上超越了其他置信规则库推理方法，仅在ecoli与transfusion两个数据集上未能超越现有方法，其余数据集上均超过或达到其他推理方法的水平且平均排名结果最高。验证了本文方法在推理精度与效率上均超越了以往方法。
 \begin{table}
-	\centering
-	\caption{分类数据集实验结果}
-	\small{
-	\begin{tabular}{ccccc}
-		\toprule
-		数据集&SRA-BRB&MVP-BRB&BA-BRB&本文方法\\
-		\midrule
-		iris&			95.10(4)&	95.87(2)&	95.26(3)&	96.50(1)\\
-		wine& 		 	96.85(3)& 		 	& 	97.02(2)& 	97.44(1)\\
-		diabetes&	 	71.71(4)&	72.59(3)&	72.80(2)& 	73.64(1)\\
-		ecoli& 		 	84.85(3)& 	85.61(1)& 		 	&	85.43(2)\\
-		seeds&		 	91.24(4)&  	92.38(3)& 	93.95(2)&	94.02(1)\\
-		yeast& 		  	56.85(4)& 	57.49(3)&	58.63(2)&	59.49(1)\\
-		transfusion&         	&  	80.36(1)&			&	79.45(2)\\
-		\midrule
-		average rank&	3.66&		2.166&		2.2&		1.28\\
-		\bottomrule
-	\end{tabular}}
+    \centering
+    \caption{分类数据集实验结果}
+    \small{
+        \begin{tabular}{ccccc}
+            \toprule
+            数据集       & SRA-BRB  & MVP-BRB  & BA-BRB   & 本文方法 \\
+            \midrule
+            iris         & 95.10(4) & 95.87(2) & 95.26(3) & 96.50(1) \\
+            wine         & 96.85(3) &          & 97.02(2) & 97.44(1) \\
+            diabetes     & 71.71(4) & 72.59(3) & 72.80(2) & 73.64(1) \\
+            ecoli        & 84.85(3) & 85.61(1) &          & 85.43(2) \\
+            seeds        & 91.24(4) & 92.38(3) & 93.95(2) & 94.02(1) \\
+            yeast        & 56.85(4) & 57.49(3) & 58.63(2) & 59.49(1) \\
+            transfusion  &          & 80.36(1) &          & 79.45(2) \\
+            \midrule
+            average rank & 3.66     & 2.166    & 2.2      & 1.28     \\
+            \bottomrule
+        \end{tabular}}
 \end{table}
 
 \section{结束语}
@@ -353,12 +355,12 @@ $$\{D_1,D_2,D_3,D_4,D_5\}=\{-0.5,0,0.5,1,1.5\}$$
 \label{Appendix A}
 第$i$个结果属性置信度$\beta_i$对第$j$个未归一化结果属性置信度$\overline{\beta}_j$求导为：
 $$\frac{d\beta_i}{d\overline{\beta}_j}=
-\left\{
-\begin{aligned}
-\frac{\sum_{k\neq j}^N\overline{\beta}_k}{(\sum_{k=1}^N\overline{\beta}_k)^2},j=i\\
--\frac{\beta_i}{(\sum_{k=1}^N\overline{\beta}_k)^2},j\neq i
-\end{aligned}
-\right.$$
+    \left\{
+    \begin{aligned}
+        \frac{\sum_{k\neq j}^N\overline{\beta}_k}{(\sum_{k=1}^N\overline{\beta}_k)^2},j=i \\
+        -\frac{\beta_i}{(\sum_{k=1}^N\overline{\beta}_k)^2},j\neq i
+    \end{aligned}
+    \right.$$
 第$j$个未归一化结果属性置信度对第$t$条规则的个体匹配度聚合值求导为：
 $$\frac{d\overline{\beta}_j}{d\alpha_t}=\frac{\theta_t\beta_{j,t}}{\sum_{k\neq t}^L\theta_k\alpha_k}\prod_{i=1,i\neq t}^L(\frac{\theta_i\alpha_i\beta_{j,i}}{\sum_{k\neq i}^L{\theta_k\alpha_k}}+1)$$
 $$+\sum_{l=1,l\neq t}^L(-\frac{\theta_l\alpha_l\beta_{j,l}\theta_t}{(\sum_{k\neq l}^L\theta_k\alpha_k)^2}\prod_{i=1.i\neq l}^L(\frac{\theta_i\alpha_i\beta_{j,i}}{\sum_{k\neq i}^L{\theta_k\alpha_k}}+1))$$
@@ -381,12 +383,12 @@ $$\frac{dloss}{dx_n^t}=\sum_{i=1}^N\sum_{j=1}^N \frac{loss}{d\beta_i}\frac{d\bet
 
 对过程$\beta_i(\overline{\beta}_1,\cdots,\overline{\beta}_N)$中对$\overline{\beta}_j$的偏导$\frac{d\beta_i}{d\overline{\beta}_j}$进行连续性证明：
 $$\frac{d\beta_i}{d\overline{\beta}_j}(\overline{\beta}_j)=
-\left\{
-\begin{aligned}
-	\frac{\sum_{k\neq j}^N\overline{\beta}_k}{(\sum_{k=1}^N\overline{\beta}_k)^2},j=i\\
-	-\frac{\beta_i}{(\sum_{k=1}^N\overline{\beta}_k)^2},j\neq i
-\end{aligned}
-\right.$$
+    \left\{
+    \begin{aligned}
+        \frac{\sum_{k\neq j}^N\overline{\beta}_k}{(\sum_{k=1}^N\overline{\beta}_k)^2},j=i \\
+        -\frac{\beta_i}{(\sum_{k=1}^N\overline{\beta}_k)^2},j\neq i
+    \end{aligned}
+    \right.$$
 由于上述偏导具有初等函数形式，且$\overline{\beta}_j\in(0,+\inf)$，该偏导在其定义域上是连续的。
 
 对过程$\overline{\beta}_j(\alpha_1,\cdots,\alpha_L,\theta_1,\cdots,\theta_L,\beta_{j,1},\cdots,)$中对$\alpha_t$的偏导为$\frac{d\overline{\beta}_j}{d\alpha_t}$进行连续性证明：

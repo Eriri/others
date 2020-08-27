@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.8.25)  25 AUG 2020 18:40
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.8.25)  27 AUG 2020 21:03
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -352,6 +352,54 @@ Overfull \hbox (9.2679pt too wide) in paragraph at lines 56--56
  []
 
 
+LaTeX Warning: Citation `a1' on page 1 undefined on input line 61.
+
+
+LaTeX Warning: Citation `a2' on page 1 undefined on input line 62.
+
+
+LaTeX Warning: Citation `a3' on page 1 undefined on input line 62.
+
+
+LaTeX Warning: Citation `a4' on page 1 undefined on input line 62.
+
+
+LaTeX Warning: Citation `a5' on page 1 undefined on input line 62.
+
+
+LaTeX Warning: Citation `a6' on page 1 undefined on input line 63.
+
+
+LaTeX Warning: Citation `a7' on page 1 undefined on input line 65.
+
+
+LaTeX Warning: Citation `a8' on page 1 undefined on input line 65.
+
+
+LaTeX Warning: Citation `a9' on page 1 undefined on input line 66.
+
+
+LaTeX Warning: Citation `a10' on page 1 undefined on input line 69.
+
+
+LaTeX Warning: Citation `a11' on page 1 undefined on input line 70.
+
+
+LaTeX Warning: Citation `a12' on page 1 undefined on input line 70.
+
+
+LaTeX Warning: Citation `a13' on page 1 undefined on input line 71.
+
+
+LaTeX Warning: Citation `a14' on page 1 undefined on input line 72.
+
+
+LaTeX Warning: Citation `a15' on page 1 undefined on input line 73.
+
+
+LaTeX Warning: Citation `a16' on page 1 undefined on input line 73.
+
+
 Underfull \vbox (badness 4001) has occurred while \output is active []
 
 <logo.png, id=4, 206.27063pt x 53.44969pt>
@@ -383,43 +431,13 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
 
  <d:/others/access/logo.png> <d:/others/access/bullet.png>]
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 105.
- (d:/texlive/2020/texmf-dist/tex/latex/psnfss/ts1ptm.fd
-File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-)
 
-LaTeX Font Warning: Font shape `TS1/ptm/n/n' undefined
-(Font)              using `TS1/ptm/m/n' instead
-(Font)              for symbol `textonehalf' on input line 105.
-
-<fig1.png, id=14, 249.3315pt x 189.22694pt>
-File: fig1.png Graphic file (type png)
-<use fig1.png>
-Package pdftex.def Info: fig1.png  used on input line 135.
-(pdftex.def)             Requested size: 249.33087pt x 189.22647pt.
-File: fig1.png Graphic file (type png)
-<use fig1.png>
-Package pdftex.def Info: fig1.png  used on input line 135.
-(pdftex.def)             Requested size: 249.33087pt x 189.22647pt.
-
-Overfull \hbox (11.37274pt too wide) in paragraph at lines 150--151
-[]\T1/ptm/n/n/10 A gen-eral IEEE styleguide is avail-able at $[]$
- []
-
-
-Underfull \hbox (badness 4765) in paragraph at lines 206--207
-[]\T1/ptm/m/n/8 1 erg/(G$\OMS/cmsy/m/n/8 ^^A$\T1/ptm/m/n/8 g) $\OT1/cmr/m/n/8 =$ \T1/ptm/m/n/8 1 emu/g $\OMS/cmsy/m/n/8 !$ \T1/ptm/m/n/8 1
- []
-
-
-Overfull \hbox (14.32645pt too wide) in paragraph at lines 180--240
-[][]
- []
+LaTeX Warning: Citation `a1' on page 2 undefined on input line 108.
 
 <notaglinelogo.png, id=15, 169.38281pt x 42.91031pt>
 File: notaglinelogo.png Graphic file (type png)
 <use notaglinelogo.png>
-Package pdftex.def Info: notaglinelogo.png  used on input line 256.
+Package pdftex.def Info: notaglinelogo.png  used on input line 135.
 (pdftex.def)             Requested size: 91.32pt x 23.1352pt.
 
 Overfull \hbox (505.12177pt too wide) has occurred while \output is active
@@ -437,114 +455,47 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [2 <d:/others/access/notaglinelogo.png>]
-Underfull \hbox (badness 2020) in paragraph at lines 258--265
-\T1/ptm/n/n/10 Most charts, graphs, and ta-bles are one col-umn wide
- []
+
+LaTeX Warning: File `Figure_1.png,Figure_2.png' not found on input line 177.
 
 
-Underfull \hbox (badness 1946) in paragraph at lines 295--300
-\T1/ptm/n/n/10 color space. Grayscale im-ages should be sub-mit-ted in
- []
+d:/others/access/access.tex:177: Package pdftex.def Error: File `Figure_1.png,Figure_2.png' not found: using draft setting.
 
-File: notaglinelogo.png Graphic file (type png)
-<use notaglinelogo.png>
-Package pdftex.def Info: notaglinelogo.png  used on input line 300.
-(pdftex.def)             Requested size: 91.32pt x 23.1352pt.
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.177 {activation weight distributions}
+                                       
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
 
-Overfull \hbox (505.12177pt too wide) has occurred while \output is active
-[]
- []
-
-
-Overfull \hbox (505.12177pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
-[]
- []
-
-[3 <d:/others/access/fig1.png (PNG copy)>]
-Underfull \hbox (badness 2799) in paragraph at lines 363--374
-\T1/ptm/n/n/10 The IEEE Graph-ics An-a-lyzer en-ables au-thors to pre-
- []
-
-File: notaglinelogo.png Graphic file (type png)
-<use notaglinelogo.png>
-Package pdftex.def Info: notaglinelogo.png  used on input line 400.
-(pdftex.def)             Requested size: 91.32pt x 23.1352pt.
-
-Overfull \hbox (505.12177pt too wide) has occurred while \output is active
-[]
- []
-
-
-Overfull \hbox (505.12177pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
-[]
- []
-
-[4]
-
-LaTeX Warning: Citation `b3' on page 5 undefined on input line 428.
-
-LaTeX Font Info:    Trying to load font information for TS1+phv on input line 479.
-(d:/texlive/2020/texmf-dist/tex/latex/psnfss/ts1phv.fd
-File: ts1phv.fd 2001/06/04 scalable font definitions for TS1/phv.
-
-
-LaTeX Warning: Font shape declaration has incorrect series value `mc'.
-               It should not contain an `m'! Please correct it.
-               Found on input line 17.
-
-
-LaTeX Warning: Font shape declaration has incorrect series value `mc'.
-               It should not contain an `m'! Please correct it.
-               Found on input line 20.
-
-
-LaTeX Warning: Font shape declaration has incorrect series value `mc'.
-               It should not contain an `m'! Please correct it.
-               Found on input line 34.
-
+LaTeX Font Info:    Trying to load font information for T1+pcr on input line 177.
+(d:/texlive/2020/texmf-dist/tex/latex/psnfss/t1pcr.fd
+File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
-Underfull \hbox (badness 4779) in paragraph at lines 480--488
-\T1/ptm/n/n/10 Contributions to the Trans-ac-tions, Jour-nals, and Let-
- []
+
+LaTeX Font Warning: Font shape `T1/pcr/n/n' undefined
+(Font)              using `T1/pcr/m/n' instead on input line 177.
 
 
-Underfull \hbox (badness 4940) in paragraph at lines 480--488
-\T1/ptm/n/n/10 ters may be sub-mit-ted elec-tron-i-cally on IEEE's on-
- []
+LaTeX Warning: File `Figure_1.png,Figure_2.png' not found on input line 177.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 480--488
-\T1/ptm/n/n/10 line manuscript sub-mis-sion and peer-review sys-tem,
- []
+d:/others/access/access.tex:177: Package pdftex.def Error: File `Figure_1.png,Figure_2.png' not found: using draft setting.
 
-
-Underfull \hbox (badness 4886) in paragraph at lines 480--488
-\T1/ptm/n/n/10 Schol-arOne\TS1/ptm/n/n/10 ® \T1/ptm/n/n/10 Manuscripts. You can get a list-ing of
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 480--488
-\T1/ptm/n/n/10 the pub-li-ca-tions that par-tic-i-pate in Schol-arOne at
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 480--488
-[]$
- []
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.177 {activation weight distributions}
+                                       
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
 
 File: notaglinelogo.png Graphic file (type png)
 <use notaglinelogo.png>
-Package pdftex.def Info: notaglinelogo.png  used on input line 509.
+Package pdftex.def Info: notaglinelogo.png  used on input line 188.
 (pdftex.def)             Requested size: 91.32pt x 23.1352pt.
 
 Overfull \hbox (505.12177pt too wide) has occurred while \output is active
@@ -561,236 +512,66 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 []
  []
 
-[5]
-Underfull \hbox (badness 7397) in paragraph at lines 528--535
-\T1/ptm/n/n/10 Authors must sub-mit an elec-tronic IEEE Copy-right
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 528--535
-\T1/ptm/n/n/10 Form (eCF) upon sub-mit-ting their fi-nal manuscript
- []
-
-
-Underfull \hbox (badness 4242) in paragraph at lines 528--535
-\T1/ptm/n/n/10 files. You can ac-cess the eCF sys-tem through your
- []
-
-
-Underfull \hbox (badness 3872) in paragraph at lines 528--535
-\T1/ptm/n/n/10 manuscript sub-mis-sion sys-tem or through the Au-thor
- []
-
-
-Underfull \hbox (badness 3189) in paragraph at lines 528--535
-\T1/ptm/n/n/10 Gate-way. You are re-spon-si-ble for ob-tain-ing any nec-
- []
-
-
-Underfull \hbox (badness 3189) in paragraph at lines 528--535
-\T1/ptm/n/n/10 es-sary ap-provals and/or se-cu-rity clear-ances. For ad-di-
- []
-
-
-Underfull \hbox (badness 3492) in paragraph at lines 528--535
-\T1/ptm/n/n/10 at $[]$
- []
-
-
-LaTeX Warning: Citation `b1' on page 6 undefined on input line 581.
-
-
-LaTeX Warning: Citation `b2' on page 6 undefined on input line 581.
-
-
-LaTeX Warning: Citation `b3' on page 6 undefined on input line 585.
-
-
-LaTeX Warning: Citation `b5' on page 6 undefined on input line 585.
-
-
-LaTeX Warning: Citation `b6' on page 6 undefined on input line 589.
-
-
-LaTeX Warning: Citation `b7' on page 6 undefined on input line 589.
-
-
-LaTeX Warning: Citation `b8' on page 6 undefined on input line 593.
-
-
-LaTeX Warning: Citation `b9' on page 6 undefined on input line 593.
-
-File: notaglinelogo.png Graphic file (type png)
-<use notaglinelogo.png>
-Package pdftex.def Info: notaglinelogo.png  used on input line 594.
-(pdftex.def)             Requested size: 91.32pt x 23.1352pt.
-
-Overfull \hbox (505.12177pt too wide) has occurred while \output is active
-[]
- []
-
-
-Overfull \hbox (505.12177pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
-[]
- []
-
-[6]
-
-LaTeX Warning: Citation `b10' on page 7 undefined on input line 600.
-
-
-LaTeX Warning: Citation `b13' on page 7 undefined on input line 600.
-
-
-LaTeX Warning: Citation `b14' on page 7 undefined on input line 604.
-
-
-LaTeX Warning: Citation `b16' on page 7 undefined on input line 604.
-
-
-Underfull \hbox (badness 2617) in paragraph at lines 602--605
-\T1/ptm/n/n/10 J. K. Au-thor, ``Name of pa-per,'' \T1/ptm/m/it/10 Ab-brev. Ti-tle of
- []
-
-
-Underfull \hbox (badness 5077) in paragraph at lines 602--605
-\T1/ptm/m/it/10 Pe-ri-od-i-cal\T1/ptm/n/n/10 , vol. $\OML/cmm/m/it/10 x$\T1/ptm/n/n/10 , no. $\OML/cmm/m/it/10 x$\T1/ptm/n/n/10 , pp. \T1/ptm/m/it/10 xxx--xxx\T1/ptm/n/n/10 , Ab-brev.
- []
-
-
-LaTeX Warning: Citation `b17' on page 7 undefined on input line 608.
-
-
-Underfull \hbox (badness 1394) in paragraph at lines 606--609
-\T1/ptm/n/n/10 J.K. Au-thor. (year, month). Ti-tle. pre-sented at ab-
- []
-
-
-LaTeX Warning: Citation `b18' on page 7 undefined on input line 612.
-
-
-LaTeX Warning: Citation `b19' on page 7 undefined on input line 612.
-
-
-LaTeX Warning: Citation `b20' on page 7 undefined on input line 617.
-
-
-LaTeX Warning: Citation `b21' on page 7 undefined on input line 621.
-
-
-LaTeX Warning: Citation `b22' on page 7 undefined on input line 625.
-
-
-LaTeX Warning: Citation `b23' on page 7 undefined on input line 628.
-
-
-LaTeX Warning: Citation `b24' on page 7 undefined on input line 632.
-
-
-Underfull \hbox (badness 4266) in paragraph at lines 634--636
-[]\T1/ptm/m/it/10 Basic for-mat for the-ses (M.S.) and dis-ser-ta-tions
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-
-LaTeX Warning: Citation `b25' on page 7 undefined on input line 639.
-
-
-LaTeX Warning: Citation `b26' on page 7 undefined on input line 639.
-
-
-Underfull \hbox (badness 1406) in paragraph at lines 643--644
-[]\T1/ptm/n/n/10 J. K. Au-thor, pri-vate com-mu-ni-ca-tion, Ab-brev.
- []
-
-
-LaTeX Warning: Citation `b27' on page 7 undefined on input line 647.
-
-
-LaTeX Warning: Citation `b29' on page 7 undefined on input line 647.
-
-
-LaTeX Warning: Citation `b30' on page 7 undefined on input line 654.
-
-
-LaTeX Warning: Citation `b31' on page 7 undefined on input line 654.
-
-
-LaTeX Warning: Citation `b32' on page 7 undefined on input line 657.
-
-
-LaTeX Warning: Citation `b33' on page 7 undefined on input line 657.
-
-
-LaTeX Warning: Citation `b34' on page 7 undefined on input line 660.
-
-File: notaglinelogo.png Graphic file (type png)
-<use notaglinelogo.png>
-Package pdftex.def Info: notaglinelogo.png  used on input line 738.
-(pdftex.def)             Requested size: 91.32pt x 23.1352pt.
-
-Overfull \hbox (505.12177pt too wide) has occurred while \output is active
-[]
- []
-
-
-Overfull \hbox (505.12177pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
-[]
- []
-
-[7]
-<a1.png, id=50, 72.27pt x 90.3375pt>
+[3]
+<a1.png, id=35, 72.27pt x 90.3375pt>
 File: a1.png Graphic file (type png)
 <use a1.png>
-Package pdftex.def Info: a1.png  used on input line 797.
+Package pdftex.def Info: a1.png  used on input line 315.
 (pdftex.def)             Requested size: 72.2709pt x 90.33864pt.
 File: a1.png Graphic file (type png)
 <use a1.png>
-Package pdftex.def Info: a1.png  used on input line 797.
+Package pdftex.def Info: a1.png  used on input line 315.
 (pdftex.def)             Requested size: 72.2709pt x 90.33864pt.
-<a2.png, id=53, 72.27pt x 90.3375pt>
+<a2.png, id=38, 72.27pt x 90.3375pt>
 File: a2.png Graphic file (type png)
 <use a2.png>
-Package pdftex.def Info: a2.png  used on input line 823.
+Package pdftex.def Info: a2.png  used on input line 341.
 (pdftex.def)             Requested size: 72.2709pt x 90.33864pt.
 File: a2.png Graphic file (type png)
 <use a2.png>
-Package pdftex.def Info: a2.png  used on input line 823.
+Package pdftex.def Info: a2.png  used on input line 341.
 (pdftex.def)             Requested size: 72.2709pt x 90.33864pt.
 
-Underfull \hbox (badness 2189) in paragraph at lines 823--841
-\T1/ptm/n/n/8 lottesville, in 2001 and the Ph.D. de-gree in
+Underfull \hbox (badness 2189) in paragraph at lines 341--359
+\T1/ptm/m/n/8 lottesville, in 2001 and the Ph.D. de-gree in
  []
 
-<a3.png, id=56, 72.27pt x 90.3375pt>
+File: notaglinelogo.png Graphic file (type png)
+<use notaglinelogo.png>
+Package pdftex.def Info: notaglinelogo.png  used on input line 361.
+(pdftex.def)             Requested size: 91.32pt x 23.1352pt.
+
+Overfull \hbox (505.12177pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (505.12177pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+[]
+ []
+
+[4 <d:/others/access/a1.png> <d:/others/access/a2.png>]
+<a3.png, id=46, 72.27pt x 90.3375pt>
 File: a3.png Graphic file (type png)
 <use a3.png>
-Package pdftex.def Info: a3.png  used on input line 843.
+Package pdftex.def Info: a3.png  used on input line 361.
 (pdftex.def)             Requested size: 72.2709pt x 90.33864pt.
 File: a3.png Graphic file (type png)
 <use a3.png>
-Package pdftex.def Info: a3.png  used on input line 843.
+Package pdftex.def Info: a3.png  used on input line 361.
 (pdftex.def)             Requested size: 72.2709pt x 90.33864pt.
 File: bullet.png Graphic file (type png)
 <use bullet.png>
-Package pdftex.def Info: bullet.png  used on input line 862.
+Package pdftex.def Info: bullet.png  used on input line 380.
 (pdftex.def)             Requested size: 5.0pt x 14.6871pt.
 File: notaglinelogo.png Graphic file (type png)
 <use notaglinelogo.png>
-Package pdftex.def Info: notaglinelogo.png  used on input line 864.
+Package pdftex.def Info: notaglinelogo.png  used on input line 382.
 (pdftex.def)             Requested size: 91.32pt x 23.1352pt.
 
 Overfull \hbox (505.12177pt too wide) has occurred while \output is active
@@ -807,27 +588,32 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 []
  []
 
-[8 <d:/others/access/a1.png> <d:/others/access/a2.png> <d:/others/access/a3.png>] (d:/others/access/access.aux)
+[5
+
+ <d:/others/access/a3.png>] (d:/others/access/access.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
- 4190 strings out of 480608
- 59631 string characters out of 5907536
- 316753 words of memory out of 5000000
- 19984 multiletter control sequences out of 15000+600000
- 634256 words of font info for 155 fonts, out of 8000000 for 9000
+ 4128 strings out of 480608
+ 59292 string characters out of 5907536
+ 312595 words of memory out of 5000000
+ 19924 multiletter control sequences out of 15000+600000
+ 621568 words of font info for 136 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,13n,53p,332b,490s stack positions out of 5000i,500n,10000p,200000b,80000s
-{d:/texlive/2020/texmf-dist/fonts/enc/dvips/base/8r.enc}<d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><d:/texlive/2020/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb><d:/texlive/2020/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb><d:/texlive/2020/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb><d:/texlive/2020/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb><d:/texlive/2020/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><d:/texlive/2020/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><d:/texlive/2020/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on d:/others/access/access.pdf (8 pages, 473569 bytes).
+ 38i,13n,53p,262b,496s stack positions out of 5000i,500n,10000p,200000b,80000s
+{d:/texlive/2020/texmf-dist/fonts/enc/dvips/base/8r.enc}<d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><d:/texlive/2020/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb><d:/texlive/2020/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb><d:/texlive/2020/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb><d:/texlive/2020/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb><d:/texlive/2020/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb><d:/texlive/2020/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><d:/texlive/2020/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><d:/texlive/2020/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on d:/others/access/access.pdf (5 pages, 435918 bytes).
 PDF statistics:
- 126 PDF objects out of 1000 (max. 8388607)
- 83 compressed objects within 1 object stream
+ 110 PDF objects out of 1000 (max. 8388607)
+ 72 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 80 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 75 words of extra memory for PDF output out of 10000 (max. 10000000)
 
