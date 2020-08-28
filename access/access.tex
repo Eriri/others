@@ -41,7 +41,7 @@
     aiming to solve zero activation during the inference process and improve inference accuray.
     We first used the Gaussian function to calculate the similarity of each attribute instead of the original method.
     Then we introduce corresponding attribute weight for each rule and cancel the rule weight parameter at the same time.
-    Finally, we use the stochastic gradient descent method for parameters training based on the new rule structure.
+    Finally, we use the momentum optimized gradient descent with method for parameters training based on the new rule structure.
     Experiments on several public classification datasets are conducted to validate the proposed approach compared with some recent existing works.
     The experimental results show that the proposed approach have a better performence in accuray and time consumption.
 
@@ -92,7 +92,7 @@ generating rules from the training data like EBRB.
 traditional BRB system, and set the corresponding rule attribute weight parameter for each rule, so that each rule has a finer activation granularity.
 On this basis, the rule weight and its related normalization process are cancelled, which simplifies the evidential reasoning process.
 
-\quad 3) We further introduce the linear rectification function and the normalized exponential function to preprocess the restricted parameters to avoid the problem of
+\quad 3) We further introduce the normalized exponential function to preprocess the restricted parameters to avoid the problem of
 parameter failure during the training process.
 
 The remainder of this paper is organized as follows: Section II introduces the traditional BRB system and our further improvements for common problems in the system.
@@ -102,7 +102,7 @@ the newly proposed BRB model and its training method have excellent performance.
 
 
 \section{BRB system with new attribute structure and rule activation weight calculation method}
-The BRB system proposed by Yang mainly refers to the rule activation and evidence reasoning method on the belief rule base. This part will briefly introduce
+The BRB system proposed by Yang mainly refers to the rule activation and evidence reasoning method on the belief rule base. This section will briefly introduce
 the related concepts of the BRB system and propose solutions to the common defects of the traditional BRB system.
 \subsection{representation of belief rule base}
 On the basis of the traditional production rules, Yang\cite{a1} proposed the expression form of the belief rules by introducing the belief distribution structure,
@@ -149,7 +149,7 @@ The total uncertainty credibility is given by $m_{D,k}=\overline{m}_{D,k}+\widet
 Synthesize according to the credibility information of each rule and get the final belief result of the $j$-th result attribute:
 $$m_j=k[\prod_{i=1}^L(m_{j,i}+m_{D,i})-\prod_{i=1}^Lm_{D,i}]$$
 $$\overline{m}_D=n[\prod_{i=1}^L\overline{m}_{D,i}],\quad\widetilde{m}_D=k[\prod_{i=1}^Lm_{D,i}-\prod_{i=1}^L\overline{m}_{H,i}]$$
-$$n=[\sum_{j=1}^N\prod_{i=1}^L(m_{j,i}+m_{D,i})-(N-1)\prod_{i=1}^Lm_{D,i}]^{-1}$$
+$$k=[\sum_{j=1}^N\prod_{i=1}^L(m_{j,i}+m_{D,i})-(N-1)\prod_{i=1}^Lm_{D,i}]^{-1}$$
 $$\beta_j=\frac{m_j}{1-\overline{m}_D},\quad\beta_D=\frac{\widetilde{m}_D}{1-\overline{m}_D}$$
 
 \subsection{new attribute structure and rule activation weight calculation method}
@@ -159,25 +159,133 @@ If all the rules in the library are not activated, the reasoning system will fai
 $$R_k:if(x_1^k , \cdots , x_{T_k}^k)$$
 $$then\{(D_1,\beta_1^k),\cdots,(D_N,\beta_N^k)\},\sum_{i=1}^N\beta_i^k\leq1$$
 The simplified belief rule structure can directly use the training data to generate the rule antecedent attribute information without manually setting the candidate reference values of the antecedent attributes.
+
 Using antecedent attribute belief distribution similarity as the activation weight calculation method is no longer applicable to the simplified confidence rule form. In order to perform effective weight activation,
 we uses Gaussian function to calculate the individual matching degree for activation weight calculation.
 The degree of individual matching of input data $X=(x_1,\cdots,x_(T_k))$ and rule $R_k:if(x_1^k , \cdots , x_{T_k}^k)then\{(D_1,\beta_1^k),\cdots,(D_N,\beta_N^k)\}$ on $i$-th attribute is calculated using the Gaussian function as:
 $$S_i^k=e^{-[a_i^k\times(x_i-x_i^k)]^2}$$
 The parameter $a_i^k$ represents the sensitivity of the $i$-th attribute to the distance at the position $x_i^k$. When the distance between the rule attribute information and the input data remains unchanged,
-the larger the parameter a, the closer the attribute matching degree is to 0.
+the larger the parameter a, the closer the attribute matching degree is to zero.
 The activation weight of a single rule under conjunctive conditions is calculated by the following formula:
-$$w_k=\prod_{i=1}^{T_k}S_i^k=e^{-\sum_{i=1}^{T_k}[a_i^k\times(x_i-x_i^k)]^2}$$
+$$w_k=\prod_{i=1}^{T_k}S_i^k=e^{-\sum_{i=1}^{T_k}[a_i^k(x_i-x_i^k)]^2}$$
 
 
 Assuming a rule with two attributes x and y located at the origin, the traditional method and Gaussian function method are used to calculate the activation weights.
 Set the reference candidate values on the x-attributes and y-attributes to be both $[-4,-3,-2,-1,0,1,2,3,4]$,
-and set the distance-sensitive parameter $a$ of each attribute at the origin is 0.5,
-the two activation weight distributions shown in Figure 1 and Figure 2 can be obtained.
-\Figure[!t](topskip=0pt, botskip=0pt, midskip=0pt){Figure_1.png}
-{activation weight distributions}
+and set the distance-sensitive parameter $a$ of each attribute at the origin is $0.5$.
+For the convenience of calculation, we omitted the setting of rule weight.
+The two activation weight distributions shown in Figure 1 and Figure 2 can be obtained.
+\Figure[!t](topskip=0pt, botskip=0pt, midskip=0pt)[width=3.3 in]{Figure_1.png}
+{activation weight calculated by traditional methods}
+\Figure[!t](topskip=0pt, botskip=0pt, midskip=0pt)[width=3.3 in]{Figure_2.png}
+{activation weight calculated by Gaussian function methods}
 
-\section{Gradient descent method parameter training}
-wtf
+According to Figure 1, we can know that the activation weight calculated by the input data that is not in the adjacent area of the candidate value selected by the rule is zero.
+If the activation weight of all rules is zero, the inference cannot be performed.
+However, the input data in Figure 2 smoothly drops close to zero according to the distance from the rule and will not take a value of zero.
+This eliminates the impact of rule zero activation on system inference performance.
+
+Another benefit brought by the new rule antecedent attribute structure and rule activation weight calculation method is that
+there is no need to adjust the activation weight of the rule by the attribute weight and rule weight.
+By adjusting the distance-sensitive parameters on each attribute of each rule, a good activation effect and activation granularity can be obtained.
+At the same time, due to the characteristics of the Gaussian function, the activation weight of each rule belongs to $(0, 1]$ without unnecessary normalization operations.
+This greatly simplifies the redundant weight adjustment and calculation in the inference process
+
+
+\section{Momentum optimized Gradient descent training parameter}
+When the traditional gradient method is applied to the parameter training process of the inference system of the belief rule base,
+it is difficult to construct the partial derivative formula of the rule attribute and the training step is restricted by the parameter constraints.
+The above-mentioned belief rule base reasoning system with improved structure and activation method avoids the difficulty of obtaining partial derivatives in traditional belief rule systems.
+
+In this section we will:
+
+\quad 1) Calculate the partial derivatives of the parameters of each part of the new brb system
+
+\quad 2) Prove that the BRB inference system is differentiate
+
+\quad 2) Introduce exponential normalization function for preprocessing to avoid specific constraints during parameter training
+
+\quad 3) Introduce the stochastic gradient descent method using momentum optimization
+
+
+\subsection{Partial derivative of the parameters of the brb system}
+The reasoning process of the improved BRB system is shown in Figure 3.
+According to the data flow path of the inference system, we can use the compound function chain derivation rule to obtain the partial derivative of the output to different parameters of the inference system.
+\Figure[!t](topskip=0pt, botskip=0pt, midskip=0pt)[width=3.3 in]{process.png}
+{Inference system operation process}
+
+Since the model construction and experiment in this paper are carried out with complete data, the evidence reasoning process can be simplified.
+The belief distribution of the rule result attribute does not include uncertain information, that is, for any k-th rule:
+$$\sum_{i=1}^N\beta_{ik}=1(k=1,\cdots,L)$$
+$$m_{D,k}=\overline{m}_{D,k},\widetilde{m}_{D,k}=0$$
+In the case of completeness, the $j$-th result attribute is expressed as:
+$$\beta_j=\frac{\prod_{i=1}^L(m_{j,i}+m_{D,i})-\prod_{i=1}^Lm_{D,i}}{\sum_{t=1}^N\prod_{i=1}^L(m_{t,i}+m_{D,i})-N\times\prod_{i=1}^Lm_{D,i}}$$
+Then the result of the j-th result attribute before normalization is expressed as:
+$$\overline{\beta}_j = \prod_{i=1}^L(m_{j,i}+m_{D,i})-\prod_{i=1}^Lm_{D,i},\beta_j=\frac{\overline{\beta}_j}{\sum_{k=1}^N\overline{\beta}_k}$$
+Substituting $m_{j,i}=w_i\beta_{j,i}$ and $m_{D,i}=1-w_i$ into the j-th result attribute before normalization expression:
+$$\overline{\beta}_j = \prod_{i=1}^L(w_i\beta_j^i+1-w_i)-\prod_{i=1}^L{(1-w_i)}$$
+We can get the partial derivative of the $i$-th result attribute $\beta_i$ to the $j$-th unnormalized result attribute $\overline{\beta}_j$ as:
+$$\frac{d\beta_i}{d\overline{\beta}_j}=
+    \left\{
+    \begin{aligned}
+        \frac{\sum_{k\neq j}^N\overline{\beta}_k}{(\sum_{k=1}^N\overline{\beta}_k)^2},j=i \\
+        -\frac{\beta_i}{(\sum_{k=1}^N\overline{\beta}_k)^2},j\neq i
+    \end{aligned}
+    \right.$$
+Similarly, the partial derivative of the $j$-th unnormalized result attribute $\overline{\beta}_j$ to the activation weight of the $k$-th rule and the $j$-th result attribute of $k$-th rule can be obtained as:
+$$\frac{d\overline{\beta}_j}{dw_k}=(\beta_j^k-1)\prod_{i=1,i\neq k}^L(w_i\beta_j^i+1-w_i)+\prod_{i=1,i\neq k}^L(1-w_i)$$
+$$\frac{d\overline{\beta}_j}{d\beta_j^k}=w_k\prod_{i=1,i\neq k}^L(w_i\beta_j^i+1-w_i)$$
+According to the activation weight expression of the $k$-th rule, we can obtain its partial derivatives of the rule antecedent attribute parameter and the corresponding attribute distance-sensitive parameter respectively:
+$$\frac{dw_k}{dx_l^k}=2(a_l^k)^2(x_l-x_l^k)e^{-\sum_{i=1}^{T_k}[a_i^k(x_i-x_i^k)]^2}$$
+$$\frac{dw_k}{da_l^k}=2a_l^kx_l^k(x_l-x_l^k)e^{-\sum_{i=1}^{T_k}[a_i^k(x_i-x_i^k)]^2}$$
+Set the loss function expression of the final output result to $loss=\sum_i^NLoss(\beta_i)$, according to the compound function chain derivation rule, we can obtain the partial derivative of the final loss on each parameter.
+$$\frac{dloss}{d\beta_j^k}=\sum_{i=1}^N\sum_{j=1}^N\frac{dLoss(\beta_i)}{d\beta_i}\frac{d\beta_i}{d\overline{\beta}_j}\frac{d\overline{\beta}_j}{d\beta_j^k}$$
+$$\frac{dloss}{dx_l^k}=\sum_{i=1}^N\sum_{j=1}^N\frac{dLoss(\beta_i)}{d\beta_i}\frac{d\beta_i}{d\overline{\beta}_j}\frac{d\overline{\beta}_j}{dw_k}\frac{dw_k}{dx_l^k}$$
+$$\frac{dloss}{da_l^k}=\sum_{i=1}^N\sum_{j=1}^N\frac{dLoss(\beta_i)}{d\beta_i}\frac{d\beta_i}{d\overline{\beta}_j}\frac{d\overline{\beta}_j}{dw_k}\frac{dw_k}{da_l^k}$$
+
+\subsection{Differentiable proof of BRB system}
+The evidential reasoning process of the belief rule base is a multivariate compound function process. According to the differentiable condition of the multivariate compound function, each intermediate function must satisfy the differential condition,
+and the partial derivative of each variable must exist and be continuous.
+Since any of the partial derivatives above are only obtained by elementary functions through four arithmetic operations and compound,
+the partial derivatives of any parameter are continuous in its domain.
+The existence and continuous partial derivative of any parameter can prove that the whole inference system is differentiable.
+
+When the appropriate loss function is selected, the final result loss is differentiable to all the parameters of the model, which provides conditions for using the gradient method to optimize the model parameters.
+The gradient of the loss result on the parameters of each part of the model can be obtained. The gradient of the loss function on all the rule antecedent attribute parameters is:
+$$\nabla_{x}loss=\left[\begin{matrix}
+            \frac{dloss}{dx_1^1} & \cdots & \frac{dloss}{dx_{T_k}^1} \\
+            \vdots               & \ddots & \vdots                   \\
+            \frac{dloss}{dx_1^L} & \cdots & \frac{dloss}{dx_{T_k}^L}
+        \end{matrix}\right]$$
+The gradient of the loss function on the distance-sensitive parameters of all rules is:
+$$\nabla_{a}loss=\left[\begin{matrix}
+            \frac{dloss}{da_1^1} & \cdots & \frac{dloss}{da_{T_k}^1} \\
+            \vdots               & \ddots & \vdots                   \\
+            \frac{dloss}{da_1^L} & \cdots & \frac{dloss}{da_{T_k}^L}
+        \end{matrix}\right]$$
+The gradient of the loss function on all rule result attribute parameters is:
+$$\nabla_{\beta}loss=\left[\begin{matrix}
+            \frac{dloss}{d\beta_{1,1}} & \cdots & \frac{dloss}{d\beta_{N,1}} \\
+            \vdots                     & \ddots & \vdots                     \\
+            \frac{dloss}{d\beta_{1,L}} & \cdots & \frac{dloss}{d\beta_{N,L}} \\
+        \end{matrix}\right]$$
+According to the belief distribution output by the inference system and the loss function of the result,
+the gradient of each part of the parameters can be optimized by updating the parameters along the negative gradient direction.
+
+\subsection{Exponential normalization function preprocessing}
+In the training process, in order to meet the restriction that the sum of the result attributes of each rule is one and each result attribute is non-negative,
+we use the exponential normalization function to preprocess the result attribute parameters during the training process:
+$$\beta_j^k=\frac{e^{\overline{\beta_j^k}}}{\sum_{i=1}^Ne^{\overline{\beta_i^k}}}(\sum_{i=1}^N\beta_j^k=1,\beta_j^k>0)$$
+
+\subsection{Stochastic gradient descent with momentum optimization}
+The optimization process of using the gradient descent method to update the parameters of the inference model is given by the following equation:
+$$M_{new}(x,a,\beta)=M_{old}-\mu\nabla_{M_{old}}loss$$
+The gradient information is given according to the loss function of the final output result, and the learning rate $\mu$ is the updated step length information that needs to be set.
+Chang\cite{a11} and Wu\cite{a13} used dichotomy in the gradient training process to iteratively find the optimal step size in the constraint space and added perturbation parameters when the gradient is zero to avoid the training process stagnation.
+As mentioned above, the new gradient parameter training model uses an exponential normalization function to preprocess the constrained parameters while meeting the constraint conditions and has no restrictions on the step size.
+In order to improve the speed of training, we use momentum optimization stochastic gradient descent method.
+
+
 
 \begin{thebibliography}{00}
 
