@@ -174,11 +174,11 @@ Assuming a rule with two attributes x and y located at the origin, the tradition
 Set the reference candidate values on the x-attributes and y-attributes to be both $[-4,-3,-2,-1,0,1,2,3,4]$,
 and set the distance-sensitive parameter $a$ of each attribute at the origin is $0.5$.
 For the convenience of calculation, we omitted the setting of rule weight.
-The two activation weight distributions shown in Figure 1 and Figure 2 can be obtained.
+The two activation weight distributions shown in Figure \ref{fig1} and Figure \ref{fig2} can be obtained.
 \Figure[!t](topskip=0pt, botskip=0pt, midskip=0pt)[width=3.3 in]{Figure_1.png}
-{activation weight calculated by traditional methods}
+{activation weight calculated by traditional methods\label{fig1}}
 \Figure[!t](topskip=0pt, botskip=0pt, midskip=0pt)[width=3.3 in]{Figure_2.png}
-{activation weight calculated by Gaussian function methods}
+{activation weight calculated by Gaussian function methods\label{fig2}}
 
 According to Figure 1, we can know that the activation weight calculated by the input data that is not in the adjacent area of the candidate value selected by the rule is zero.
 If the activation weight of all rules is zero, the inference cannot be performed.
@@ -203,16 +203,16 @@ In this section we will:
 
 \quad 2) Prove that the BRB inference system is differentiate
 
-\quad 2) Introduce exponential normalization function for preprocessing to avoid specific constraints during parameter training
+\quad 3) Introduce exponential normalization function for preprocessing to avoid specific constraints during parameter training
 
-\quad 3) Introduce the stochastic gradient descent method using momentum optimization
+\quad 4) Introduce the stochastic gradient descent method using momentum optimization
 
 
 \subsection{Partial derivative of the parameters of the brb system}
-The reasoning process of the improved BRB system is shown in Figure 3.
+The reasoning process of the improved BRB system is shown in Figure \ref{fig3}.
 According to the data flow path of the inference system, we can use the compound function chain derivation rule to obtain the partial derivative of the output to different parameters of the inference system.
 \Figure[!t](topskip=0pt, botskip=0pt, midskip=0pt)[width=3.3 in]{process.png}
-{Inference system operation process}
+{Inference system operation process\label{fig3}}
 
 Since the model construction and experiment in this paper are carried out with complete data, the evidence reasoning process can be simplified.
 The belief distribution of the rule result attribute does not include uncertain information, that is, for any k-th rule:
@@ -239,9 +239,9 @@ According to the activation weight expression of the $k$-th rule, we can obtain 
 $$\frac{dw_k}{dx_l^k}=2(a_l^k)^2(x_l-x_l^k)e^{-\sum_{i=1}^{T_k}[a_i^k(x_i-x_i^k)]^2}$$
 $$\frac{dw_k}{da_l^k}=2a_l^kx_l^k(x_l-x_l^k)e^{-\sum_{i=1}^{T_k}[a_i^k(x_i-x_i^k)]^2}$$
 Set the loss function expression of the final output result to $loss=\sum_i^NLoss(\beta_i)$, according to the compound function chain derivation rule, we can obtain the partial derivative of the final loss on each parameter.
-$$\frac{dloss}{d\beta_j^k}=\sum_{i=1}^N\sum_{j=1}^N\frac{dLoss(\beta_i)}{d\beta_i}\frac{d\beta_i}{d\overline{\beta}_j}\frac{d\overline{\beta}_j}{d\beta_j^k}$$
-$$\frac{dloss}{dx_l^k}=\sum_{i=1}^N\sum_{j=1}^N\frac{dLoss(\beta_i)}{d\beta_i}\frac{d\beta_i}{d\overline{\beta}_j}\frac{d\overline{\beta}_j}{dw_k}\frac{dw_k}{dx_l^k}$$
-$$\frac{dloss}{da_l^k}=\sum_{i=1}^N\sum_{j=1}^N\frac{dLoss(\beta_i)}{d\beta_i}\frac{d\beta_i}{d\overline{\beta}_j}\frac{d\overline{\beta}_j}{dw_k}\frac{dw_k}{da_l^k}$$
+$$\frac{dloss}{d\beta_j^k}=\sum_{i=1}^N\sum_{j=1}^N\frac{dloss}{d\beta_i}\frac{d\beta_i}{d\overline{\beta}_j}\frac{d\overline{\beta}_j}{d\beta_j^k}$$
+$$\frac{dloss}{dx_l^k}=\sum_{i=1}^N\sum_{j=1}^N\frac{dloss}{d\beta_i}\frac{d\beta_i}{d\overline{\beta}_j}\frac{d\overline{\beta}_j}{dw_k}\frac{dw_k}{dx_l^k}$$
+$$\frac{dloss}{da_l^k}=\sum_{i=1}^N\sum_{j=1}^N\frac{dloss}{d\beta_i}\frac{d\beta_i}{d\overline{\beta}_j}\frac{d\overline{\beta}_j}{dw_k}\frac{dw_k}{da_l^k}$$
 
 \subsection{Differentiable proof of BRB system}
 The evidential reasoning process of the belief rule base is a multivariate compound function process. According to the differentiable condition of the multivariate compound function, each intermediate function must satisfy the differential condition,
@@ -283,13 +283,13 @@ $$M_{new}(x,a,\beta)=M_{old}-\mu\nabla_{M_{old}}loss$$
 The gradient information is given according to the loss function of the final output result, and the learning rate $\mu$ is the updated step length information that needs to be set.
 Chang\cite{a11} and Wu\cite{a13} used dichotomy in the gradient training process to iteratively find the optimal step size in the constraint space and added perturbation parameters when the gradient is zero to avoid the training process stagnation.
 For the application of new rule structures, activation methods, and preprocessing steps, the gradient training update step size is no longer limited.
-We use momentum-optimized stochastic gradient descent method for faster training. 
+We use momentum-optimized stochastic gradient descent method for faster training.
 
-The stochastic gradient descent method is an iterative optimization method when the objective function is differentiable, 
-It used a random subset of the training data to calculate the gradient value as the estimated value of the entire training data gradient, 
+The stochastic gradient descent method is an iterative optimization method when the objective function is differentiable,
+It used a random subset of the training data to calculate the gradient value as the estimated value of the entire training data gradient,
 which reduces the computational burden in high-dimensional optimization problems.
 
-The output of the loss function in the traditional gradient descent method is determined by all samples, 
+The output of the loss function in the traditional gradient descent method is determined by all samples,
 and the model parameters are updated according to its gradient:
 $$loss=\frac{1}{n}\sum_i^nLoss(\beta_1^i,...,\beta_N^i)$$
 We randomly selected a single sample as the estimated value of the average value of the loss function output on all samples to update the model parameters:
@@ -299,16 +299,34 @@ The obvious disadvantage of the stochastic gradient descent method is that its u
 The momentum method improves the stability and speed of the training method by retaining a certain degree of historical gradient information and combining it with the current sample gradient.
 It also enhances the ability to get rid of local optimal solutions.
 
-The momentum method uses a weighted fusion method to synthesize the historical gradient information and the current sample gradient, 
+The momentum method uses a weighted fusion method to synthesize the historical gradient information and the current sample gradient,
 and use it as an update parameter for this round of training:
 $$v_t=\nu v_{t-1}+\mu\nabla_{loss}M,M=M-v_t$$
-Initial $v_0$ is set to zero and set $\nu$ to represent the ratio of retaining historical gradient information. 
+Initial $v_0$ is set to zero and set $\nu$ to represent the ratio of retaining historical gradient information.
 The same direction of the current gradient and the historical gradient will increase the speed of parameter training in this gradient direction,
 The different directions of the current gradient and the historical gradient will inhibit the current gradient from causing parameter training oscillations.
 
 \section{experimental results}
-In this section 
+In this section,
+we first conduct a comparison test of the training performance of the gradient method under different momentum parameters,
+and then conduct a comparison test of the performance of the BRB system and traditional machine learning algorithms on public data sets.
+Finally summarize all the experimental results.
 
+\subsection{experimental enviroment}
+The experiment runs on a Ubuntu 20.04 system equipped with Intel$^\copyright$ Core$^\text{TM}$ i5 8500@3.0GHz CPU, 16GB RAM and GeForce GTX 1060 Graphics.
+Use TensorFlow 2.0 to build the evidential reasoning framework of the BRB system and
+use Scikit-learn machine learning library to collect and clean datasets.
+
+\subsection{performance of gradient descent method with different momentum parameters}
+Liu\cite{a16} proved that the confidence rule library can approximate any function.
+In this section, a nonlinear multi-extreme function is introduced to compare the training performance of the stochastic gradient descent method under different momentum parameters.
+The nonlinear multi-extreme function is as follows:
+$$f(x)=e^{-(x-2)^2}+0.5e^{-(x+2)^2},x\in[-5,5]$$
+In the defined domain, 1000 pieces of data are uniformly selected as the fitting data set and the mean square error is used as the loss function.
+According to each extreme point on the function curve, the rule base result attribute evaluation level and corresponding utility value can be set:
+$$\{D_1,D_2,D_3,D_4,D_5\}=\{-0.5,0,0.5,1,1.5\}$$
+Randomly select points in the domain of the function and construct the corresponding rule by randomly generating the belief distribution of the result attribute.
+We choose five randomly generated rules to construct the belief rule base.
 
 
 \begin{thebibliography}{00}
