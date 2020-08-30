@@ -231,6 +231,10 @@ INPUT d:/texlive/2020/texmf-dist/fonts/tfm/adobe/times/ptmr8t.tfm
 INPUT d:/texlive/2020/texmf-dist/fonts/tfm/adobe/times/ptmr8c.tfm
 INPUT d:/texlive/2020/texmf-dist/fonts/tfm/adobe/times/ptmr8t.tfm
 INPUT d:/texlive/2020/texmf-dist/fonts/tfm/adobe/times/ptmr8c.tfm
+INPUT d:/others/access/process.png
+INPUT d:/others/access/process.png
+INPUT d:/others/access/process.png
+INPUT d:/others/access/process.png
 INPUT d:/texlive/2020/texmf-dist/fonts/tfm/adobe/times/ptmr8t.tfm
 INPUT d:/texlive/2020/texmf-dist/fonts/tfm/adobe/times/ptmri8t.tfm
 INPUT d:/others/access/notaglinelogo.png
@@ -260,8 +264,6 @@ INPUT d:/others/access/a3.png
 INPUT d:/others/access/a3.png
 INPUT d:/others/access/a3.png
 INPUT d:/others/access/a3.png
-INPUT d:/others/access/bullet.png
-INPUT d:/others/access/bullet.png
 INPUT d:/others/access/notaglinelogo.png
 INPUT d:/others/access/notaglinelogo.png
 INPUT d:/texlive/2020/texmf-dist/fonts/vf/adobe/helvetic/phvr8t.vf
@@ -270,6 +272,10 @@ INPUT d:/texlive/2020/texmf-dist/fonts/vf/adobe/times/ptmr8t.vf
 INPUT d:/texlive/2020/texmf-dist/fonts/tfm/adobe/times/ptmr8r.tfm
 INPUT d:/texlive/2020/texmf-dist/fonts/vf/adobe/times/ptmri8t.vf
 INPUT d:/texlive/2020/texmf-dist/fonts/tfm/adobe/times/ptmri8r.tfm
+INPUT d:/others/access/bullet.png
+INPUT d:/others/access/bullet.png
+INPUT d:/others/access/notaglinelogo.png
+INPUT d:/others/access/notaglinelogo.png
 INPUT d:/others/access/access.aux
 INPUT d:/texlive/2020/texmf-dist/fonts/enc/dvips/base/8r.enc
 INPUT d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb

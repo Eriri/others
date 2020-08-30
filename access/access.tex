@@ -325,8 +325,18 @@ $$f(x)=e^{-(x-2)^2}+0.5e^{-(x+2)^2},x\in[-5,5]$$
 In the defined domain, 1000 pieces of data are uniformly selected as the fitting data set and the mean square error is used as the loss function.
 According to each extreme point on the function curve, the rule base result attribute evaluation level and corresponding utility value can be set:
 $$\{D_1,D_2,D_3,D_4,D_5\}=\{-0.5,0,0.5,1,1.5\}$$
-Randomly select points in the domain of the function and construct the corresponding rule by randomly generating the belief distribution of the result attribute.
-We choose five randomly generated rules to construct the belief rule base.
+Select the five extreme points on the function curve to convert to the corresponding rule structure to build a belief rule library.
+Set the number of training samples in each batch to $128$ and the learning rate $\mu$ is $0.001$ for $1000$ rounds of training.
+Set the momentum optimization parameters $\nu$ to 0.0(non-momentum optimization), 0.1, 0.5 and 0.9 to compare their fitting performance.
+
+\Figure[!t](topskip=0pt, botskip=0pt, midskip=0pt)[width=3.3 in]{process.png}
+{Mean square error loss under different momentum parameters\label{fig4}}
+Figure \ref{fig4} shows the the mean square error loss of each batch under different momentum parameters.
+
+
+
+
+
 
 
 \begin{thebibliography}{00}
