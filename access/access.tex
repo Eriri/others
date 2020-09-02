@@ -59,7 +59,7 @@
 \label{sec:introduction}
 
 The belief rule-based inference methodology using evidential reasonging approach(RIMER) proposed by Yang\cite{a1}
-baesd on traditional IF-THEN rules\cite{a2}, Dempster-Shafer theory of evidence\cite{a3,a4}, decision theory\cite{a5}
+baesd on conventional IF-THEN rules\cite{a2}, Dempster-Shafer theory of evidence\cite{a3,a4}, decision theory\cite{a5}
 and fuzzy set theory\cite{a6}. By introducing a belief distribution structure in the rules, this methodology can
 effectively handle incomplete and uncertain information involved in the datasets and widely used in various problem in
 different fields such as oil pipeline leak detection\cite{a7}, military capability estimation\cite{a8}, consumer behavior
@@ -75,11 +75,11 @@ structure into the antecedent attributes and uses training data to build an exte
 the rule base and improves the inference speed.
 
 At present, the parameter optimization model of the BRB system is mostly based on various intelligent algorithms. Their process is
-complicated and there are many intermediate training parameters. When the traditional gradient method is used to train the parameters
+complicated and there are many intermediate training parameters. When the conventional gradient method is used to train the parameters
 of the BRB system, the step size is restricted by a variety of constraints, and other methods are needed to find the optimal step size.
 The EBRB system does not introduce a parameter training process, which makes the system have higher requirements for the representativeness
 of the training data selected to build the rule base. In the case of a large number of rules, it is necessary to perform rule reduction or
-use the data structure to optimize the storage and activation process of the rules. Because the traditional BRB system includes the rule attribute
+use the data structure to optimize the storage and activation process of the rules. Because the conventional BRB system includes the rule attribute
 reference level setting, its potential zero activation problem may cause the inference system to fail.
 
 In response to the above problems, we have proposed a series of optimization modifications to the system structure and reasoning process, including:
@@ -89,13 +89,13 @@ rule weight activation method for the new rule antecedent structure, which can e
 generating rules from the training data like EBRB.
 
 \quad 2) We change the method of setting the weight of the global same antecedent attribute in the
-traditional BRB system, and set the corresponding rule attribute weight parameter for each rule, so that each rule has a finer activation granularity.
+conventional BRB system, and set the corresponding rule attribute weight parameter for each rule, so that each rule has a finer activation granularity.
 On this basis, the rule weight and its related normalization process are cancelled, which simplifies the evidential reasoning process.
 
 \quad 3) We further introduce the normalized exponential function to preprocess the restricted parameters to avoid the problem of
 parameter failure during the training process.
 
-The remainder of this paper is organized as follows: Section II introduces the traditional BRB system and our further improvements for common problems in the system.
+The remainder of this paper is organized as follows: Section II introduces the conventional BRB system and our further improvements for common problems in the system.
 In Section III, we give the preprocessing method of the training model and prove that the gradient descent method can be effectively applied to the newly proposed BRB system.
 In Section IV, we compare the effects of different gradient descent parameters on training speed and inference accuracy. Experiments on a series of public data sets prove that
 the newly proposed BRB model and its training method have excellent performance. Section V concludes this paper.
@@ -103,9 +103,9 @@ the newly proposed BRB model and its training method have excellent performance.
 
 \section{BRB system with new attribute structure and rule activation weight calculation method}
 The BRB system proposed by Yang mainly refers to the rule activation and evidence reasoning method on the belief rule base. This section will briefly introduce
-the related concepts of the BRB system and propose solutions to the common defects of the traditional BRB system.
+the related concepts of the BRB system and propose solutions to the common defects of the conventional BRB system.
 \subsection{representation of belief rule base}
-On the basis of the traditional production rules, Yang\cite{a1} proposed the expression form of the belief rules by introducing the belief distribution structure,
+On the basis of the conventional production rules, Yang\cite{a1} proposed the expression form of the belief rules by introducing the belief distribution structure,
 the rule antecedent attribute parameter and the rule weight parameter. The specific expression is as follows:
 $$R_k:if\{X_1isA_1^k \wedge \cdots \wedge X_{T_k}isA_{T_k}^k\}$$
 $$then\{(D_1,\beta_1^k),\cdots,(D_N,\beta_N^k)\},\sum_{i=1}^N\beta_i^k\leq1$$
@@ -170,13 +170,13 @@ The activation weight of a single rule under conjunctive conditions is calculate
 $$w_k=\prod_{i=1}^{T_k}S_i^k=e^{-\sum_{i=1}^{T_k}[a_i^k(x_i-x_i^k)]^2}$$
 
 
-Assuming a rule with two attributes x and y located at the origin, the traditional method and Gaussian function method are used to calculate the activation weights.
+Assuming a rule with two attributes x and y located at the origin, the conventional method and Gaussian function method are used to calculate the activation weights.
 Set the reference candidate values on the x-attributes and y-attributes to be both $[-4,-3,-2,-1,0,1,2,3,4]$,
 and set the distance-sensitive parameter $a$ of each attribute at the origin is $0.5$.
 For the convenience of calculation, we omitted the setting of rule weight.
 The two activation weight distributions shown in Figure \ref{fig1} and Figure \ref{fig2} can be obtained.
 \Figure[!t](topskip=0pt, botskip=0pt, midskip=0pt)[width=3.3 in]{Figure_1.png}
-{activation weight calculated by traditional methods\label{fig1}}
+{activation weight calculated by conventional methods\label{fig1}}
 \Figure[!t](topskip=0pt, botskip=0pt, midskip=0pt)[width=3.3 in]{Figure_2.png}
 {activation weight calculated by Gaussian function methods\label{fig2}}
 
@@ -193,9 +193,9 @@ This greatly simplifies the redundant weight adjustment and calculation in the i
 
 
 \section{Momentum optimized Gradient descent training parameter}
-When the traditional gradient method is applied to the parameter training process of the inference system of the belief rule base,
+When the conventional gradient method is applied to the parameter training process of the inference system of the belief rule base,
 it is difficult to construct the partial derivative formula of the rule attribute and the training step is restricted by the parameter constraints.
-The above-mentioned belief rule base reasoning system with improved structure and activation method avoids the difficulty of obtaining partial derivatives in traditional belief rule systems.
+The above-mentioned belief rule base reasoning system with improved structure and activation method avoids the difficulty of obtaining partial derivatives in conventional belief rule systems.
 
 In this section we will:
 
@@ -289,7 +289,7 @@ The stochastic gradient descent method is an iterative optimization method when 
 It used a random subset of the training data to calculate the gradient value as the estimated value of the entire training data gradient,
 which reduces the computational burden in high-dimensional optimization problems.
 
-The output of the loss function in the traditional gradient descent method is determined by all samples,
+The output of the loss function in the conventional gradient descent method is determined by all samples,
 and the model parameters are updated according to its gradient:
 $$loss=\frac{1}{n}\sum_i^nLoss(\beta_1^i,...,\beta_N^i)$$
 We randomly selected a single sample as the estimated value of the average value of the loss function output on all samples to update the model parameters:
@@ -309,7 +309,7 @@ The different directions of the current gradient and the historical gradient wil
 \section{experimental results}
 In this section,
 we first conduct a comparison test of the training performance of the gradient method under different momentum parameters,
-and then conduct a comparison test of the performance of the BRB system and traditional machine learning algorithms on public data sets.
+and then conduct a comparison test of the performance of the BRB system and conventional machine learning algorithms on public data sets.
 Finally summarize all the experimental results.
 
 \subsection{experimental enviroment}
@@ -326,16 +326,95 @@ In the defined domain, 1000 pieces of data are uniformly selected as the fitting
 According to each extreme point on the function curve, the rule base result attribute evaluation level and corresponding utility value can be set:
 $$\{D_1,D_2,D_3,D_4,D_5\}=\{-0.5,0,0.5,1,1.5\}$$
 Select the five extreme points on the function curve to convert to the corresponding rule structure to build a belief rule library.
+Set the default distance-sensitive parameter of each rule to $1.0$.
+The initial rule information is shown in Table \ref{tab1}.
+We can get the initial untrained brb system output Figure \ref{fig4}
 Set the number of training samples in each batch to $128$ and the learning rate $\mu$ is $0.001$ for $1000$ rounds of training.
-Set the momentum optimization parameters $\nu$ to 0.0(non-momentum optimization), 0.1, 0.5 and 0.9 to compare their fitting performance.
+Set the momentum optimization parameters $\nu$ to 0.0(non-momentum optimization), $0.5$, $0.9$ and $0.99$ to compare their fitting performance.
 
-\Figure[!t](topskip=0pt, botskip=0pt, midskip=0pt)[width=3.3 in]{process.png}
-{Mean square error loss under different momentum parameters\label{fig4}}
-Figure \ref{fig4} shows the mean square error loss of each batch under different momentum parameters.
+\begin{table}
+    \caption{Initial rule information}
+    \centering
+    \label{tab1}
+    \begin{tabular}{cccc}
+        \hline
+        rule & antecedent x & sensitive a & result consequent     \\
+        \hline
+        $1$  & $-5$         & $1$         & $(-1, 1, -1, -1, -1)$ \\
+        $2$  & $-2$         & $1$         & $(-1, -1, 1, -1, -1)$ \\
+        $3$  & $0$          & $1$         & $(-1, 1, -1, -1, -1)$ \\
+        $4$  & $2$          & $1$         & $(-1, -1, -1, 1, -1)$ \\
+        $5$  & $5$          & $1$         & $(-1, 1, -1, -1, -1)$ \\
+        \hline
+    \end{tabular}
+\end{table}
 
+\Figure[!t](topskip=0pt, botskip=0pt, midskip=0pt)[width=3.3 in]{initial_brb.png}
+{untrained BRB system output\label{fig4}}
 
+\Figure[!t](topskip=0pt, botskip=0pt, midskip=0pt)[width=3.3 in]{mse.png}
+{mean square error loss under different momentum parameters\label{fig5}}
+Figure \ref{fig5} shows the mean square error loss of each batch under different momentum parameters.
+Through the decreasing curve of the mean square error loss function,
+we can find that smaller momentum optimization parameters can not significantly improve the model performance
+The model with the momentum parameter value of 0.5 has never been below 0.001 during the training process.
+The value of the mean square error loss function of the model with the momentum parameter value of 0.9 and 0.99 dropped rapidly to $1\times10^{-4}$,
+and reached the level of $1\times10^{-5}$ at the end of the training.
 
+Figure \ref{fig6} clearly shows that higher momentum parameter values can obtain better fitting performance,
+greatly reducing the distance between the fitted curve and the original curve.
+\Figure[!t](topskip=0pt, botskip=0pt, midskip=0pt)[width=3.3 in]{fit.png}
+{fitting performance of different momentum parameter models\label{fig6}}
 
+Table \ref{tab2} records the information of each rule in the model with the momentum parameter value of 0.99 after the training is completed.
+It can be found that all the distance-sensitive parameters have become smaller after training, that is, the activation area of each rule has increased,
+and the result distribution is significantly increased in their respective utility levels, while other levels have decreased significantly.
+The antecedent attribute information of each rule, namely the value of x, is only slightly adjusted before and after training.
+
+\begin{table}
+    \caption{Trained rule information}
+    \centering
+    \label{tab2}
+    \begin{tabular}{cccc}
+        \hline
+        rule & antecedent x & sensitive a & result consequent                       \\
+        \hline
+        $1$  & $-4.5$       & $0.20$      & $(0.10, 1.5, -1.8, -1.7, -1.7)$         \\
+        $2$  & $-2.0$       & $0.44$      & $(-1.3 , -1.5 ,  0.56  , -0.46, -0.47)$ \\
+        $3$  & $0.080$      & $0.50$      & $(-0.15,  1.4 , -1.5 , -1.5 , -1.6   )$ \\
+        $4$  & $2.0$        & $0.49$      & $(-1.8 , -2.0 , -1.9 ,  1.5 ,  0.59)$   \\
+        $5$  & $4.7$        & $0.21$      & $(0.12,  1.5 , -1.8 , -1.7, -1.7)$      \\
+        \hline
+    \end{tabular}
+\end{table}
+
+We compare the performance of the final trained BRB system with the previous conventional BRB system.
+In Table \ref{tab3}, we compare the final mean square error results and training time of these models.
+It is obvious that the gradient method after the momentum optimization has excellent performance in improving the inference accuracy of the BRB system,
+but the training model without the effective momentum parameter optimization cannot reach the loss level of the conventional method.
+And the running speed of gradient method is much lower than the conventional BRB system optimized by intelligent algorithm and other gradient descent algorithm.
+
+\begin{table}
+    \caption{Accuracy and training time using different optimization algorithms}
+    \centering
+    \label{tab3}
+    \begin{tabular}{ccc}
+        \hline
+        method         & mean square error     & running time \\
+        \hline
+        fmincon        & $5.16\times10^{-5}$   & 496.17       \\
+        Chen-BRB       & $6.3228\times10^{-5}$ & -            \\
+        Wang-BRB       & $3.9284\times10^{-5}$ & 386.63       \\
+        Li-BRB         & $3.3322\times10^{-5}$ & 357          \\
+        SGD-BRB        & $5.90\times10^{-3}$   & 11.60        \\
+        SGDM-BRB(0.5)  & $3.50\times10^{-3}$   & 10.82        \\
+        SGDM-BRB(0.9)  & $4.01\times10^{-5}$   & 11.09        \\
+        SGDM-BRB(0.99) & $7.40\times10^{-6}$   & 13.42        \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\subsection{Experiment on public classification datasets}
 
 
 
