@@ -415,8 +415,31 @@ And the running speed of gradient method is much lower than the conventional BRB
 \end{table}
 
 \subsection{Experiment on public classification datasets}
+In this section, we select 7 UCI public classification datasets that are widely used to test the performance of various classifiers to evaluate the inference performance of our BRB system.
+Table \ref{tab4} shows the detailed information of these classification datasets.
+The final inference results obtained by the belief rule inference system trained using momentum optimization stochastic gradient method(SGDM-BRB) will be compared with the results obtained by
+other machine learning methods and belief rule base inference system.
+We repeat ten independent 10-fold cross-validation experiments on all datasets to obtain the final results.
 
 
+\begin{table}
+    \caption{Details of the classification datasets}
+    \centering
+    \label{tab4}
+    \begin{tabular}{cccc}
+        \hline
+        Dataset name & \#Instances & \#Features & \#Classes \\
+        \hline
+        iris         & 150         & 5          & 3         \\
+        wine         & 178         & 14         & 3         \\
+        diabetes     & 768         & 9          & 2         \\
+        ecoli        & 336         & 8          & 8         \\
+        glass        & 214         & 10         & 6         \\
+        seeds        & 210         & 8          & 3         \\
+        yeast        & 1484        & 9          & 10        \\
+        \hline
+    \end{tabular}
+\end{table}
 
 \begin{thebibliography}{00}
 
