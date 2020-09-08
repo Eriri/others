@@ -417,10 +417,33 @@ And the running speed of gradient method is much lower than the conventional BRB
 \subsection{Experiment on public classification datasets}
 In this section, we select 7 UCI public classification datasets that are widely used to test the performance of various classifiers to evaluate the inference performance of our BRB system.
 Table \ref{tab4} shows the detailed information of these classification datasets.
+We repeat independent 10-fold cross-validation experiments for ten times to obtain the final results.
 The final inference results obtained by the belief rule inference system trained using momentum optimization stochastic gradient method(SGDM-BRB) will be compared with the results obtained by
 other machine learning methods and belief rule base inference system.
-We repeat ten independent 10-fold cross-validation experiments on all datasets to obtain the final results.
+The machine methods for comparison include KNN, Naive Bayes(NB) and C4.5, support vector machine(SVM)
+and their results are cited from previous papers\cite{a22,a27}.
+The BRB systems for comparison include SRA-EBRB\cite{a20}, MVP-EBRB\cite{a21} and BA-EBRB\cite{a22}.
 
+\begin{table*}
+    \caption{Accuracy of SGDM-BRB compare with conventional classification approaches}
+    \centering
+    \label{tab5}
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+        \hline
+                     & KNN               & NB                & C4.5     & SVM               & SRA-EBRB & MVP-EBRB & BA-EBRB  & SGDM-BRB          \\
+        \hline
+        iris         & 96.67(\textbf{1}) & 96.00(4)          & 96.00(4) & 96.67(\textbf{1}) & 94.80(8) & 95.87(6) & 95.26(7) & 96.50(3)          \\
+        wine         & 96.05(5)          &                   &          & 96.40(4)          & 96.85(3) &          & 97.02(2) & 97.44(\textbf{1}) \\
+        diabetes     & 74.09(3)          & 76.30(\textbf{1}) & 73.82(4) & 65.10(8)          & 71.71(7) & 72.59(5) & 72.32(6) & 75.29(2)          \\
+        ecoli        & 85.71(\textbf{1}) & 85.42(4)          & 84.23(5) & 75.60(7)          & 84.85(5) & 85.61(2) &          & 85.43(3)          \\
+        glass        & 66.63(7)          & 48.60(8)          & 66.82(6) & 68.69(5)          & 73.08(2) & 72.06(4) & 72.32(3) & 74.75(\textbf{1}) \\
+        seeds        & 92.38(2)          & 91.43(6)          & 91.90(8) & 90.48(7)          & 91.24(7) & 92.38(2) & 93.95(4) & 94.02(\textbf{1}) \\
+        yeast        & 58.22(3)          & 57.61(4)          & 55.39(7) & 43.26(8)          & 56.85(6) & 57.49(5) & 58.63(2) & 59.49(\textbf{1}) \\
+        \hline
+        average rank & 3.14(2)           & 4.5(5)            & 5.66(7)  & 5.71(8)           & 5.42(6)  & 4(3)     & 4(3)     & 1.71(\textbf{1})  \\
+        \hline
+    \end{tabular}
+\end{table*}
 
 \begin{table}
     \caption{Details of the classification datasets}
@@ -440,6 +463,36 @@ We repeat ten independent 10-fold cross-validation experiments on all datasets t
         \hline
     \end{tabular}
 \end{table}
+
+
+
+To enable a unified classification process, first perform a standardized operation on the original data:
+$$x'=\frac{x-\overline{x}}{\delta}$$
+where $\overline{x}$ is the mean of $x$ and $\delta$ is the standard deviation of $x$.
+Then we select cross entropy as the loss function to train the BRB inference system to improve the classification accuracy.
+For a multi-classification task with $N$ categories, the loss function on each sample $y$ and the corresponding prediction result $\overline{y}$ is defined as follows:
+$$Loss(y,\overline{y})=-\sum_{i=1}^Ny_{i}\log\overline{y}_i$$
+
+For the experiment on each dataset, $32$ training sample data are randomly selected as the initial rule
+and convert the classification result into the corresponding belief result distribution according to the above conversion method.
+The rule corresponding to the $k$-th training sample is:
+$$X_k:(x_1,...,x_{T_k}),Y_k:c,1\leq c\leq N$$
+$$R_k:if(x'_1,...,x'_{T_k})$$
+$$then\{(\overline{\beta}_1^k,-1),...,(\overline{\beta}_c^k,1),...,(\overline{\beta}_N^k,-1)\}$$
+In the process of parameter optimization using momentum optimization stochastic gradient descent method,
+the learning rate is set to $0.001$, the momentum optimization parameter is $0.99$.
+There are $128$ training samples in each batch, and $2000$ trainings are performed on the dataset.
+
+
+
+As shown in Table \ref{tab5}, by comparing with the accuracies of some machine learning approaches as well as the improved BRB systems, it is proved that the SGDM-BRB system can produce satisfactory accuracies.
+For the SGDM-BRB system, it is clear from Table \ref{tab5} that
+the $96.50\%$ accuracy of dataset iris is worse than the $96.67\%$ accuracies obtained from KNN and SVM,
+the $85.43\%$ accuracy of dataset ecoli is worse than the $85.71\%$ accuracy obtained from KNN and the $85.61\%$ accuracy obtained from MVP-BRB,
+and the $75.29\%$ accuracy of dataset pima is worse than the $76.30\%$ accuracy obtained from NB.
+For the remaining four datasets, the accuracy of the proposed BRB system outperforms all listed studies.
+Among conventional machine learning methods and other improved BRB systems, SGDM-BRB has the highest average ranking.
+
 
 \begin{thebibliography}{00}
 
@@ -570,6 +623,9 @@ We repeat ten independent 10-fold cross-validation experiments on all datasets t
     \bibitem{a28} JIA Q. ``A novel fault detection model based on atanassov’s intervalvalued
     intuitionistic fuzzy sets, belief rule base and evidential reasoning,''
     \emph{IEEE Access}, 2020, 8:4551-4567.
+
+    \bibitem{a29} G. Holmes, A. Donkin, I.H. Witten. ``WEKA: A machine learning workbench,
+    in: Conference on Intelligent Information Systems,'' 2002.
 
 
 \end{thebibliography}
