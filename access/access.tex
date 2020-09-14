@@ -10,7 +10,7 @@
 \history{Date of publication xxxx 00, 0000, date of current version xxxx 00, 0000.}
 \doi{10.1109/ACCESS.2017.DOI}
 
-\title{Belief rule base inference method based on gradient descent with momentum}
+\title{Belief-Rule-Base Inference Method Based on Gradient Descent with Momentum}
 \author{\uppercase{First A. Author}\authorrefmark{1}, \IEEEmembership{Fellow, IEEE},
     \uppercase{Second B. Author\authorrefmark{2}, and Third C. Author,
         Jr}.\authorrefmark{3},
@@ -34,14 +34,19 @@
 
 \begin{abstract}
 
-    The belief-rule-base(BRB) inference methodology using evidential reasonging(ER)
+    The belief-rule-base (BRB) inference methodology using evidential reasonging (ER)
     approach is widely used in different fields, such as  fault diagnosis, system
     identification and decision analysis.
-    In this paper, we propose a new belief rule structure and its training method,
+    Since the calculation of the individual matching degree in the inference process needs to set the candidate value of the antecedent attribute parameter,
+    it is easy to cause the rule zero activation problem, and the intelligent algorithm for parameter training is not as efficient and accurate as the gradient method,
+    but the partial derivative of the gradient method is difficult to construct.
+    In this paper, we propose a new belief rule structure and its gradient training method,
     aiming to solve zero activation during the inference process and improve inference accuray.
-    We first used the Gaussian function to calculate the similarity of each attribute instead of the original method.
-    Then we introduce corresponding attribute weight for each rule and cancel the rule weight parameter at the same time.
-    Finally, we use the momentum optimized gradient descent with method for parameters training based on the new rule structure.
+    We first used the Gaussian function to calculate the similarity of each attribute instead of the original method to
+    avoid the zero activation problem caused by the non-adjacent candidate values of the antecedent attributes.
+    Then, according to the new activation weight calculation method, the corresponding distance-sensitive parameter is set for each attribute, and the weight parameter of each rule is cancelled.
+    This simplifies the calculation of rule weights in the inference process and enables the partial derivatives of the parameters of the inference system to be easily constructed.
+    Finally, we use the momentum optimization gradient stochastic descent method to train the new brb system, which improves the training speed and accuracy compared to the ordinary gradient method.
     Experiments on several public classification datasets are conducted to validate the proposed approach compared with some recent existing works.
     The experimental results show that the proposed approach have a better performence in accuray and time consumption.
 
@@ -58,33 +63,39 @@
 \section{Introduction}
 \label{sec:introduction}
 
-The belief rule-based inference methodology using evidential reasonging approach(RIMER) proposed by Yang\cite{a1}
+It is well known that rule-based intelligent systems are one of the most common frameworks for expressing various types of knowledge.
+The rule-based system has certain expression and processing capabilities through the use of existing human knowledge,
+and at the same time has the flexibility to deal with ambiguity, incompleteness, uncertainty and to combine different types of input data formats.
+In various rule-based systems for solving complex problems, belief rule-based inference methodology using evidential reasonging approach (ER) proposed by Yang \textit{et al}.\cite{a1}
 baesd on conventional IF-THEN rules\cite{a2}, Dempster-Shafer theory of evidence\cite{a3,a4}, decision theory\cite{a5}
-and fuzzy set theory\cite{a6}. By introducing a belief distribution structure in the rules, this methodology can
+and fuzzy set theory\cite{a6} shows its powerful function of representing and processing uncertain information.
+By introducing a belief distribution structure in the rules, this methodology can
 effectively handle incomplete and uncertain information involved in the datasets and widely used in various problem in
 different fields such as oil pipeline leak detection\cite{a7}, military capability estimation\cite{a8}, consumer behavior
 prediction\cite{a9} and so on.
 
-In the inference process of the BRB system, the attribute weight, rule weight, belief distribution and other parameters
-directly affect the final accuray. Yang\cite{a10} proposed optimization models for training BRB system using fmincon solver in
-Matlab, Chang\cite{a11,a12} proposed an algorithm for training parameters in BRB system based on gradient and dichotomy methods,
-Wu\cite{a13} used the accelerating of gradient algorithm to improve the convergence accuray and convergence speed. There are also
-a series of intelligent algorithms such as the particle swarm algorithm proposed by Su\cite{a14} and the differential evolution
-algorithm proposed by Wang\cite{a15} have excellent training effects on the BRB system. Liu\cite{a16} introduces the belief distribution
-structure into the antecedent attributes and uses training data to build an extended belief rule base(EBRB) system, which simplifies the construction of
+In the inference process of the belief rule base (BRB) system, the attribute weight, rule weight, belief distribution and other parameters
+directly affect the final accuray. Yang \textit{et al}.\cite{a10} proposed optimization models for training BRB system using fmincon solver in
+Matlab, Chang \textit{et al}.\cite{a11,a12} proposed an algorithm for training parameters in BRB system based on gradient and dichotomy methods,
+Wu \textit{et al}.\cite{a13} used the accelerating of gradient algorithm to improve the convergence accuray and convergence speed. There are also
+a series of intelligent algorithms such as the particle swarm algorithm proposed by Su \textit{et al}.\cite{a14} and the differential evolution
+algorithm proposed by Wang \textit{et al}.\cite{a15} have excellent training effects on the BRB system. Liu \textit{et al}.\cite{a16} introduces the belief distribution
+structure into the antecedent attributes and uses training data to build an extended belief rule base (EBRB) system, which simplifies the construction of
 the rule base and improves the inference speed.
 
-At present, the parameter optimization model of the BRB system is mostly based on various intelligent algorithms. Their process is
-complicated and there are many intermediate training parameters. When the conventional gradient method is used to train the parameters
-of the BRB system, the step size is restricted by a variety of constraints, and other methods are needed to find the optimal step size.
-The EBRB system does not introduce a parameter training process, which makes the system have higher requirements for the representativeness
-of the training data selected to build the rule base. In the case of a large number of rules, it is necessary to perform rule reduction or
+At present, the parameter optimization model of the BRB system is mostly based on various intelligent algorithms.
+However, the process of those intelligent algorithms is complicated and there are many intermediate training parameters.
+When the conventional gradient method trains the parameters of the BRB system, the partial derivative of each parameter is difficult to construct,
+and the limit method is needed to solve the approximate value of the partial derivative\cite{a13}.
+The step size is limited by the corresponding parameter constraints and a search is required to find the best effective step size\cite{a11,a12,a13}.
+The EBRB system does not introduce a parameter training process, which makes the system have higher requirements for the representativeness of the training data used to construct the rule base.
+In the case of a large number of rules, it is necessary to perform rule reduction or
 use the data structure to optimize the storage and activation process of the rules. Because the conventional BRB system includes the rule attribute
-reference level setting, its potential zero activation problem may cause the inference system to fail.
+reference level setting, its potential zero activation problem may lead to the failure of the inference system.
 
-In response to the above problems, we have proposed a series of optimization modifications to the system structure and reasoning process, including:
+In response to the above problems, a series of optimization modifications are proposed for the system structure and reasoning process, including:
 
-\quad 1) We propose a new antecedent structure that does not need to set the attribute reference level, and proposed a Gaussian function-based
+\quad 1) We propose a new antecedent structure that does not need to set the attribute reference level, and propose a Gaussian function-based
 rule weight activation method for the new rule antecedent structure, which can effectively avoid the zero activation problem and has the feature of
 generating rules from the training data like EBRB.
 
@@ -92,35 +103,50 @@ generating rules from the training data like EBRB.
 conventional BRB system, and set the corresponding rule attribute weight parameter for each rule, so that each rule has a finer activation granularity.
 On this basis, the rule weight and its related normalization process are cancelled, which simplifies the evidential reasoning process.
 
-\quad 3) We further introduce the normalized exponential function to preprocess the restricted parameters to avoid the problem of
+\quad 3) We further present a normalized exponential function to preprocess the restricted parameters to avoid the problem of
 parameter failure during the training process.
 
 The remainder of this paper is organized as follows: Section II introduces the conventional BRB system and our further improvements for common problems in the system.
 In Section III, we give the preprocessing method of the training model and prove that the gradient descent method can be effectively applied to the newly proposed BRB system.
 In Section IV, we compare the effects of different gradient descent parameters on training speed and inference accuracy. Experiments on a series of public data sets prove that
-the newly proposed BRB model and its training method have excellent performance. Section V concludes this paper.
+the newly proposed BRB model and its training method have the best performance. Section V concludes this paper.
 
 
 \section{BRB system with new attribute structure and rule activation weight calculation method}
-The BRB system proposed by Yang mainly refers to the rule activation and evidence reasoning method on the belief rule base. This section will briefly introduce
-the related concepts of the BRB system and propose solutions to the common defects of the conventional BRB system.
+The BRB system proposed by Yang \textit{et al}.\cite{a1} mainly refers to the rule activation and evidence reasoning method on the belief rule base. This section will briefly introduce
+the related concepts of the BRB system and propose the solutions for the common defects of the conventional BRB system.
 \subsection{representation of belief rule base}
-On the basis of the conventional production rules, Yang\cite{a1} proposed the expression form of the belief rules by introducing the belief distribution structure,
+On the basis of the conventional production rules, Yang \textit{et al}.\cite{a1} proposed the expression form of the belief rules by introducing the belief distribution structure,
 the rule antecedent attribute parameter and the rule weight parameter. The specific expression is as follows:
-$$R_k:if\{X_1isA_1^k \wedge \cdots \wedge X_{T_k}isA_{T_k}^k\}$$
-$$then\{(D_1,\beta_1^k),\cdots,(D_N,\beta_N^k)\},\sum_{i=1}^N\beta_i^k\leq1$$
+\begin{equation}
+    \begin{split}
+        R_k:if\{X_1isA_1^k \wedge \cdots \wedge X_{T_k}isA_{T_k}^k\} \\
+        then\{(D_1,\beta_1^k),\cdots,(D_N,\beta_N^k)\},\sum_{i=1}^N\beta_i^k\leq1
+    \end{split}
+\end{equation}
+
 The equal sign is obtained when the rule information is complete. Each rule has its rule weight $\theta_k$, antecedent attribute weight $\delta_{1},\delta_{2},\cdots,\delta_{T_k}$.
 $A_i^k$ represents the candidate reference value selected by the rule on the $i$-th attribute and $\beta_i^k$ represents the belief degree of the rule in the $i$-th result attribute.
 On this basis, the extended belief rule base system introduces a belief distribution structure to the antecedent attributes, and its rule form is expressed as follows:
-$$R_k:if\{[(A_{11}^k,\alpha_{11}^k),\cdots,(A_{1J_1}^k,\alpha_{1J_1}^k)] \wedge $$
-$$\cdots \wedge [(A_{T_k1}^k,\alpha_{T_k1}^k), \cdots,(A_{T_kJ_{T_k}}^k,\alpha_{T_kJ_{T_k}}^k)]\}$$
-$$then\{(D_1,\beta_1^k),\cdots,(D_N,\beta_N^k)\},\sum_{i=1}^N\beta_i^k\leq1$$
+\begin{equation}
+    \begin{split}
+        R_k:if\{[(A_{11}^k,\alpha_{11}^k),\cdots,(A_{1J_1}^k,\alpha_{1J_1}^k)] \wedge \\
+        \cdots \wedge [(A_{T_k1}^k,\alpha_{T_k1}^k), \cdots,(A_{T_kJ_{T_k}}^k,\alpha_{T_kJ_{T_k}}^k)]\}\\
+        then\{(D_1,\beta_1^k),\cdots,(D_N,\beta_N^k)\},\sum_{i=1}^N\beta_i^k\leq1
+    \end{split}
+\end{equation}
 The extended belief rule base constructed using the original data transforms the input data into the rule antecedent attributes in the form of belief distribution. For the input data:
-$$X^k=(x_1^k,\cdots,x_T^k)$$
+\begin{equation}
+    X^k=(x_1^k,\cdots,x_T^k)
+\end{equation}
 Convert the $i$th attribute parameter to construct the $i$th antecedent attribute of the corresponding rule with a belief distribution form:
-$$\alpha_{ij}^k=\frac{\gamma_{i(j+1)-x_i^k}}{\gamma_{i(j+1)-\gamma_{ij}}},\gamma_{ij}\leq x_i^k\leq \gamma_{i(j+1)}$$
-$$\alpha_{i(j+1)}^k=1-\alpha_{ij}^k,\gamma_{ij}\leq x_i^k\leq \gamma_{i(j+1)}$$
-$$\alpha_{it}^k=0,t=1,\cdots,(j-1),(j+2),\cdots,J_i$$
+\begin{equation}
+    \begin{split}
+        \alpha_{ij}^k=\frac{\gamma_{i(j+1)-x_i^k}}{\gamma_{i(j+1)-\gamma_{ij}}},\gamma_{ij}\leq x_i^k\leq \gamma_{i(j+1)}\\
+        \alpha_{i(j+1)}^k=1-\alpha_{ij}^k,\gamma_{ij}\leq x_i^k\leq \gamma_{i(j+1)} \\
+        \alpha_{it}^k=0,t=1,\cdots,(j-1),(j+2),\cdots,J_i
+    \end{split}
+\end{equation}
 According to the same conversion method, the values of original data on other attributes can be converted into the corresponding berlief distribution form.
 We can also obtain the belief distribution form of the rule result attribute according to this method.
 
@@ -130,11 +156,19 @@ The whole process mainly includes two steps: calculate the activation weight, sy
 The calculation of the activation weight of each rule in the belief rule base can be regarded as calculating the belief distribution similarity on each attribute and combining their results.
 Euclidean distance is used to calculate the individual matching degree of the $i$-th attribute. After converting the input data to have the same belief distribution form as the corresponding attribute,
 the individual matching degree of the attribute is calculated as:
-$$S_i^k=1-d_i^k=1-\sqrt{\frac{\sum_{j=1}^{J_i}(\alpha_{i,j}-\alpha_{i,j}^k)^2}{2}}$$
+\begin{equation}
+    S_i^k=1-d_i^k=1-\sqrt{\frac{\sum_{j=1}^{J_i}(\alpha_{i,j}-\alpha_{i,j}^k)^2}{2}}
+\end{equation}
+
 After the individual matching degree of each attribute is calculated, the individual matching degrees of all attributes are aggregated. The aggregation function in the form of conjunctive rules is:
-$$\alpha_k=\prod_{i=1}^{T_k}(S_i^k)^{\overline{\delta_i}},\overline{\delta_i}=\frac{\delta_i}{\max_{j=1,\cdots,T_k}\delta_j}$$
+\begin{equation}
+    \alpha_k=\prod_{i=1}^{T_k}(S_i^k)^{\overline{\delta_i}},\overline{\delta_i}=\frac{\delta_i}{\max_{j=1,\cdots,T_k}\delta_j}
+\end{equation}
 The activation weight of this rule is calculated by the following formula:
-$$w_k=\frac{\theta_k\alpha_k}{\sum_{l=1}^L\theta_l\alpha_l}$$
+\begin{equation}
+    w_k=\frac{\theta_k\alpha_k}{\sum_{l=1}^L\theta_l\alpha_l}
+\end{equation}
+
 Rule weight normalization operation makes all weights satisfy $0\leq w_k\leq 1,\sum w_k=1$.
 
 After the rule weight calculation is completed, all the rules are synthesized and the inference result is obtained.
@@ -330,7 +364,7 @@ Set the default distance-sensitive parameter of each rule to $1.0$.
 The initial rule information is shown in Table \ref{tab1}.
 We can get the initial untrained brb system output Figure \ref{fig4}
 Set the number of training samples in each batch to $128$ and the learning rate $\mu$ is $0.001$ for $1000$ rounds of training.
-Set the momentum optimization parameters $\nu$ to 0.0(non-momentum optimization), $0.5$, $0.9$ and $0.99$ to compare their fitting performance.
+Set the momentum optimization parameters $\nu$ to 0.0 (non-momentum optimization), $0.5$, $0.9$ and $0.99$ to compare their fitting performance.
 
 \begin{table}
     \caption{Initial rule information}
@@ -418,9 +452,9 @@ And the running speed of gradient method is much lower than the conventional BRB
 In this section, we select 7 UCI public classification datasets that are widely used to test the performance of various classifiers to evaluate the inference performance of our BRB system.
 Table \ref{tab4} shows the detailed information of these classification datasets.
 We repeat independent 10-fold cross-validation experiments for ten times to obtain the final results.
-The final inference results obtained by the belief rule inference system trained using momentum optimization stochastic gradient method(SGDM-BRB) will be compared with the results obtained by
+The final inference results obtained by the belief rule inference system trained using momentum optimization stochastic gradient method (SGDM-BRB) will be compared with the results obtained by
 other machine learning methods and belief rule base inference system.
-The machine methods for comparison include KNN, Naive Bayes(NB) and C4.5, support vector machine(SVM)
+The machine methods for comparison include KNN, Naive Bayes (NB) and C4.5, support vector machine (SVM)
 and their results are cited from previous papers\cite{a22,a27}.
 The BRB systems for comparison include SRA-EBRB\cite{a20}, MVP-EBRB\cite{a21} and BA-EBRB\cite{a22}.
 
@@ -542,7 +576,7 @@ Among conventional machine learning methods and other improved BRB systems, SGDM
     2007, 4(37):569-585.
 
     \bibitem{a11} CHANG R, ZHANG S. ``An Algorithm for Training Param eters in Belief Rule-bases Based on
-    Gradient M ethods with Optimization Step Size,''
+    Gradient Methods with Optimization Step Size,''
     \emph{Journal of North China Institute of Water Conservancy and Hydroelectric Power},
     2011, 1(32):154-157.
 
