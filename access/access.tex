@@ -549,6 +549,7 @@ The BRB systems for comparison include SRA-EBRB\cite{a20}, MVP-EBRB\cite{a21} an
 To enable a unified classification process, first perform a standardized operation on the original data:
 $$x'=\frac{x-\overline{x}}{\delta}$$
 where $\overline{x}$ is the mean of $x$ and $\delta$ is the standard deviation of $x$.
+After standardization, set the distance-sensitive parameter on all attributes to $1.0$.
 Then we select cross entropy as the loss function to train the BRB inference system to improve the classification accuracy.
 For a multi-classification task with $N$ categories, the loss function on each sample $y$ and the corresponding prediction result $\overline{y}$ is defined as follows:
 $$Loss(y,\overline{y})=-\sum_{i=1}^Ny_{i}\log\overline{y}_i$$
@@ -568,7 +569,7 @@ The rule corresponding to the $k$-th training sample is:
 
 In the process of parameter optimization using momentum optimization stochastic gradient descent method,
 the learning rate is set to $0.001$, the momentum optimization parameter is $0.99$.
-There are $128$ training samples in each batch, and $2000$ trainings are performed on the dataset.
+There are $128$ training samples in each batch, and $2000$ trainings are performed on each dataset.
 
 As shown in Table \ref{tab5}, by comparing with the accuracies of some machine learning approaches as well as the improved BRB systems, it is proved that the SGDM-BRB system can produce satisfactory accuracies.
 For the SGDM-BRB system, it is clear from Table \ref{tab5} that
@@ -583,10 +584,12 @@ This paper proposes a new rule structure and its activation method and the corre
 Avoid the rule zero activation problem and improve the inference accuracy at the same time,
 and achieves performance beyond conventional machine learning algorithms and improved BRB system.
 The further conclusions of this paper are summarized as follow:
+
 \quad 1): Using the method of combining attribute distancesensitive parameters and Gaussian function instead of
 the conventional belief distribution method to calculate the individual matching degree effectively avoids the defect that
 the conventional method may cause the individual matching degree to be 0.
 This makes the activation weight change more gentle and has good fitting performance.
+
 \quad 2): The stochastic gradient method combined with larger momentum optimization parameters greatly improves the accuracy and convergence speed of the model.
 
 Due to its good fitting performance, future research will focus on using integrated methods to further improve inference performance and reduce potential over-fitting risks.
