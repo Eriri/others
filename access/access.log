@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.8.25)  14 SEP 2020 22:31
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.8.25)  15 SEP 2020 19:29
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -409,7 +409,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [2 <d:/others/access/notaglinelogo.png>]
 File: notaglinelogo.png Graphic file (type png)
 <use notaglinelogo.png>
-Package pdftex.def Info: notaglinelogo.png  used on input line 204.
+Package pdftex.def Info: notaglinelogo.png  used on input line 217.
 (pdftex.def)             Requested size: 91.32pt x 23.1352pt.
 
 Overfull \hbox (505.12177pt too wide) has occurred while \output is active
@@ -430,38 +430,41 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 <Figure_1.png, id=32, 462.528pt x 346.896pt>
 File: Figure_1.png Graphic file (type png)
 <use Figure_1.png>
-Package pdftex.def Info: Figure_1.png  used on input line 213.
+Package pdftex.def Info: Figure_1.png  used on input line 221.
 (pdftex.def)             Requested size: 238.49121pt x 178.8678pt.
 File: Figure_1.png Graphic file (type png)
 <use Figure_1.png>
-Package pdftex.def Info: Figure_1.png  used on input line 213.
+Package pdftex.def Info: Figure_1.png  used on input line 221.
 (pdftex.def)             Requested size: 238.49121pt x 178.8678pt.
 <Figure_2.png, id=34, 462.528pt x 346.896pt>
 File: Figure_2.png Graphic file (type png)
 <use Figure_2.png>
-Package pdftex.def Info: Figure_2.png  used on input line 215.
+Package pdftex.def Info: Figure_2.png  used on input line 223.
 (pdftex.def)             Requested size: 238.49121pt x 178.8678pt.
 File: Figure_2.png Graphic file (type png)
 <use Figure_2.png>
-Package pdftex.def Info: Figure_2.png  used on input line 215.
+Package pdftex.def Info: Figure_2.png  used on input line 223.
 (pdftex.def)             Requested size: 238.49121pt x 178.8678pt.
 
-Underfull \hbox (badness 1721) in paragraph at lines 222--227
+Underfull \hbox (badness 1721) in paragraph at lines 235--240
 []\T1/ptm/n/n/10 Another ben-e-fit brought by the new rule an-tecedent
  []
 
 <process.png, id=35, 515.0442pt x 347.8596pt>
 File: process.png Graphic file (type png)
 <use process.png>
-Package pdftex.def Info: process.png  used on input line 249.
+Package pdftex.def Info: process.png  used on input line 262.
 (pdftex.def)             Requested size: 238.49121pt x 161.07893pt.
 File: process.png Graphic file (type png)
 <use process.png>
-Package pdftex.def Info: process.png  used on input line 249.
+Package pdftex.def Info: process.png  used on input line 262.
 (pdftex.def)             Requested size: 238.49121pt x 161.07893pt.
+
+Underfull \vbox (badness 1590) has occurred while \output is active []
+
 File: notaglinelogo.png Graphic file (type png)
 <use notaglinelogo.png>
-Package pdftex.def Info: notaglinelogo.png  used on input line 256.
+Package pdftex.def Info: notaglinelogo.png  used on input line 273.
 (pdftex.def)             Requested size: 91.32pt x 23.1352pt.
 
 Overfull \hbox (505.12177pt too wide) has occurred while \output is active
@@ -479,9 +482,13 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [4 <d:/others/access/Figure_1.png> <d:/others/access/Figure_2.png>]
+Overfull \hbox (1.32936pt too wide) detected at line 296
+[]
+ []
+
 File: notaglinelogo.png Graphic file (type png)
 <use notaglinelogo.png>
-Package pdftex.def Info: notaglinelogo.png  used on input line 308.
+Package pdftex.def Info: notaglinelogo.png  used on input line 340.
 (pdftex.def)             Requested size: 91.32pt x 23.1352pt.
 
 Overfull \hbox (505.12177pt too wide) has occurred while \output is active
@@ -499,18 +506,18 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [5 <d:/others/access/process.png>]
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 350.
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 396.
  (d:/texlive/2020/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
 
 LaTeX Font Warning: Font shape `TS1/ptm/n/n' undefined
 (Font)              using `TS1/ptm/m/n' instead
-(Font)              for symbol `textcopyright' on input line 350.
+(Font)              for symbol `textcopyright' on input line 396.
 
 File: notaglinelogo.png Graphic file (type png)
 <use notaglinelogo.png>
-Package pdftex.def Info: notaglinelogo.png  used on input line 368.
+Package pdftex.def Info: notaglinelogo.png  used on input line 409.
 (pdftex.def)             Requested size: 91.32pt x 23.1352pt.
 
 Overfull \hbox (505.12177pt too wide) has occurred while \output is active
@@ -531,38 +538,38 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 <initial_brb.png, id=49, 462.528pt x 346.896pt>
 File: initial_brb.png Graphic file (type png)
 <use initial_brb.png>
-Package pdftex.def Info: initial_brb.png  used on input line 387.
+Package pdftex.def Info: initial_brb.png  used on input line 435.
 (pdftex.def)             Requested size: 238.49121pt x 178.8678pt.
 File: initial_brb.png Graphic file (type png)
 <use initial_brb.png>
-Package pdftex.def Info: initial_brb.png  used on input line 387.
+Package pdftex.def Info: initial_brb.png  used on input line 435.
 (pdftex.def)             Requested size: 238.49121pt x 178.8678pt.
 <mse.png, id=50, 462.528pt x 346.896pt>
 File: mse.png Graphic file (type png)
 <use mse.png>
-Package pdftex.def Info: mse.png  used on input line 390.
+Package pdftex.def Info: mse.png  used on input line 438.
 (pdftex.def)             Requested size: 238.49121pt x 178.8678pt.
 File: mse.png Graphic file (type png)
 <use mse.png>
-Package pdftex.def Info: mse.png  used on input line 390.
+Package pdftex.def Info: mse.png  used on input line 438.
 (pdftex.def)             Requested size: 238.49121pt x 178.8678pt.
 <fit.png, id=51, 462.528pt x 346.896pt>
 File: fit.png Graphic file (type png)
 <use fit.png>
-Package pdftex.def Info: fit.png  used on input line 401.
+Package pdftex.def Info: fit.png  used on input line 449.
 (pdftex.def)             Requested size: 238.49121pt x 178.8678pt.
 File: fit.png Graphic file (type png)
 <use fit.png>
-Package pdftex.def Info: fit.png  used on input line 401.
+Package pdftex.def Info: fit.png  used on input line 449.
 (pdftex.def)             Requested size: 238.49121pt x 178.8678pt.
 
-Overfull \hbox (6.42943pt too wide) in paragraph at lines 412--423
+Overfull \hbox (6.42943pt too wide) in paragraph at lines 460--471
  [][] 
  []
 
 File: notaglinelogo.png Graphic file (type png)
 <use notaglinelogo.png>
-Package pdftex.def Info: notaglinelogo.png  used on input line 451.
+Package pdftex.def Info: notaglinelogo.png  used on input line 478.
 (pdftex.def)             Requested size: 91.32pt x 23.1352pt.
 
 Overfull \hbox (505.12177pt too wide) has occurred while \output is active
@@ -582,7 +589,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [7 <d:/others/access/initial_brb.png> <d:/others/access/mse.png> <d:/others/access/fit.png>]
 File: notaglinelogo.png Graphic file (type png)
 <use notaglinelogo.png>
-Package pdftex.def Info: notaglinelogo.png  used on input line 618.
+Package pdftex.def Info: notaglinelogo.png  used on input line 594.
 (pdftex.def)             Requested size: 91.32pt x 23.1352pt.
 
 Overfull \hbox (505.12177pt too wide) has occurred while \output is active
@@ -603,29 +610,15 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 <a1.png, id=67, 72.27pt x 90.3375pt>
 File: a1.png Graphic file (type png)
 <use a1.png>
-Package pdftex.def Info: a1.png  used on input line 667.
+Package pdftex.def Info: a1.png  used on input line 730.
 (pdftex.def)             Requested size: 72.2709pt x 90.33864pt.
 File: a1.png Graphic file (type png)
 <use a1.png>
-Package pdftex.def Info: a1.png  used on input line 667.
+Package pdftex.def Info: a1.png  used on input line 730.
 (pdftex.def)             Requested size: 72.2709pt x 90.33864pt.
-<a2.png, id=70, 72.27pt x 90.3375pt>
-File: a2.png Graphic file (type png)
-<use a2.png>
-Package pdftex.def Info: a2.png  used on input line 693.
-(pdftex.def)             Requested size: 72.2709pt x 90.33864pt.
-File: a2.png Graphic file (type png)
-<use a2.png>
-Package pdftex.def Info: a2.png  used on input line 693.
-(pdftex.def)             Requested size: 72.2709pt x 90.33864pt.
-
-Underfull \hbox (badness 2189) in paragraph at lines 693--711
-\T1/ptm/n/n/8 lottesville, in 2001 and the Ph.D. de-gree in
- []
-
 File: notaglinelogo.png Graphic file (type png)
 <use notaglinelogo.png>
-Package pdftex.def Info: notaglinelogo.png  used on input line 713.
+Package pdftex.def Info: notaglinelogo.png  used on input line 756.
 (pdftex.def)             Requested size: 91.32pt x 23.1352pt.
 
 Overfull \hbox (505.12177pt too wide) has occurred while \output is active
@@ -642,23 +635,37 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 []
  []
 
-[9 <d:/others/access/a1.png> <d:/others/access/a2.png>]
-<a3.png, id=79, 72.27pt x 90.3375pt>
+[9 <d:/others/access/a1.png>]
+<a2.png, id=75, 72.27pt x 90.3375pt>
+File: a2.png Graphic file (type png)
+<use a2.png>
+Package pdftex.def Info: a2.png  used on input line 756.
+(pdftex.def)             Requested size: 72.2709pt x 90.33864pt.
+File: a2.png Graphic file (type png)
+<use a2.png>
+Package pdftex.def Info: a2.png  used on input line 756.
+(pdftex.def)             Requested size: 72.2709pt x 90.33864pt.
+
+Underfull \hbox (badness 2189) in paragraph at lines 756--774
+\T1/ptm/n/n/8 lottesville, in 2001 and the Ph.D. de-gree in
+ []
+
+<a3.png, id=78, 72.27pt x 90.3375pt>
 File: a3.png Graphic file (type png)
 <use a3.png>
-Package pdftex.def Info: a3.png  used on input line 713.
+Package pdftex.def Info: a3.png  used on input line 776.
 (pdftex.def)             Requested size: 72.2709pt x 90.33864pt.
 File: a3.png Graphic file (type png)
 <use a3.png>
-Package pdftex.def Info: a3.png  used on input line 713.
+Package pdftex.def Info: a3.png  used on input line 776.
 (pdftex.def)             Requested size: 72.2709pt x 90.33864pt.
 File: bullet.png Graphic file (type png)
 <use bullet.png>
-Package pdftex.def Info: bullet.png  used on input line 732.
+Package pdftex.def Info: bullet.png  used on input line 795.
 (pdftex.def)             Requested size: 5.0pt x 14.6871pt.
 File: notaglinelogo.png Graphic file (type png)
 <use notaglinelogo.png>
-Package pdftex.def Info: notaglinelogo.png  used on input line 734.
+Package pdftex.def Info: notaglinelogo.png  used on input line 797.
 (pdftex.def)             Requested size: 91.32pt x 23.1352pt.
 
 Overfull \hbox (505.12177pt too wide) has occurred while \output is active
@@ -677,21 +684,21 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
 [10
 
- <d:/others/access/a3.png>] (d:/others/access/access.aux)
+ <d:/others/access/a2.png> <d:/others/access/a3.png>] (d:/others/access/access.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 4166 strings out of 480608
- 59536 string characters out of 5907536
- 319798 words of memory out of 5000000
- 19962 multiletter control sequences out of 15000+600000
- 633847 words of font info for 155 fonts, out of 8000000 for 9000
+ 4164 strings out of 480608
+ 59518 string characters out of 5907536
+ 317798 words of memory out of 5000000
+ 19961 multiletter control sequences out of 15000+600000
+ 631125 words of font info for 153 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,17n,53p,284b,492s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,17n,53p,284b,412s stack positions out of 5000i,500n,10000p,200000b,80000s
 {d:/texlive/2020/texmf-dist/fonts/enc/dvips/base/8r.enc}<d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><d:/texlive/2020/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb><d:/texlive/2020/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb><d:/texlive/2020/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb><d:/texlive/2020/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb><d:/texlive/2020/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><d:/texlive/2020/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><d:/texlive/2020/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on d:/others/access/access.pdf (10 pages, 803118 bytes).
+Output written on d:/others/access/access.pdf (10 pages, 803914 bytes).
 PDF statistics:
  156 PDF objects out of 1000 (max. 8388607)
  97 compressed objects within 1 object stream
