@@ -183,10 +183,11 @@ and $\widetilde{m}_{D,k}$  represents the credibility of the missing reference a
 The total uncertainty credibility is given by $m_{D,k}=\overline{m}_{D,k}+\widetilde{m}_{D,k}$.
 Synthesize the credibility information of all rules and obtain the final confidence result of each result attribute:
 \begin{align}
-     & m_j=k[\prod_{i=1}^L(m_{j,i}+m_{D,i})-\prod_{i=1}^Lm_{D,i}],j=1,\cdots,N                                                        \\
-     & \overline{m}_D=n[\prod_{i=1}^L\overline{m}_{D,i}],\quad\widetilde{m}_D=k[\prod_{i=1}^Lm_{D,i}-\prod_{i=1}^L\overline{m}_{H,i}] \\
-     & k=[\sum_{j=1}^N\prod_{i=1}^L(m_{j,i}+m_{D,i})-(N-1)\prod_{i=1}^Lm_{D,i}]^{-1}                                                  \\
-     & \beta_j=\frac{m_j}{1-\overline{m}_D},j=1,\cdots,N                                                                              \\
+     & m_j=k[\prod_{i=1}^L(m_{j,i}+m_{D,i})-\prod_{i=1}^Lm_{D,i}],j=1,\cdots,N       \\
+     & \overline{m}_D=n[\prod_{i=1}^L\overline{m}_{D,i}]                             \\
+     & \widetilde{m}_D=k[\prod_{i=1}^Lm_{D,i}-\prod_{i=1}^L\overline{m}_{H,i}]       \\
+     & k=[\sum_{j=1}^N\prod_{i=1}^L(m_{j,i}+m_{D,i})-(N-1)\prod_{i=1}^Lm_{D,i}]^{-1} \\
+     & \beta_j=\frac{m_j}{1-\overline{m}_D},j=1,\cdots,N                             \\
      & \beta_D=\frac{\widetilde{m}_D}{1-\overline{m}_D}
 \end{align}
 
