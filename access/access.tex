@@ -192,9 +192,10 @@ Synthesize the credibility information of all rules and obtain the final confide
 \end{align}
 
 \subsection{new attribute structure and rule activation weight calculation method}
-The process of generating rules in the rule base requires artificial setting of candidate reference values for the antecedent attribute information,
-and when calculating the rule activation weight, if the input attribute information is not in the adjacent area of the rule attribute reference value, the rule cannot be activated.
-If all the rules in the library are not activated, the reasoning system will fail. In order to solve the above problems, we proposes an improved form of belief rules and corresponding activation weight calculation method as follows:
+The candidate reference value of antecedent attribute information needs to be set before generating rules.
+If the input is not in the neighborhood of the candidate value of the antecedent attribute of a rule, the rule cannot be activated.
+If all the rules in the library are not activated, the reasoning system will fail.
+In order to solve the above problems, we propose an improved form of belief rules and corresponding activation weight calculation method as follows:
 \begin{equation}
     \begin{split}
         &R_k:if(x_1^k , \cdots , x_{T_k}^k)\\
@@ -204,9 +205,9 @@ If all the rules in the library are not activated, the reasoning system will fai
 
 The simplified belief rule structure can directly use the training data to generate the rule antecedent attribute information without manually setting the candidate reference values of the antecedent attributes.
 
-Using antecedent attribute belief distribution similarity as the activation weight calculation method is no longer applicable to the simplified confidence rule form. In order to perform effective weight activation,
-we uses Gaussian function to calculate the individual matching degree for activation weight calculation.
-The degree of individual matching of input data $X(x_1,\cdots,x_{T_k})$ and rule $R_k:if(x_1^k , \cdots , x_{T_k}^k)then\{(D_1,\beta_1^k),\cdots,(D_N,\beta_N^k)\}$ on $i$-th attribute is calculated using the Gaussian function as:
+The conventional activation weight calculation method is no longer suitable for the simplified form of belief rules.
+In order to perform the weight activation, we use Gaussian function to calculate the individual matching degree for activation weight calculation.
+The degree of individual matching of input $X(x_1,\cdots,x_{T_k})$ and rule $R_k:if(x_1^k , \cdots , x_{T_k}^k)then\{(D_1,\beta_1^k),\cdots,(D_N,\beta_N^k)\}$ on $i$-th attribute is calculated using the Gaussian function as:
 \begin{equation}
     S_i^k=e^{-[a_i^k\times(x_i-x_i^k)]^2}
 \end{equation}
@@ -219,51 +220,52 @@ The activation weight of a single rule under conjunctive conditions is calculate
 
 
 \Figure[!t](topskip=0pt, botskip=0pt, midskip=0pt)[width=3.3 in]{Figure_1.png}
-{activation weight calculated by conventional methods\label{fig1}}
+{Activation weight calculated by conventional methods\label{fig1}}
 \Figure[!t](topskip=0pt, botskip=0pt, midskip=0pt)[width=3.3 in]{Figure_2.png}
-{activation weight calculated by Gaussian function methods\label{fig2}}
-Assuming a rule with two attributes x and y located at the origin, the conventional method and Gaussian function method are used to calculate the activation weights.
-Set the reference candidate values on the x-attributes and y-attributes to be both $[-4,-3,-2,-1,0,1,2,3,4]$,
-and set the distance-sensitive parameter $a$ of each attribute at the origin is $0.5$.
-For the convenience of calculation, we omitted the setting of rule weight.
+{Activation weight calculated by Gaussian function methods\label{fig2}}
+Assuming a rule with two attributes x and y located at the $(0,0)$, the conventional method and Gaussian function method are used to calculate the activation weights.
+Set the reference candidate values on the x-attributes and y-attributes to be $[-4,-3,-2,-1,0,1,2,3,4]$,
+and set the distance-sensitive parameter $a$ of each attribute to be $0.5$.
+We ignore setting rule weights for both methods.
 The two activation weight distributions shown in Figure \ref{fig1} and Figure \ref{fig2} can be obtained.
 
-According to Figure 1, we can know that the activation weight calculated by the input data that is not in the adjacent area of the candidate value selected by the rule is zero.
+According to Fig. \ref{fig1} we can know that if the input on a certain attribute is not in the neighborhood of the rule attribute,
+the activation weight of this rule is zero.
 If the activation weight of all rules is zero, the inference cannot be performed.
-However, the input data in Figure 2 smoothly drops close to zero according to the distance from the rule and will not take a value of zero.
-This eliminates the impact of rule zero activation on system inference performance.
+However, the input data in Fig. \ref{fig2} smoothly drops close to zero according to the distance from the rule and will not take a value of zero.
+It eliminates the impact of rule zero activation on system inference performance.
 
 Another benefit brought by the new rule antecedent attribute structure and rule activation weight calculation method is that
 there is no need to adjust the activation weight of the rule by the attribute weight and rule weight.
 By adjusting the distance-sensitive parameters on each attribute of each rule, a good activation effect and activation granularity can be obtained.
 At the same time, due to the characteristics of the Gaussian function, the activation weight of each rule belongs to $(0, 1]$ without unnecessary normalization operations.
-This greatly simplifies the redundant weight adjustment and calculation in the inference process
+It greatly simplifies the redundant weight adjustment and calculation in the inference process.
 
 
 \section{Momentum optimized Gradient descent training parameter}
 When the conventional gradient method is applied to the parameter training process of the inference system of the belief rule base,
 it is difficult to construct the partial derivative formula of the rule attribute and the training step is restricted by the parameter constraints.
-The above-mentioned belief rule base reasoning system with improved structure and activation method avoids the difficulty of obtaining partial derivatives in conventional belief rule systems.
+Compared with the conventional BRB system, the newly proposed rule structure with its activation weight calculation methid make it easier to construct the partial derivative of each part of the parameter.
 
-In this section we will:
+In this section, we will:
 
-\quad 1) Calculate the partial derivatives of the parameters of each part of the new brb system
+\quad 1) Calculate the partial derivatives of the parameters of the new BRB system.
 
-\quad 2) Prove that the BRB inference system is differentiate
+\quad 2) Prove that the new BRB system is differentiate.
 
-\quad 3) Introduce exponential normalization function for preprocessing to avoid specific constraints during parameter training
+\quad 3) Propose exponential normalization function for preprocessing to avoid specific constraints during parameter training.
 
-\quad 4) Introduce the stochastic gradient descent method using momentum optimization
+\quad 4) Propose a parameter training method using stochastic gradient descent with momentum optimization.
 
 
 \subsection{Partial derivative of the parameters of the brb system}
-The reasoning process of the improved BRB system is shown in Figure \ref{fig3}.
-According to the data flow path of the inference system, we can use the compound function chain derivation rule to obtain the partial derivative of the output to different parameters of the inference system.
+The reasoning process of the improved BRB system is shown in Fig. \ref{fig3}.
+According to the inference process and compound function chain derivation rules, we can obtain the partial derivatives of the output to the different parameters of the system.
 \Figure[!t](topskip=0pt, botskip=0pt, midskip=0pt)[width=3.3 in]{process.png}
 {Inference system operation process\label{fig3}}
 
 Since the model construction and experiment in this paper are carried out with complete data, the evidence reasoning process can be simplified.
-The belief distribution of the rule result attribute does not include uncertain information, that is, for any k-th rule:
+The belief distribution of the rule result attribute does not include uncertain information, that is, for any $k$-th rule:
 \begin{align}
      & \sum_{i=1}^N\beta_{ik}=1(k=1,\cdots,L)           \\
      & m_{D,k}=\overline{m}_{D,k},\widetilde{m}_{D,k}=0
@@ -272,11 +274,11 @@ In the case of completeness, the $j$-th result attribute is expressed as:
 \begin{equation}
     \beta_j=\frac{\prod_{i=1}^L(m_{j,i}+m_{D,i})-\prod_{i=1}^Lm_{D,i}}{\sum_{t=1}^N\prod_{i=1}^L(m_{t,i}+m_{D,i})-N\times\prod_{i=1}^Lm_{D,i}}
 \end{equation}
-Then the result of the j-th result attribute before normalization is expressed as:
+Then the result of the $j$-th result attribute before normalization is expressed as:
 \begin{equation}
     \overline{\beta}_j = \prod_{i=1}^L(m_{j,i}+m_{D,i})-\prod_{i=1}^Lm_{D,i},\beta_j=\frac{\overline{\beta}_j}{\sum_{k=1}^N\overline{\beta}_k}
 \end{equation}
-Substituting $m_{j,i}=w_i\beta_{j,i}$ and $m_{D,i}=1-w_i$ into the j-th result attribute before normalization expression:
+Substituting $m_{j,i}=w_i\beta_{j,i}$ and $m_{D,i}=1-w_i$ into the $j$-th result attribute before normalization expression:
 \begin{equation}
     \overline{\beta}_j = \prod_{i=1}^L(w_i\beta_j^i+1-w_i)-\prod_{i=1}^L{(1-w_i)}
 \end{equation}
@@ -300,7 +302,7 @@ According to the activation weight expression of the $k$-th rule, we can obtain 
      & \frac{dw_k}{dx_l^k}=2(a_l^k)^2(x_l-x_l^k)e^{-\sum_{i=1}^{T_k}[a_i^k(x_i-x_i^k)]^2}  \\
      & \frac{dw_k}{da_l^k}=2a_l^kx_l^k(x_l-x_l^k)e^{-\sum_{i=1}^{T_k}[a_i^k(x_i-x_i^k)]^2}
 \end{align}
-Set the loss function expression of the final output result to $loss=Loss(\beta_1,\cdots,\beta_N)$, according to the compound function chain derivation rule, we can obtain the partial derivative of the final loss on each parameter.
+Set the loss function expression of the final output result to $loss=Loss(\beta_1,\cdots,\beta_N)$. According to the compound function chain derivation rule, we can obtain the partial derivative of the final loss on each parameter.
 \begin{align}
      & \frac{dloss}{d\beta_j^k}=\sum_{i=1}^N\sum_{j=1}^N\frac{dloss}{d\beta_i}\frac{d\beta_i}{d\overline{\beta}_j}\frac{d\overline{\beta}_j}{d\beta_j^k}          \\
      & \frac{dloss}{dx_l^k}=\sum_{i=1}^N\sum_{j=1}^N\frac{dloss}{d\beta_i}\frac{d\beta_i}{d\overline{\beta}_j}\frac{d\overline{\beta}_j}{dw_k}\frac{dw_k}{dx_l^k} \\
