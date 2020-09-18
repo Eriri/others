@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.8.25)  17 SEP 2020 20:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.8.25)  18 SEP 2020 19:15
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -114,6 +114,654 @@ Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
  (d:/texlive/2020/texmf-dist/tex/generic/xkeyval/keyval.tex))
 \XKV@depth=\count182
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
-)){d:/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map
-!pdfTeX error: pdflatex.exe (file d:/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map): fflush() failed (Invalid argument)
- ==> Fatal error occurred, no output PDF file produced!
+)){d:/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+
+pdfTeX warning: pdflatex.exe (file t1-times.map): cannot open font map file
+
+
+pdfTeX warning: pdflatex.exe (file t1-formata.map): cannot open font map file
+
+
+pdfTeX warning: pdflatex.exe (file t1-giovannistd.map): cannot open font map file
+\@draftversionrule=\dimen158
+(d:/texlive/2020/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2019/11/23 v1.2a Standard LaTeX Color (DPC)
+ (d:/texlive/2020/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package color Info: Driver file: pdftex.def on input line 147.
+ (d:/texlive/2020/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+)) (d:/others/access/spotcolor.sty
+Package: spotcolor 2006/11/15 v1.2 Package for adding Spot Color support to pdfLaTeX.
+ (d:/texlive/2020/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2019/11/30 v1.4a Standard LaTeX Graphics (DPC,SPQR)
+ (d:/texlive/2020/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+) (d:/texlive/2020/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 105.
+)
+\thecolorprofile=\count183
+\thecolor=\count184
+)
+\PANTONE=\toks18
+Package color Info: Redefining color black on input line 135.
+\figbox=\box47
+\titlewidth=\skip50
+\abstractwidth=\skip51
+\c@addrCtr=\count185
+\abstractbox=\box48
+\indexbox=\box49
+\absht=\dimen159
+\kwdht=\dimen160
+\@tempcntc=\count186
+\titlepgskip=\skip52
+\maketitlebox=\box50
+) (d:/texlive/2020/texmf-dist/tex/latex/cite/cite.sty
+LaTeX Info: Redefining \cite on input line 302.
+LaTeX Info: Redefining \nocite on input line 332.
+Package: cite 2015/02/27  v 5.5
+) (d:/texlive/2020/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2020/01/20 v2.17e AMS math features
+\@mathmargin=\skip53
+
+For additional information on amsmath, use the `?' option.
+(d:/texlive/2020/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01 AMS text
+ (d:/texlive/2020/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks19
+\ex@=\dimen161
+)) (d:/texlive/2020/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen162
+) (d:/texlive/2020/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count187
+LaTeX Info: Redefining \frac on input line 227.
+\uproot@=\count188
+\leftroot@=\count189
+LaTeX Info: Redefining \overline on input line 389.
+\classnum@=\count190
+\DOTSCASE@=\count191
+LaTeX Info: Redefining \ldots on input line 486.
+LaTeX Info: Redefining \dots on input line 489.
+LaTeX Info: Redefining \cdots on input line 610.
+\Mathstrutbox@=\box51
+\strutbox@=\box52
+\big@size=\dimen163
+LaTeX Font Info:    Redeclaring font encoding OML on input line 733.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 734.
+\macc@depth=\count192
+\c@MaxMatrixCols=\count193
+\dotsspace@=\muskip16
+\c@parentequation=\count194
+\dspbrk@lvl=\count195
+\tag@help=\toks20
+\row@=\count196
+\column@=\count197
+\maxfields@=\count198
+\andhelp@=\toks21
+\eqnshift@=\dimen164
+\alignsep@=\dimen165
+\tagshift@=\dimen166
+\tagwidth@=\dimen167
+\totwidth@=\dimen168
+\lineht@=\dimen169
+\@envbody=\toks22
+\multlinegap=\skip54
+\multlinetaggap=\skip55
+\mathdisplay@stack=\toks23
+LaTeX Info: Redefining \[ on input line 2859.
+LaTeX Info: Redefining \] on input line 2860.
+) (d:/texlive/2020/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+ (d:/texlive/2020/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)) (d:/texlive/2020/texmf-dist/tex/latex/algorithms/algorithmic.sty
+Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
+ (d:/texlive/2020/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\c@ALC@unique=\count199
+\c@ALC@line=\count266
+\c@ALC@rem=\count267
+\c@ALC@depth=\count268
+\ALC@tlm=\skip56
+\algorithmicindent=\skip57
+) (d:/texlive/2020/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2019/11/30 v1.2a Enhanced LaTeX Graphics (DPC,SPQR)
+\Gin@req@height=\dimen170
+\Gin@req@width=\dimen171
+) (d:/texlive/2020/texmf-dist/tex/latex/base/textcomp.sty
+Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
+) (d:/texlive/2020/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
+File: l3backend-pdfmode.def 2020-03-12 L3 backend support: PDF mode
+\l__kernel_color_stack_int=\count269
+\l__pdf_internal_box=\box53
+) (d:/others/access/access.aux)
+\openout1 = `access.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+
+-- Lines per column: 56 (exact).
+LaTeX Font Info:    Trying to load font information for T1+ptm on input line 9.
+(d:/texlive/2020/texmf-dist/tex/latex/psnfss/t1ptm.fd
+File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
+)
+
+LaTeX Font Warning: Font shape `T1/ptm/n/n' undefined
+(Font)              using `T1/ptm/m/n' instead on input line 9.
+
+(d:/texlive/2020/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count270
+\scratchdimen=\dimen172
+\scratchbox=\box54
+\nofMPsegments=\count271
+\nofMParguments=\count272
+\everyMPshowfont=\toks24
+\MPscratchCnt=\count273
+\MPscratchDim=\dimen173
+\MPnumerator=\count274
+\makeMPintoPDFobject=\count275
+\everyMPtoPDFconversion=\toks25
+) (d:/texlive/2020/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
+ (d:/texlive/2020/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+))
+<bullet.png, id=3, 12.045pt x 35.38219pt>
+File: bullet.png Graphic file (type png)
+<use bullet.png>
+Package pdftex.def Info: bullet.png  used on input line 35.
+(pdftex.def)             Requested size: 5.0pt x 14.6871pt.
+LaTeX Font Info:    Trying to load font information for T1+phv on input line 35.
+ (d:/texlive/2020/texmf-dist/tex/latex/psnfss/t1phv.fd
+File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
+
+
+LaTeX Warning: Font shape declaration has incorrect series value `mc'.
+               It should not contain an `m'! Please correct it.
+               Found on input line 20.
+
+
+LaTeX Warning: Font shape declaration has incorrect series value `mc'.
+               It should not contain an `m'! Please correct it.
+               Found on input line 23.
+
+
+LaTeX Warning: Font shape declaration has incorrect series value `mc'.
+               It should not contain an `m'! Please correct it.
+               Found on input line 26.
+
+
+LaTeX Warning: Font shape declaration has incorrect series value `mc'.
+               It should not contain an `m'! Please correct it.
+               Found on input line 46.
+
+)
+
+LaTeX Font Warning: Font shape `T1/phv/n/n' undefined
+(Font)              using `T1/phv/m/n' instead on input line 35.
+
+File: bullet.png Graphic file (type png)
+<use bullet.png>
+Package pdftex.def Info: bullet.png  used on input line 55.
+(pdftex.def)             Requested size: 5.0pt x 14.6871pt.
+LaTeX Font Info:    Calculating math sizes for size <9.9> on input line 61.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 61.
+(d:/texlive/2020/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 61.
+ (d:/texlive/2020/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Calculating math sizes for size <6.6> on input line 61.
+
+Overfull \hbox (9.2679pt too wide) in paragraph at lines 61--61
+[]  
+ []
+
+
+Overfull \hbox (9.2679pt too wide) in paragraph at lines 61--61
+[]  
+ []
+
+
+Underfull \vbox (badness 4229) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+<logo.png, id=4, 206.27063pt x 53.44969pt>
+File: logo.png Graphic file (type png)
+<use logo.png>
+Package pdftex.def Info: logo.png  used on input line 85.
+(pdftex.def)             Requested size: 91.32pt x 23.66309pt.
+
+Overfull \hbox (505.12177pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (505.12177pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (505.12177pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+[]
+ []
+
+[1
+
+
+ <d:/others/access/logo.png> <d:/others/access/bullet.png>]
+<notaglinelogo.png, id=14, 169.38281pt x 42.91031pt>
+File: notaglinelogo.png Graphic file (type png)
+<use notaglinelogo.png>
+Package pdftex.def Info: notaglinelogo.png  used on input line 149.
+(pdftex.def)             Requested size: 91.32pt x 23.1352pt.
+
+Overfull \hbox (505.12177pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (505.12177pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+[]
+ []
+
+[2 <d:/others/access/notaglinelogo.png>]
+Underfull \hbox (badness 1383) in paragraph at lines 208--211
+\T1/ptm/n/n/10 is no longer suit-able for the sim-pli-fied form of be-lief
+ []
+
+File: notaglinelogo.png Graphic file (type png)
+<use notaglinelogo.png>
+Package pdftex.def Info: notaglinelogo.png  used on input line 219.
+(pdftex.def)             Requested size: 91.32pt x 23.1352pt.
+
+Overfull \hbox (505.12177pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (505.12177pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+[]
+ []
+
+[3]
+Package epstopdf Info: Source file: <fig_brb.eps>
+(epstopdf)                    date: 2020-09-18 16:05:35
+(epstopdf)                    size: 1858463 bytes
+(epstopdf)             Output file: <fig_brb-eps-converted-to.pdf>
+(epstopdf)                    date: 2020-09-18 16:06:15
+(epstopdf)                    size: 102397 bytes
+(epstopdf)             Command: <repstopdf --outfile=fig_brb-eps-converted-to.pdf fig_brb.eps>
+(epstopdf)             \includegraphics on input line 223.
+Package epstopdf Info: Output file is already uptodate.
+<fig_brb-eps-converted-to.pdf, id=32, 462.52798pt x 346.89601pt>
+File: fig_brb-eps-converted-to.pdf Graphic file (type pdf)
+<use fig_brb-eps-converted-to.pdf>
+Package pdftex.def Info: fig_brb-eps-converted-to.pdf  used on input line 223.
+(pdftex.def)             Requested size: 238.49121pt x 178.86781pt.
+Package epstopdf Info: Source file: <fig_brb.eps>
+(epstopdf)                    date: 2020-09-18 16:05:35
+(epstopdf)                    size: 1858463 bytes
+(epstopdf)             Output file: <fig_brb-eps-converted-to.pdf>
+(epstopdf)                    date: 2020-09-18 16:06:15
+(epstopdf)                    size: 102397 bytes
+(epstopdf)             Command: <repstopdf --outfile=fig_brb-eps-converted-to.pdf fig_brb.eps>
+(epstopdf)             \includegraphics on input line 223.
+Package epstopdf Info: Output file is already uptodate.
+File: fig_brb-eps-converted-to.pdf Graphic file (type pdf)
+<use fig_brb-eps-converted-to.pdf>
+Package pdftex.def Info: fig_brb-eps-converted-to.pdf  used on input line 223.
+(pdftex.def)             Requested size: 238.49121pt x 178.86781pt.
+Package epstopdf Info: Source file: <fig_exp.eps>
+(epstopdf)                    date: 2020-09-18 15:44:02
+(epstopdf)                    size: 1858463 bytes
+(epstopdf)             Output file: <fig_exp-eps-converted-to.pdf>
+(epstopdf)                    date: 2020-09-18 15:45:54
+(epstopdf)                    size: 105116 bytes
+(epstopdf)             Command: <repstopdf --outfile=fig_exp-eps-converted-to.pdf fig_exp.eps>
+(epstopdf)             \includegraphics on input line 225.
+Package epstopdf Info: Output file is already uptodate.
+<fig_exp-eps-converted-to.pdf, id=33, 462.52798pt x 346.89601pt>
+File: fig_exp-eps-converted-to.pdf Graphic file (type pdf)
+<use fig_exp-eps-converted-to.pdf>
+Package pdftex.def Info: fig_exp-eps-converted-to.pdf  used on input line 225.
+(pdftex.def)             Requested size: 238.49121pt x 178.86781pt.
+Package epstopdf Info: Source file: <fig_exp.eps>
+(epstopdf)                    date: 2020-09-18 15:44:02
+(epstopdf)                    size: 1858463 bytes
+(epstopdf)             Output file: <fig_exp-eps-converted-to.pdf>
+(epstopdf)                    date: 2020-09-18 15:45:54
+(epstopdf)                    size: 105116 bytes
+(epstopdf)             Command: <repstopdf --outfile=fig_exp-eps-converted-to.pdf fig_exp.eps>
+(epstopdf)             \includegraphics on input line 225.
+Package epstopdf Info: Output file is already uptodate.
+File: fig_exp-eps-converted-to.pdf Graphic file (type pdf)
+<use fig_exp-eps-converted-to.pdf>
+Package pdftex.def Info: fig_exp-eps-converted-to.pdf  used on input line 225.
+(pdftex.def)             Requested size: 238.49121pt x 178.86781pt.
+Package epstopdf Info: Source file: <fig_exp_half.eps>
+(epstopdf)                    date: 2020-09-18 16:07:45
+(epstopdf)                    size: 1858468 bytes
+(epstopdf)             Output file: <fig_exp_half-eps-converted-to.pdf>
+(epstopdf)                    date: 2020-09-18 16:08:45
+(epstopdf)                    size: 110597 bytes
+(epstopdf)             Command: <repstopdf --outfile=fig_exp_half-eps-converted-to.pdf fig_exp_half.eps>
+(epstopdf)             \includegraphics on input line 227.
+Package epstopdf Info: Output file is already uptodate.
+<fig_exp_half-eps-converted-to.pdf, id=34, 462.52798pt x 346.89601pt>
+File: fig_exp_half-eps-converted-to.pdf Graphic file (type pdf)
+<use fig_exp_half-eps-converted-to.pdf>
+Package pdftex.def Info: fig_exp_half-eps-converted-to.pdf  used on input line 227.
+(pdftex.def)             Requested size: 238.49121pt x 178.86781pt.
+Package epstopdf Info: Source file: <fig_exp_half.eps>
+(epstopdf)                    date: 2020-09-18 16:07:45
+(epstopdf)                    size: 1858468 bytes
+(epstopdf)             Output file: <fig_exp_half-eps-converted-to.pdf>
+(epstopdf)                    date: 2020-09-18 16:08:45
+(epstopdf)                    size: 110597 bytes
+(epstopdf)             Command: <repstopdf --outfile=fig_exp_half-eps-converted-to.pdf fig_exp_half.eps>
+(epstopdf)             \includegraphics on input line 227.
+Package epstopdf Info: Output file is already uptodate.
+File: fig_exp_half-eps-converted-to.pdf Graphic file (type pdf)
+<use fig_exp_half-eps-converted-to.pdf>
+Package pdftex.def Info: fig_exp_half-eps-converted-to.pdf  used on input line 227.
+(pdftex.def)             Requested size: 238.49121pt x 178.86781pt.
+File: notaglinelogo.png Graphic file (type png)
+<use notaglinelogo.png>
+Package pdftex.def Info: notaglinelogo.png  used on input line 263.
+(pdftex.def)             Requested size: 91.32pt x 23.1352pt.
+
+Overfull \hbox (505.12177pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (505.12177pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+[]
+ []
+
+[4 <d:/others/access/fig_brb-eps-converted-to.pdf> <d:/others/access/fig_exp-eps-converted-to.pdf> <d:/others/access/fig_exp_half-eps-converted-to.pdf>]
+<process.png, id=48, 515.0442pt x 347.8596pt>
+File: process.png Graphic file (type png)
+<use process.png>
+Package pdftex.def Info: process.png  used on input line 270.
+(pdftex.def)             Requested size: 238.49121pt x 161.07893pt.
+File: process.png Graphic file (type png)
+<use process.png>
+Package pdftex.def Info: process.png  used on input line 270.
+(pdftex.def)             Requested size: 238.49121pt x 161.07893pt.
+
+Overfull \hbox (1.32936pt too wide) detected at line 304
+[]
+ []
+
+File: notaglinelogo.png Graphic file (type png)
+<use notaglinelogo.png>
+Package pdftex.def Info: notaglinelogo.png  used on input line 327.
+(pdftex.def)             Requested size: 91.32pt x 23.1352pt.
+
+Overfull \hbox (505.12177pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (505.12177pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+[]
+ []
+
+[5 <d:/others/access/process.png>]
+File: notaglinelogo.png Graphic file (type png)
+<use notaglinelogo.png>
+Package pdftex.def Info: notaglinelogo.png  used on input line 423.
+(pdftex.def)             Requested size: 91.32pt x 23.1352pt.
+
+Overfull \hbox (505.12177pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (505.12177pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+[]
+ []
+
+[6]
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 430.
+ (d:/texlive/2020/texmf-dist/tex/latex/psnfss/ts1ptm.fd
+File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
+)
+
+LaTeX Font Warning: Font shape `TS1/ptm/n/n' undefined
+(Font)              using `TS1/ptm/m/n' instead
+(Font)              for symbol `textcopyright' on input line 430.
+
+<initial_brb.png, id=57, 462.528pt x 346.896pt>
+File: initial_brb.png Graphic file (type png)
+<use initial_brb.png>
+Package pdftex.def Info: initial_brb.png  used on input line 468.
+(pdftex.def)             Requested size: 238.49121pt x 178.8678pt.
+File: initial_brb.png Graphic file (type png)
+<use initial_brb.png>
+Package pdftex.def Info: initial_brb.png  used on input line 468.
+(pdftex.def)             Requested size: 238.49121pt x 178.8678pt.
+<mse.png, id=58, 462.528pt x 346.896pt>
+File: mse.png Graphic file (type png)
+<use mse.png>
+Package pdftex.def Info: mse.png  used on input line 471.
+(pdftex.def)             Requested size: 238.49121pt x 178.8678pt.
+File: mse.png Graphic file (type png)
+<use mse.png>
+Package pdftex.def Info: mse.png  used on input line 471.
+(pdftex.def)             Requested size: 238.49121pt x 178.8678pt.
+<fit.png, id=59, 462.528pt x 346.896pt>
+File: fit.png Graphic file (type png)
+<use fit.png>
+Package pdftex.def Info: fit.png  used on input line 482.
+(pdftex.def)             Requested size: 238.49121pt x 178.8678pt.
+File: fit.png Graphic file (type png)
+<use fit.png>
+Package pdftex.def Info: fit.png  used on input line 482.
+(pdftex.def)             Requested size: 238.49121pt x 178.8678pt.
+File: notaglinelogo.png Graphic file (type png)
+<use notaglinelogo.png>
+Package pdftex.def Info: notaglinelogo.png  used on input line 483.
+(pdftex.def)             Requested size: 91.32pt x 23.1352pt.
+
+Overfull \hbox (505.12177pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (505.12177pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+[]
+ []
+
+[7 <d:/others/access/initial_brb.png> <d:/others/access/mse.png>]
+Overfull \hbox (6.42943pt too wide) in paragraph at lines 493--504
+ [][] 
+ []
+
+
+Underfull \vbox (badness 5832) has occurred while \output is active []
+
+File: notaglinelogo.png Graphic file (type png)
+<use notaglinelogo.png>
+Package pdftex.def Info: notaglinelogo.png  used on input line 598.
+(pdftex.def)             Requested size: 91.32pt x 23.1352pt.
+
+Overfull \hbox (505.12177pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (505.12177pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+[]
+ []
+
+[8 <d:/others/access/fit.png>]
+File: notaglinelogo.png Graphic file (type png)
+<use notaglinelogo.png>
+Package pdftex.def Info: notaglinelogo.png  used on input line 724.
+(pdftex.def)             Requested size: 91.32pt x 23.1352pt.
+
+Overfull \hbox (505.12177pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (505.12177pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+[]
+ []
+
+[9]
+<a1.png, id=79, 72.27pt x 90.3375pt>
+File: a1.png Graphic file (type png)
+<use a1.png>
+Package pdftex.def Info: a1.png  used on input line 769.
+(pdftex.def)             Requested size: 72.2709pt x 90.33864pt.
+File: a1.png Graphic file (type png)
+<use a1.png>
+Package pdftex.def Info: a1.png  used on input line 769.
+(pdftex.def)             Requested size: 72.2709pt x 90.33864pt.
+<a2.png, id=82, 72.27pt x 90.3375pt>
+File: a2.png Graphic file (type png)
+<use a2.png>
+Package pdftex.def Info: a2.png  used on input line 795.
+(pdftex.def)             Requested size: 72.2709pt x 90.33864pt.
+File: a2.png Graphic file (type png)
+<use a2.png>
+Package pdftex.def Info: a2.png  used on input line 795.
+(pdftex.def)             Requested size: 72.2709pt x 90.33864pt.
+
+Underfull \hbox (badness 2189) in paragraph at lines 795--813
+\T1/ptm/n/n/8 lottesville, in 2001 and the Ph.D. de-gree in
+ []
+
+<a3.png, id=85, 72.27pt x 90.3375pt>
+File: a3.png Graphic file (type png)
+<use a3.png>
+Package pdftex.def Info: a3.png  used on input line 815.
+(pdftex.def)             Requested size: 72.2709pt x 90.33864pt.
+File: a3.png Graphic file (type png)
+<use a3.png>
+Package pdftex.def Info: a3.png  used on input line 815.
+(pdftex.def)             Requested size: 72.2709pt x 90.33864pt.
+File: bullet.png Graphic file (type png)
+<use bullet.png>
+Package pdftex.def Info: bullet.png  used on input line 834.
+(pdftex.def)             Requested size: 5.0pt x 14.6871pt.
+File: notaglinelogo.png Graphic file (type png)
+<use notaglinelogo.png>
+Package pdftex.def Info: notaglinelogo.png  used on input line 836.
+(pdftex.def)             Requested size: 91.32pt x 23.1352pt.
+
+Overfull \hbox (505.12177pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (505.12177pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+[]
+ []
+
+[10 <d:/others/access/a1.png> <d:/others/access/a2.png> <d:/others/access/a3.png>] (d:/others/access/access.aux)
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 4173 strings out of 480608
+ 59915 string characters out of 5907536
+ 316806 words of memory out of 5000000
+ 19967 multiletter control sequences out of 15000+600000
+ 632203 words of font info for 154 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 38i,17n,53p,280b,494s stack positions out of 5000i,500n,10000p,200000b,80000s
+{d:/texlive/2020/texmf-dist/fonts/enc/dvips/base/8r.enc}<d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><d:/texlive/2020/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb><d:/texlive/2020/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb><d:/texlive/2020/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb><d:/texlive/2020/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb><d:/texlive/2020/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><d:/texlive/2020/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><d:/texlive/2020/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on d:/others/access/access.pdf (10 pages, 970020 bytes).
+PDF statistics:
+ 165 PDF objects out of 1000 (max. 8388607)
+ 103 compressed objects within 2 object streams
+ 0 named destinations out of 1000 (max. 500000)
+ 110 words of extra memory for PDF output out of 10000 (max. 10000000)
+

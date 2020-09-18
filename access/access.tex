@@ -46,9 +46,9 @@
     avoid the zero activation problem caused by the non-adjacent candidate values of the antecedent attributes.
     Then, according to the new activation weight calculation method, the corresponding distance-sensitive parameter is set for each attribute, and the weight parameter of each rule is cancelled.
     This simplifies the calculation of rule weights in the inference process and enables the partial derivatives of the parameters of the inference system to be easily constructed.
-    Finally, we use the momentum optimization gradient stochastic descent method to train the new brb system, which improves the training speed and accuracy compared to the ordinary gradient method.
-    Experiments on several public classification datasets are conducted to validate the proposed approach compared with some recent existing works.
-    The experimental results show that the proposed approach have a better performence in accuray and time consumption.
+    Finally, we use the momentum optimization gradient stochastic descent method to train the new BRB system, which improves the training speed and accuracy compared to the ordinary gradient method.
+    Experiments on several public classification datasets are conducted to validate the new BRB system trained by stochastic gradient descent with momentum (SGDM-BRB) compared with some recent works.
+    The experimental results show that the SGDM-BRB has higher accuray and faster training speed than conventional method.
 
 \end{abstract}
 
@@ -219,23 +219,28 @@ The activation weight of a single rule under conjunctive conditions is calculate
 \end{equation}
 
 
-\Figure[!t](topskip=0pt, botskip=0pt, midskip=0pt)[width=3.3 in]{Figure_1.png}
+\Figure[!t](topskip=0pt, botskip=0pt, midskip=0pt)[width=3.3 in]{fig_brb.eps}
 {Activation weight calculated by conventional methods\label{fig1}}
-\Figure[!t](topskip=0pt, botskip=0pt, midskip=0pt)[width=3.3 in]{Figure_2.png}
-{Activation weight calculated by Gaussian function methods\label{fig2}}
+\Figure[!t](topskip=0pt, botskip=0pt, midskip=0pt)[width=3.3 in]{fig_exp.eps}
+{Activation weight calculated by Gaussian function methods with distance-sensitive parameter $a$ set to $1.0$\label{fig2}}
+\Figure[!t](topskip=0pt, botskip=0pt, midskip=0pt)[width=3.3 in]{fig_exp_half.eps}
+{Activation weight calculated by Gaussian function methods with distance-sensitive parameter $a$ set to $0.5$\label{fig3}}
 Assuming a rule with two attributes x and y located at the $(0,0)$, the conventional method and Gaussian function method are used to calculate the activation weights.
-Set the reference candidate values on the x-attributes and y-attributes to be $[-4,-3,-2,-1,0,1,2,3,4]$,
-and set the distance-sensitive parameter $a$ of each attribute to be $0.5$.
+Set the reference candidate values on the x-attributes and y-attributes to be $[-4,-3,-2,-1,0,1,2,3,4]$.
 We ignore setting rule weights for both methods.
-The two activation weight distributions shown in Figure \ref{fig1} and Figure \ref{fig2} can be obtained.
+The activation weight distributions shown in Figure \ref{fig1},
+Figure \ref{fig2} with distance-sensitive parameter $a$ set to $1.0$ and
+Figure \ref{fig3} with distance-sensitive parameter $a$ set to $0.5$ can be obtained.
 
 According to Fig. \ref{fig1} we can know that if the input on a certain attribute is not in the neighborhood of the rule attribute,
-the activation weight of this rule is zero.
+the activation weight of this rule fluctuates around zero and gets zero when the attribute gets a candidate value.
 If the activation weight of all rules is zero, the inference cannot be performed.
-However, the input data in Fig. \ref{fig2} smoothly drops close to zero according to the distance from the rule and will not take a value of zero.
-It eliminates the impact of rule zero activation on system inference performance.
+However, the weight in Fig. \ref{fig2} and Fig. \ref{fig3} smoothly drops close to zero according to the distance from the rule and will not take a value of zero.
+Moreover, different distance-sensitive parameters enable the rule to adapt to the calculation of activation weights at different scales.
+It eliminates the impact of rule zero activation on system inference performance,
+improves the fitting performance of the inference system by adding the distance-sensitive parameters.
 
-Another benefit brought by the new rule antecedent attribute structure and rule activation weight calculation method is that
+Another benefit brought by the new rule structure and activation weight calculation method is that
 there is no need to adjust the activation weight of the rule by the attribute weight and rule weight.
 By adjusting the distance-sensitive parameters on each attribute of each rule, a good activation effect and activation granularity can be obtained.
 At the same time, due to the characteristics of the Gaussian function, the activation weight of each rule belongs to $(0, 1]$ without unnecessary normalization operations.
@@ -259,10 +264,10 @@ In this section, we will:
 
 
 \subsection{Partial derivative of the parameters of the brb system}
-The reasoning process of the improved BRB system is shown in Fig. \ref{fig3}.
+The reasoning process of the improved BRB system is shown in Fig. \ref{infsys}.
 According to the inference process and compound function chain derivation rules, we can obtain the partial derivatives of the output to the different parameters of the system.
 \Figure[!t](topskip=0pt, botskip=0pt, midskip=0pt)[width=3.3 in]{process.png}
-{Inference system operation process\label{fig3}}
+{Inference system operation process\label{infsys}}
 
 Since the model construction and experiment in this paper are carried out with complete data, the evidence reasoning process can be simplified.
 The belief distribution of the rule result attribute does not include uncertain information, that is, for any $k$-th rule:
@@ -278,7 +283,7 @@ Then the result of the $j$-th result attribute before normalization is expressed
 \begin{equation}
     \overline{\beta}_j = \prod_{i=1}^L(m_{j,i}+m_{D,i})-\prod_{i=1}^Lm_{D,i},\beta_j=\frac{\overline{\beta}_j}{\sum_{k=1}^N\overline{\beta}_k}
 \end{equation}
-Substituting $m_{j,i}=w_i\beta_{j,i}$ and $m_{D,i}=1-w_i$ into the $j$-th result attribute before normalization expression:
+Substitute $m_{j,i}=w_i\beta_{j,i}$ and $m_{D,i}=1-w_i$ into the $j$-th result attribute before normalization expression:
 \begin{equation}
     \overline{\beta}_j = \prod_{i=1}^L(w_i\beta_j^i+1-w_i)-\prod_{i=1}^L{(1-w_i)}
 \end{equation}
@@ -302,7 +307,8 @@ According to the activation weight expression of the $k$-th rule, we can obtain 
      & \frac{dw_k}{dx_l^k}=2(a_l^k)^2(x_l-x_l^k)e^{-\sum_{i=1}^{T_k}[a_i^k(x_i-x_i^k)]^2}  \\
      & \frac{dw_k}{da_l^k}=2a_l^kx_l^k(x_l-x_l^k)e^{-\sum_{i=1}^{T_k}[a_i^k(x_i-x_i^k)]^2}
 \end{align}
-Set the loss function expression of the final output result to $loss=Loss(\beta_1,\cdots,\beta_N)$. According to the compound function chain derivation rule, we can obtain the partial derivative of the final loss on each parameter.
+Set the loss function expression of the final output result to be $loss=Loss(\beta_1,\cdots,\beta_N)$.
+According to the compound function chain derivation rule, we can obtain the partial derivative of the final loss on each parameter.
 \begin{align}
      & \frac{dloss}{d\beta_j^k}=\sum_{i=1}^N\sum_{j=1}^N\frac{dloss}{d\beta_i}\frac{d\beta_i}{d\overline{\beta}_j}\frac{d\overline{\beta}_j}{d\beta_j^k}          \\
      & \frac{dloss}{dx_l^k}=\sum_{i=1}^N\sum_{j=1}^N\frac{dloss}{d\beta_i}\frac{d\beta_i}{d\overline{\beta}_j}\frac{d\overline{\beta}_j}{dw_k}\frac{dw_k}{dx_l^k} \\
@@ -351,6 +357,30 @@ we use the exponential normalization function to preprocess the result attribute
 \begin{equation}
     \beta_j^k=\frac{e^{\overline{\beta_j^k}}}{\sum_{i=1}^Ne^{\overline{\beta_i^k}}}(\sum_{i=1}^N\beta_j^k=1,\beta_j^k>0)
 \end{equation}
+The derivative of the corresponding parameter can be obtained through the formula:
+\begin{equation}
+    \frac{d\beta_j^k}{d\overline{\beta_t^k}}=
+    \left\{
+    \begin{aligned}
+        \beta_t^k\times(1-\beta_j^k),t=j \\
+        -\beta_t^k\times\beta_j^k,t\neq j
+    \end{aligned}
+    \right.
+\end{equation}
+The partial derivative of the unpreprocessed result attribute can be expressed as:
+\begin{equation}
+    \frac{dloss}{d\overline{\beta_j^k}}=\sum_{i=1}^N\sum_{t=1}^N\frac{dloss}{d\beta_i}\frac{d\beta_i}{d\overline{\beta}_t}\frac{d\overline{\beta}_t}{d\beta_t^k}\frac{d\beta_t^k}{d\overline{\beta_j^k}}
+\end{equation}
+Also according to the elementary function chain derivation rule, the derivative of this parameter is continuous in its domain,
+and the parameter is differentiable. Its gradient is expressed as:
+\begin{equation}
+    \nabla_{\overline{\beta}}loss=\left[\begin{matrix}
+            \frac{dloss}{d\overline{\beta_1^1}} & \cdots & \frac{dloss}{d\overline{\beta_N^1}} \\
+            \vdots                              & \ddots & \vdots                              \\
+            \frac{dloss}{d\overline{\beta_1^L}} & \cdots & \frac{dloss}{d\overline{\beta_N^L}} \\
+        \end{matrix}\right]
+\end{equation}
+
 
 \subsection{Stochastic gradient descent with momentum optimization}
 The optimization process of using the gradient descent method to update the parameters of the inference model is given by the following equation:
@@ -359,11 +389,12 @@ The optimization process of using the gradient descent method to update the para
 \end{equation}
 
 The gradient information is given according to the loss function of the final output result, and the learning rate $\mu$ is the updated step length information that needs to be set.
-Chang\cite{a11} and Wu\cite{a13} used dichotomy in the gradient training process to iteratively find the optimal step size in the constraint space and added perturbation parameters when the gradient is zero to avoid the training process stagnation.
-For the application of new rule structures, activation methods, and preprocessing steps, the gradient training update step size is no longer limited.
-We use momentum-optimized stochastic gradient descent method for faster training.
+Chang and Zhang\cite{a11} and Wu \textit{et al}.\cite{a13} used dichotomy in the gradient training process to iteratively find the optimal step size in the constraint space and
+added perturbation parameters when the gradient is zero to avoid the training process stagnation.
+For the application of new rule structures, activation methods and preprocessing steps, the gradient training update step size is no longer limited.
+We propose the momentum-optimized stochastic gradient descent method for faster training.
 
-The stochastic gradient descent method is an iterative optimization method when the objective function is differentiable,
+The stochastic gradient descent method is an iterative optimization method when the objective function is differentiable.
 It used a random subset of the training data to calculate the gradient value as the estimated value of the entire training data gradient,
 which reduces the computational burden in high-dimensional optimization problems.
 
@@ -372,50 +403,49 @@ and the model parameters are updated according to its gradient:
 \begin{equation}
     loss=\frac{1}{n}\sum_i^nLoss(\beta_1^i,...,\beta_N^i)
 \end{equation}
-We randomly selected a single sample as the estimated value of the average value of the loss function output on all samples to update the model parameters:
+We randomly select a single sample as the estimated value of the average value of the loss function output on all samples to update the model parameters:
 \begin{equation}
     loss=Loss(\beta_1^r,...,\beta_N^r)
 \end{equation}
-The obvious disadvantage of the stochastic gradient descent method is that its update direction is completely dependent on the gradient of the current sample and is very unstable. The momentum method is used to solve this problem.
-The momentum method improves the stability and speed of the training method by retaining a certain degree of historical gradient information and combining it with the current sample gradient.
+Since the update direction completely depends on the gradient of the current sample, the stochastic gradient descent method is not stable.
+The momentum method improves the stability and speed by retaining a certain degree of historical gradient information and combining it with the current sample gradient.
 It also enhances the ability to get rid of local optimal solutions.
 
 The momentum method uses a weighted fusion method to synthesize the historical gradient information and the current sample gradient,
-and use it as an update parameter for this round of training:
+and use it as an update parameter for each round of training:
 \begin{equation}
     v_t=\nu v_{t-1}+\mu\nabla_{loss}M,M=M-v_t
 \end{equation}
 
-Initial $v_0$ is set to zero and set $\nu$ to represent the ratio of retaining historical gradient information.
-The same direction of the current gradient and the historical gradient will increase the speed of parameter training in this gradient direction,
+The initial value of $v_0$ is set to zero and $\nu$ represent the ratio of retaining historical gradient information.
+The same direction of the current gradient and the historical gradient will increase the speed of parameter training in this gradient direction.
 The different directions of the current gradient and the historical gradient will inhibit the current gradient from causing parameter training oscillations.
 
 \section{experimental results}
 In this section, we first conduct a comparison test of the training performance of the gradient method under different momentum parameters,
-and then conduct a comparison test of the performance of the BRB system and conventional machine learning algorithms on public data sets.
-Finally summarize all the experimental results.
+and then we compare the performance of the SGDM-BRB system under different parameter and normalized settings through the oil leakage detection experiment.
+Finally we conduct a comparison test of the SGDM-BRB system and conventional machine learning algorithms on several public datasets and summarize all the experimental results.
 
 \subsection{experimental enviroment}
-The experiment runs on a Ubuntu 20.04 system equipped with Intel$\copyright$ Core$\text{TM}$ i5 8500@3.0GHz CPU, 16GB RAM and GeForce GTX 1060 Graphics.
+The experiment runs on a Ubuntu 20.04 system equipped with Intel$^{\copyright}$ Core$^{\text{TM}}$ i5 8500@3.0GHz CPU, 16GB RAM and GeForce GTX 1060 Graphics.
 Use TensorFlow 2.0 to build the evidential reasoning framework of the BRB system and use Scikit-learn machine learning library to collect and clean datasets.
 
 \subsection{performance of gradient descent method with different momentum parameters}
-Liu\cite{a16} proved that the confidence rule library can approximate any function.
+Liu \textit{et al}.\cite{a16} proved that the confidence rule library can approximate any function.
 In this section, a nonlinear multi-extreme function is introduced to compare the training performance of the stochastic gradient descent method under different momentum parameters.
 The nonlinear multi-extreme function is as follows:
 \begin{equation}
     f(x)=e^{-(x-2)^2}+0.5e^{-(x+2)^2},x\in[-5,5]
 \end{equation}
 
-In the defined domain, 1000 pieces of data are uniformly selected as the fitting data set and the mean square error is used as the loss function.
+In the defined domain, $1000$ pieces of data are uniformly selected as the fitting data set and the mean square error is used as the loss function.
 According to each extreme point on the function curve, the rule base result attribute evaluation level and corresponding utility value can be set:
 $$\{D_1,D_2,D_3,D_4,D_5\}=\{-0.5,0,0.5,1,1.5\}$$
 Select the five extreme points on the function curve to convert to the corresponding rule structure to build a belief rule library.
 Set the default distance-sensitive parameter of each rule to $1.0$.
-The initial rule information is shown in Table \ref{tab1}.
-We can get the initial untrained brb system output Figure \ref{fig4}
-Set the number of training samples in each batch to $128$ and the learning rate $\mu$ is $0.001$ for $1000$ rounds of training.
-Set the momentum optimization parameters $\nu$ to 0.0 (non-momentum optimization), $0.5$, $0.9$ and $0.99$ to compare their fitting performance.
+The initial rule information is shown in Table \ref{tab1}. Figure \ref{fig4} shows the untrained brb system output.
+Set the number of training samples in each batch to be $128$ and the learning rate $\mu$ to be $0.001$ for $1000$ rounds of training.
+Set the momentum optimization parameters $\nu$ to be 0.0 (non momentum optimization), $0.5$, $0.9$ and $0.99$ to compare their fitting performance.
 
 \begin{table}
     \caption{Initial rule information}
@@ -435,26 +465,26 @@ Set the momentum optimization parameters $\nu$ to 0.0 (non-momentum optimization
 \end{table}
 
 \Figure[!t](topskip=0pt, botskip=0pt, midskip=0pt)[width=3.3 in]{initial_brb.png}
-{untrained BRB system output\label{fig4}}
+{Untrained BRB system output\label{fig4}}
 
 \Figure[!t](topskip=0pt, botskip=0pt, midskip=0pt)[width=3.3 in]{mse.png}
-{mean square error loss under different momentum parameters\label{fig5}}
+{Mean square error loss under different momentum parameters\label{fig5}}
 Figure \ref{fig5} shows the mean square error loss of each batch under different momentum parameters.
 Through the decreasing curve of the mean square error loss function,
-we can find that smaller momentum optimization parameters can not significantly improve the model performance
-The model with the momentum parameter value of 0.5 has never been below 0.001 during the training process.
-The value of the mean square error loss function of the model with the momentum parameter value of 0.9 and 0.99 dropped rapidly to $1\times10^{-4}$,
-and reached the level of $1\times10^{-5}$ at the end of the training.
+we can find that smaller momentum optimization parameters can significantly improve the model performance.
+The loss of the model with the momentum parameter set to $0.5$ has never been lower than 0.001 during the training process.
+The loss of the model with the momentum parameter set to $0.9$ and $0.99$ dropped rapidly to $1\times10^{-4}$,
+and reached the level of $1\times10^{-5}$ when the training is over.
 
-Figure \ref{fig6} clearly shows that higher momentum parameter values can obtain better fitting performance,
+Figure \ref{fig6} shows that higher momentum parameter values can obtain better fitting performance,
 greatly reducing the distance between the fitted curve and the original curve.
 \Figure[!t](topskip=0pt, botskip=0pt, midskip=0pt)[width=3.3 in]{fit.png}
-{fitting performance of different momentum parameter models\label{fig6}}
+{Fitting performance of different momentum parameter models\label{fig6}}
 
-Table \ref{tab2} records the information of each rule in the model with the momentum parameter value of 0.99 after the training is completed.
-It can be found that all the distance-sensitive parameters have become smaller after training, that is, the activation area of each rule has increased,
-and the result distribution is significantly increased in their respective utility levels, while other levels have decreased significantly.
-The antecedent attribute information of each rule, namely the value of x, is only slightly adjusted before and after training.
+Table \ref{tab2} records the information of each rule in the model with the momentum parameter set to $0.99$ when the training is completed.
+The distance-sensitive parameters have become smaller after training, that is, the activation area of each rule has increased.
+The result attribute in their respective utility levels is significantly increased , while other levels have decreased.
+The antecedent attribute information of each rule is only slightly adjusted after training.
 
 \begin{table}
     \caption{Trained rule information}
@@ -473,8 +503,8 @@ The antecedent attribute information of each rule, namely the value of x, is onl
     \end{tabular}
 \end{table}
 
-We compare the performance of the final trained BRB system with the previous conventional BRB system.
-In Table \ref{tab3}, we compare the final mean square error results and training time of these models.
+We compare the performance of the SGDM-BRB with several conventional BRB system in Table \ref{tab3},
+include the final mean square error results and training time of these models.
 It is obvious that the gradient method after the momentum optimization has excellent performance in improving the inference accuracy of the BRB system,
 but the training model without the effective momentum parameter optimization cannot reach the loss level of the conventional method.
 And the running speed of gradient method is much lower than the conventional BRB system optimized by intelligent algorithm and other gradient descent algorithm.
@@ -538,6 +568,9 @@ And the running speed of gradient method is much lower than the conventional BRB
         \hline
     \end{tabular}
 \end{table*}
+
+\subsection{oil pipeline leak detection of BRB system with different settings}
+In this section,
 
 \subsection{Experiment on public classification datasets}
 In this section, we select 7 UCI public classification datasets that are widely used to test the performance of various classifiers to evaluate the inference performance of our BRB system.
