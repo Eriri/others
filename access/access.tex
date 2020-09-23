@@ -127,7 +127,7 @@ the rule antecedent attribute parameter and the rule weight parameter. The speci
 \end{equation}
 
 The equal sign is obtained when the rule information is complete. Each rule has its rule weight $\theta_k$, antecedent attribute weight $\delta_{1},\delta_{2},\cdots,\delta_{T_k}$.
-$A_i^k$ represents the reference value selected by the rule on the $i$-th attribute and $\beta_i^k$ represents the belief degree of the rule in the $i$-th result attribute.
+$A_i^k$ represents the reference value selected by the rule on the $i$-th attribute and $\beta_i^k$ represents the belief degree of the rule in the $i$-th consequent attribute.
 On this basis, the extended belief rule base system introduces a belief distribution structure to the antecedent attributes, and its rule form is expressed as follows:
 \begin{equation}
     \begin{split}
@@ -146,7 +146,7 @@ For the input data $X^k=(x_1^k,\cdots,x_T^k)$, convert the $i$-th attribute para
     \end{split}
 \end{equation}
 According to the same conversion method, the values of original data on other attributes can be converted into the corresponding berlief distribution form.
-We can also obtain the belief distribution form of the rule result attribute according to this method.
+We can also obtain the belief distribution form of the rule consequent attribute according to this method.
 
 \subsection{evidence reasoning approach based on belief rule base}
 The calculation and synthesis of activation weights for each rule in the rule base is the core part of the inference system of the belief rule base.
@@ -178,11 +178,11 @@ First, the belief distribution of the rule is transformed into the corresponding
      & \widetilde{m}_{D,k}=w_k(1-\sum_{j=1}^N\beta_j^k)
 \end{align}
 
-$m_{j,k}$ represents the credibility of the $k$ rule on the $j$ result attribute,
-where $\overline{m}_{D,k}$ represents the credibility that the $k$-th rule is not assigned to any result attribute,
-and $\widetilde{m}_{D,k}$  represents the credibility of the missing reference attribute of the result of the $k$-th rule.
+$m_{j,k}$ represents the credibility of the $k$ rule on the $j$ consequent attribute,
+where $\overline{m}_{D,k}$ represents the credibility that the $k$-th rule is not assigned to any consequent attribute,
+and $\widetilde{m}_{D,k}$  represents the credibility of the missing reference attribute of the $k$-th rule.
 The total uncertainty credibility is given by $m_{D,k}=\overline{m}_{D,k}+\widetilde{m}_{D,k}$.
-Synthesize the credibility information of all rules and obtain the final confidence result of each result attribute:
+Synthesize the credibility information of all rules and obtain the final belief result of each consequent attribute:
 \begin{align}
      & m_j=k[\prod_{i=1}^L(m_{j,i}+m_{D,i})-\prod_{i=1}^Lm_{D,i}],j=1,\cdots,N       \\
      & \overline{m}_D=n[\prod_{i=1}^L\overline{m}_{D,i}]                             \\
@@ -233,10 +233,10 @@ The activation weight distributions shown in Figure \ref{fig1},
 Figure \ref{fig2} with distance-sensitive parameter $a$ set to $1.0$ and
 Figure \ref{fig3} with distance-sensitive parameter $a$ set to $0.5$ can be obtained.
 
-According to Fig. \ref{fig1} we can know that if the input on a certain attribute is not in the neighborhood of the rule attribute,
+According to Figure \ref{fig1} we can know that if the input on a certain attribute is not in the neighborhood of the rule attribute,
 the activation weight of this rule fluctuates around zero and gets zero when the attribute gets a reference value.
 If the activation weight of all rules is zero, the inference cannot be performed.
-However, the weight in Fig. \ref{fig2} and Fig. \ref{fig3} smoothly drops close to zero according to the distance from the rule and will not take a value of zero.
+However, the weight in Figure \ref{fig2} and Figure \ref{fig3} smoothly drops close to zero according to the distance from the rule and will not take a value of zero.
 Moreover, different distance-sensitive parameters enable the rule to adapt to the calculation of activation weights at different scales.
 It eliminates the impact of rule zero activation on system inference performance,
 improves the fitting performance of the inference system by adding the distance-sensitive parameters.
@@ -265,30 +265,30 @@ In this section, we will:
 
 
 \subsection{Partial derivative of the parameters of the brb system}
-The reasoning process of the improved BRB system is shown in Fig. \ref{infsys}.
+The reasoning process of the improved BRB system is shown in Figure \ref{infsys}.
 According to the inference process and compound function chain derivation rules, we can obtain the partial derivatives of the output to the different parameters of the system.
-\Figure[!t](topskip=0pt, botskip=0pt, midskip=0pt)[width=3.3 in]{process.png}
+\Figure[!t](topskip=0pt, botskip=0pt, midskip=0pt)[width=3.3 in]{process1.png}
 {Inference system operation process\label{infsys}}
 
-Since the model construction and experiment in this paper are carried out with complete data, the evidence reasoning process can be simplified.
-The belief distribution of the rule result attribute does not include uncertain information, that is, for any $k$-th rule:
+Since the model construction and experiment in this paper are carried out with complete data and
+the rule consequent attribute does not include uncertain information, for any $k$-th rule:
 \begin{align}
      & \sum_{i=1}^N\beta_{ik}=1(k=1,\cdots,L)           \\
      & m_{D,k}=\overline{m}_{D,k},\widetilde{m}_{D,k}=0
 \end{align}
-In the case of completeness, the $j$-th result attribute is expressed as:
+In the case of completeness, the $j$-th consequent attribute is expressed as:
 \begin{equation}
     \beta_j=\frac{\prod_{i=1}^L(m_{j,i}+m_{D,i})-\prod_{i=1}^Lm_{D,i}}{\sum_{t=1}^N\prod_{i=1}^L(m_{t,i}+m_{D,i})-N\times\prod_{i=1}^Lm_{D,i}}
 \end{equation}
-Then the result of the $j$-th result attribute before normalization is expressed as:
+Then the result of the $j$-th consequent attribute before normalization is expressed as:
 \begin{equation}
     \overline{\beta}_j = \prod_{i=1}^L(m_{j,i}+m_{D,i})-\prod_{i=1}^Lm_{D,i},\beta_j=\frac{\overline{\beta}_j}{\sum_{k=1}^N\overline{\beta}_k}
 \end{equation}
-Substitute $m_{j,i}=w_i\beta_{j,i}$ and $m_{D,i}=1-w_i$ into the $j$-th result attribute before normalization expression:
+Substitute $m_{j,i}=w_i\beta_{j,i}$ and $m_{D,i}=1-w_i$ into the $j$-th consequent attribute before normalization expression:
 \begin{equation}
     \overline{\beta}_j = \prod_{i=1}^L(w_i\beta_j^i+1-w_i)-\prod_{i=1}^L{(1-w_i)}
 \end{equation}
-We can get the partial derivative of the $i$-th result attribute $\beta_i$ to the $j$-th unnormalized result attribute $\overline{\beta}_j$ as:
+We can get the partial derivative of the $i$-th consequent attribute $\beta_i$ to the $j$-th unnormalized consequent attribute $\overline{\beta}_j$ as:
 \begin{equation}
     \frac{d\beta_i}{d\overline{\beta}_j}=
     \left\{
@@ -298,7 +298,7 @@ We can get the partial derivative of the $i$-th result attribute $\beta_i$ to th
     \end{aligned}
     \right.
 \end{equation}
-Similarly, the partial derivative of the $j$-th unnormalized result attribute $\overline{\beta}_j$ to the activation weight of the $k$-th rule and the $j$-th result attribute of $k$-th rule can be obtained as:
+Similarly, the partial derivative of the $j$-th unnormalized consequent attribute $\overline{\beta}_j$ to the activation weight of the $k$-th rule and the $j$-th consequent attribute of $k$-th rule can be obtained as:
 \begin{align}
      & \frac{d\overline{\beta}_j}{dw_k}=(\beta_j^k-1)\prod_{i=1,i\neq k}^L(w_i\beta_j^i+1-w_i)+\prod_{i=1,i\neq k}^L(1-w_i) \\
      & \frac{d\overline{\beta}_j}{d\beta_j^k}=w_k\prod_{i=1,i\neq k}^L(w_i\beta_j^i+1-w_i)
@@ -308,7 +308,7 @@ According to the activation weight expression of the $k$-th rule, we can obtain 
      & \frac{dw_k}{dx_l^k}=2(a_l^k)^2(x_l-x_l^k)e^{-\sum_{i=1}^{T_k}[a_i^k(x_i-x_i^k)]^2}  \\
      & \frac{dw_k}{da_l^k}=2a_l^kx_l^k(x_l-x_l^k)e^{-\sum_{i=1}^{T_k}[a_i^k(x_i-x_i^k)]^2}
 \end{align}
-Set the loss function expression of the final output result to be $loss=Loss(\beta_1,\cdots,\beta_N)$.
+Set the loss function expression of the final output to be $loss=Loss(\beta_1,\cdots,\beta_N)$.
 According to the compound function chain derivation rule, we can obtain the partial derivative of the final loss on each parameter.
 \begin{align}
      & \frac{dloss}{d\beta_j^k}=\sum_{i=1}^N\sum_{j=1}^N\frac{dloss}{d\beta_i}\frac{d\beta_i}{d\overline{\beta}_j}\frac{d\overline{\beta}_j}{d\beta_j^k}          \\
@@ -323,7 +323,7 @@ Since any of the partial derivatives above are only obtained by elementary funct
 the partial derivatives of any parameter are continuous in its domain.
 The existence and continuous partial derivative of any parameter can prove that the whole inference system is differentiable.
 
-When the appropriate loss function is selected, the final result loss is differentiable to all the parameters of the model, which provides conditions for using the gradient method to optimize the model parameters.
+When the appropriate loss function is selected, the final output loss is differentiable to all the parameters of the model, which provides conditions for using the gradient method to optimize the model parameters.
 The gradient of the loss result on the parameters of each part of the model can be obtained. The gradient of the loss function on all the rule antecedent attribute parameters is:
 \begin{equation}
     \nabla_{x}loss=\left[\begin{matrix}
@@ -340,7 +340,7 @@ The gradient of the loss function on the distance-sensitive parameters of all ru
             \frac{dloss}{da_1^L} & \cdots & \frac{dloss}{da_{T_k}^L}
         \end{matrix}\right]
 \end{equation}
-The gradient of the loss function on all rule result attribute parameters is:
+The gradient of the loss function on all rule consequent attribute parameters is:
 \begin{equation}
     \nabla_{\beta}loss=\left[\begin{matrix}
             \frac{dloss}{d\beta_{1,1}} & \cdots & \frac{dloss}{d\beta_{N,1}} \\
@@ -353,8 +353,8 @@ According to the belief distribution output by the inference system and the loss
 the gradient of each part of the parameters can be optimized by updating the parameters along the negative gradient direction.
 
 \subsection{Exponential normalization function preprocessing}
-In the training process, in order to meet the restriction that the sum of the result attributes of each rule is one and each result attribute is non-negative,
-we use the exponential normalization function to preprocess the result attribute parameters during the training process:
+In the training process, in order to meet the restriction that the sum of the consequent attributes of each rule is one and each result attribute is non-negative,
+we use the exponential normalization function to preprocess the consequent attribute parameters during the training process:
 \begin{equation}
     \beta_j^k=\frac{e^{\overline{\beta_j^k}}}{\sum_{i=1}^Ne^{\overline{\beta_i^k}}}(\sum_{i=1}^N\beta_j^k=1,\beta_j^k>0)
 \end{equation}
@@ -368,7 +368,7 @@ The derivative of the corresponding parameter can be obtained through the formul
     \end{aligned}
     \right.
 \end{equation}
-The partial derivative of the unpreprocessed result attribute can be expressed as:
+The partial derivative of the unpreprocessed consequent attribute can be expressed as:
 \begin{equation}
     \frac{dloss}{d\overline{\beta_j^k}}=\sum_{i=1}^N\sum_{t=1}^N\frac{dloss}{d\beta_i}\frac{d\beta_i}{d\overline{\beta}_t}\frac{d\overline{\beta}_t}{d\beta_t^k}\frac{d\beta_t^k}{d\overline{\beta_j^k}}
 \end{equation}
@@ -389,7 +389,7 @@ The optimization process of using the gradient descent method to update the para
     M_{new}(x,a,\beta)=M_{old}-\mu\nabla_{M_{old}}loss
 \end{equation}
 
-The gradient information is given according to the loss function of the final output result, and the learning rate $\mu$ is the updated step length information that needs to be set.
+The gradient information is given according to the loss function of the final output, and the learning rate $\mu$ is the updated step length information that needs to be set.
 Chang and Zhang\cite{a11} and Wu \textit{et al}.\cite{a13} used dichotomy in the gradient training process to iteratively find the optimal step size in the constraint space and
 added perturbation parameters when the gradient is zero to avoid the training process stagnation.
 For the application of new rule structures, activation methods and preprocessing steps, the gradient training update step size is no longer limited.
@@ -440,7 +440,7 @@ The nonlinear multi-extreme function is as follows:
 \end{equation}
 
 In the defined domain, $1000$ pieces of data are uniformly selected as the fitting data set and the mean square error is used as the loss function.
-According to each extreme point on the function curve, the rule base result attribute evaluation level and corresponding utility value can be set:
+According to each extreme point on the function curve, the rule base consequent attribute evaluation level and corresponding utility value can be set:
 $$\{D_1,D_2,D_3,D_4,D_5\}=\{-0.5,0,0.5,1,1.5\}$$
 Select the five extreme points on the function curve to convert to the corresponding rule structure to build a belief rule library.
 Set the default distance-sensitive parameter of each rule to $1.0$.
@@ -448,22 +448,23 @@ The initial rule information is shown in Table \ref{tab1}. Figure \ref{fig4} sho
 Set the number of training samples in each batch to be $128$ and the learning rate $\mu$ to be $0.001$ for $1000$ rounds of training.
 Set the momentum optimization parameters $\nu$ to be 0.0 (non momentum optimization), $0.5$, $0.9$ and $0.99$ to compare their fitting performance.
 
-\begin{table}
+\begin{table*}
     \caption{Initial rule information}
     \centering
+    \normalsize
     \label{tab1}
-    \begin{tabular}{cccc}
+    \begin{tabular}{cccccccc}
         \hline
-        rule & antecedent x & sensitive a & result consequent     \\
+        No. & Antecedent attribute $x$ & Distance-sensitive $a$ & \multicolumn{5}{c}{Consequent attributes $\overline{\beta}$}                         \\
         \hline
-        $1$  & $-5$         & $1$         & $(-1, 1, -1, -1, -1)$ \\
-        $2$  & $-2$         & $1$         & $(-1, -1, 1, -1, -1)$ \\
-        $3$  & $0$          & $1$         & $(-1, 1, -1, -1, -1)$ \\
-        $4$  & $2$          & $1$         & $(-1, -1, -1, 1, -1)$ \\
-        $5$  & $5$          & $1$         & $(-1, 1, -1, -1, -1)$ \\
+        $1$ & $-5$                     & $1$                    & (-1,                                                         & 1,  & -1, & -1, & -1) \\
+        $2$ & $-2$                     & $1$                    & (-1,                                                         & -1, & 1,  & -1, & -1) \\
+        $3$ & $0$                      & $1$                    & (-1,                                                         & 1,  & -1, & -1, & -1) \\
+        $4$ & $2$                      & $1$                    & (-1,                                                         & -1, & -1, & 1,  & -1) \\
+        $5$ & $5$                      & $1$                    & (-1,                                                         & 1,  & -1, & -1, & -1) \\
         \hline
     \end{tabular}
-\end{table}
+\end{table*}
 
 \Figure[!t](topskip=0pt, botskip=0pt, midskip=0pt)[width=3.3 in]{initial_brb.png}
 {Untrained BRB system output\label{fig4}}
@@ -484,25 +485,26 @@ greatly reducing the distance between the fitted curve and the original curve.
 
 Table \ref{tab2} records the information of each rule in the model with the momentum parameter set to $0.99$ when the training is completed.
 The distance-sensitive parameters have become smaller after training, that is, the activation area of each rule has increased.
-The result attribute in their respective utility levels is significantly increased , while other levels have decreased.
+The consequent attribute in their respective utility levels is significantly increased , while other levels have decreased.
 The antecedent attribute information of each rule is only slightly adjusted after training.
 
-\begin{table}
+\begin{table*}
     \caption{Trained rule information}
     \centering
+    \normalsize
     \label{tab2}
-    \begin{tabular}{cccc}
+    \begin{tabular}{cccccccc}
         \hline
-        rule & antecedent x & sensitive a & result consequent                       \\
+        No. & Antecedent attribute $x$ & Distance-sensitive $a$ & \multicolumn{5}{c}{Consequent attributes $\overline{\beta}$}                                       \\
         \hline
-        $1$  & $-4.5$       & $0.20$      & $(0.10, 1.5, -1.8, -1.7, -1.7)$         \\
-        $2$  & $-2.0$       & $0.44$      & $(-1.3 , -1.5 ,  0.56  , -0.46, -0.47)$ \\
-        $3$  & $0.080$      & $0.50$      & $(-0.15,  1.4 , -1.5 , -1.5 , -1.6   )$ \\
-        $4$  & $2.0$        & $0.49$      & $(-1.8 , -2.0 , -1.9 ,  1.5 ,  0.59)$   \\
-        $5$  & $4.7$        & $0.21$      & $(0.12,  1.5 , -1.8 , -1.7, -1.7)$      \\
+        $1$ & $-4.55$                  & $0.207$                & (0.101,                                                      & 1.58,  & -1.83, & -1.73,  & -1.74)  \\
+        $2$ & $-2.01$                  & $0.446$                & (-1.35,                                                      & -1.54, & 0.562, & -0.461, & -0.478) \\
+        $3$ & $0.0805$                 & $0.509$                & (-0.154,                                                     & 1.48,  & -1.55, & -1.52,  & -1.61)  \\
+        $4$ & $2.06$                   & $0.498$                & (-1.81,                                                      & -2.06, & -1.97, & 1.54,   & 0.597)  \\
+        $5$ & $4.75$                   & $0.214$                & (0.123,                                                      & 1.55,  & -1.83, & -1.74,  & -1.78)  \\
         \hline
     \end{tabular}
-\end{table}
+\end{table*}
 
 We compare the performance of the SGDM-BRB with several conventional BRB system in Table \ref{tab3},
 include the final mean square error results and training time of these models.
@@ -511,21 +513,21 @@ but the training model without the effective momentum parameter optimization can
 And the running speed of gradient method is much lower than the conventional BRB system optimized by intelligent algorithm and other gradient descent algorithm.
 
 \begin{table}
-    \caption{Accuracy and training time using different optimization algorithms}
+    \caption{Mean square error and training time using different optimization algorithms}
     \centering
     \label{tab3}
-    \begin{tabular}{ccc}
+    \begin{tabular}{cccc}
         \hline
-        method         & mean square error     & running time \\
+        Year       & Method             & Mean square error     & Running time \\
         \hline
-        fmincon        & $5.16\times10^{-5}$   & 496.17       \\
-        Chen-BRB       & $6.3228\times10^{-5}$ & -            \\
-        Wang-BRB       & $3.9284\times10^{-5}$ & 386.63       \\
-        Li-BRB         & $3.3322\times10^{-5}$ & 357          \\
-        SGD-BRB        & $5.90\times10^{-3}$   & 11.60        \\
-        SGDM-BRB(0.5)  & $3.50\times10^{-3}$   & 10.82        \\
-        SGDM-BRB(0.9)  & $4.01\times10^{-5}$   & 11.09        \\
-        SGDM-BRB(0.99) & $7.40\times10^{-6}$   & 13.42        \\
+        2007       & fmincon\cite{a10}  & $5.16\times10^{-5}$   & 496.17       \\
+        2007       & Chen-BRB\cite{a13} & $6.3228\times10^{-5}$ & -            \\
+        2015       & Wang-BRB\cite{a15} & $3.9284\times10^{-5}$ & 386.63       \\
+        2018       & Li-BRB\cite{a36}   & $3.3322\times10^{-5}$ & 357          \\
+        This study & SGD-BRB            & $5.90\times10^{-3}$   & 11.60        \\
+        This study & SGDM-BRB(0.5)      & $3.50\times10^{-3}$   & 10.82        \\
+        This study & SGDM-BRB(0.9)      & $4.01\times10^{-5}$   & 11.09        \\
+        This study & SGDM-BRB(0.99)     & $7.40\times10^{-6}$   & 13.42        \\
         \hline
     \end{tabular}
 \end{table}
@@ -540,7 +542,7 @@ The flow difference and pressure difference are used as independent variables, a
 In order to verify that the model with distance-sensitive parameters for each rule have better performance than the model with uniform distance-sensitive parameters for each attribute,
 we compare the mean square errors of these two parameter settings and other conventional BRB system optimization methods.
 
-\subsubsection{BRB system construction}
+\subsubsection{basic settings and optimization}
 We randomly select $500$ samples as the training set.
 The distance-sensitive of flow difference and pressure difference are set to be $1.0$ and $0.01$.
 There are 5 reference levels for leak size, including zero (Z), very small (VS), medium (M), high (H) and very high (VH).
@@ -550,7 +552,7 @@ The reference values are:
 \end{equation}
 Randomly select $16$ samples from the training set and convert them into the belief rule form and build the corresponding rule base.
 For flow difference and pressure difference information, convert them into antecedent attribute.
-For the leak size, set the result attribute according to the distance from each reference value.
+For the leak size, set the consequent attribute to be the negative value of the distance from leak size to corresponding reference value.
 The corresponding rule for a sample with flow difference $fd$, pressure difference $pd$ and leak size $ls$ is expressed as:
 \begin{equation}
     \begin{split}
@@ -563,21 +565,66 @@ The initial belief rule base inference results for training set are shown in Fig
 \Figure[!t](topskip=0pt, botskip=0pt, midskip=0pt)[width=3.3 in]{oil_compare_before.eps}
 {Comparison of the initial model output and the leak size of the training set\label{oil_compare_before}}
 
-\subsubsection{BRB system optimization and comparison}
-In the training process, the mean square error is used as the loss function, each batch uses $64$ samples, and a total of $5000$ rounds of training.
+In the training process, the mean square error is used as the loss function, each batch uses $32$ samples, and a total of $1000$ rounds of training.
 A model with distance-sensitive parameter for each rule has a total of 144(16$\times$(2+2+5)) parameters to be trained,
 and a model with uniform distance-sensitive parameters for each attribute has a total of 114(16$\times$(2+5)+2) parameters to be trained.
-The output result of the model with distance-sensitive parameters for each rule after training is shown in Figure \ref{oil_compare_after}.
-
+The output of the model with distance-sensitive parameters for each rule after training is shown in Figure \ref{oil_compare_after}.
 \Figure[!t](topskip=0pt, botskip=0pt, midskip=0pt)[width=3.3 in]{oil_compare_after.eps}
-{Comparison of the trained model output and the leak size of the training set\label{oil_compare_before}}
+{Comparison of the trained model output and the leak size on all samples\label{oil_compare_after}}
+\subsubsection{result and comparison}
+All of $2008$ samples and estimated output are shown in Figure \ref{oil_compare}, it can be observed that the results of the two are roughly the same,
+especially during the time when the leak occurred.
+Note that there is a large leak estimation error around the $1000$th sample,
+which may be caused by noisy data.
+\Figure[!t](topskip=0pt, botskip=0pt, midskip=0pt)[width=7 in]{oil_compare.eps}
+{Estimated output and samples\label{oil_compare}}
+\Figure[!t](topskip=0pt, botskip=0pt, midskip=0pt)[width=7 in]{oil_ae.eps}
+{Absolute error between estimated output and samples\label{oil_ae}}
 
+
+To further verify the validity of SGDM-BRB, we conducted 20 independent experiments on two different distance-sensitive parameters settings methods.
+Tabel \ref{oil_tab} list the comparison of results of some existing works and two proposed methods,
+where the mean square error and mean absolute error are obtained from $2008$ samples.
+
+For the method of using uniform distance-sensitive parameters for each attribute, the mean absolute error and the mean square error are both ranks in the top four.
+For the method of setting distance-sensitive parameters for each rule respectively, the mean absolute error and the mean square error are both ranks in the top two.
+It only lags behind JOPS in the mean absolute error, and only lags behind Bi-level BRB model in the mean square error.
+
+Since the new method simplifies the structure of using reference values to construct the belief distribution of the antecedent attributes,
+it reduces a large number of parameters compared with the conventional BRB model.
+If a uniform distance-sensitive parameter is used for each attribute,
+the number of parameters can still be greatly reduced without significantly reducing the inference accuracy.
+However, compared with other newer methods, our method still needs to train a certain number of rule parameters to improve the inference accuracy and cannot achieve the ultimate parameter reduction.
+
+In summary, the comparison of experimental results show that the proposed method  achieves higher inference accuracy,
+and a large number of parameters are reduced through simplification based on the traditional rule structure.
+
+\begin{table*}
+    \caption{Comparison wih present researches}
+    \centering
+    \label{oil_tab}
+    \begin{tabular}{cccccc}
+        \hline
+        Year       & Method                                             & Size(training/test) & Parameters & Mean absolute error & Mean square error \\
+        \hline
+        2007       & Local training\cite{a30}                           & 500/2008            & 353        & 0.2223              & 0.4049            \\
+        2011       & Adaptive learning\cite{a31}                        & 500/2008            & 353        & 0.2064              & 0.3990            \\
+        2013       & Extended BRB\cite{a16}                             & -/2008              & 18902      & 0.2169              & -                 \\
+        2016       & Dynamic rule adjustment\cite{a32}                  & 900/2008            & 43         & 0.2080              & 0.4450            \\
+        2017       & Bi-level BRB\cite{a33}                             & 500/2008            & 40         & 0.1941              & 0.2917            \\
+        2018       & JOPS\cite{a34}                                     & 900/2008            & 43         & 0.1738              & 0.3998            \\
+        This study & SGDM-BRB(uniform distance-sensitive parameters)    & 500/2008            & 114        & 0.2024              & 0.3496            \\
+        This study & SGDM-BRB(respective distance-sensitive parameters) & 500/2008            & 144        & 0.1998              & 0.3469            \\
+        \hline
+    \end{tabular}
+\end{table*}
 
 
 \subsection{Experiment on public classification datasets}
 In this section, we select 7 UCI public classification datasets that are widely used to test the performance of various classifiers to evaluate the inference performance of our BRB system.
 Table \ref{tab4} shows the detailed information of these classification datasets.
-We repeat independent 10-fold cross-validation experiments for ten times to obtain the final results.
+We repeat independent 10-fold cross-validation experiments for 20 times to obtain the final results.
+
 The final inference results obtained by the belief rule inference system trained using momentum optimization stochastic gradient method (SGDM-BRB) will be compared with the results obtained by
 other machine learning methods and belief rule base inference system.
 The machine methods for comparison include KNN, Naive Bayes (NB) and C4.5, support vector machine (SVM)
@@ -587,6 +634,7 @@ The BRB systems for comparison include SRA-EBRB\cite{a20}, MVP-EBRB\cite{a21} an
 \begin{table}
     \caption{Details of the classification datasets}
     \centering
+    \normalsize
     \label{tab4}
     \begin{tabular}{cccc}
         \hline
@@ -606,12 +654,12 @@ The BRB systems for comparison include SRA-EBRB\cite{a20}, MVP-EBRB\cite{a21} an
 To enable a unified classification process, first perform a standardized operation on the original data:
 $$x'=\frac{x-\overline{x}}{\delta}$$
 where $\overline{x}$ is the mean of $x$ and $\delta$ is the standard deviation of $x$.
-After standardization, set the distance-sensitive parameter on all attributes to $1.0$.
+After standardization, the distance-sensitive parameter on all attributes are set to be $1.0$.
 Then we select cross entropy as the loss function to train the BRB inference system to improve the classification accuracy.
 For a multi-classification task with $N$ categories, the loss function on each sample $y$ and the corresponding prediction result $\overline{y}$ is defined as follows:
 $$Loss(y,\overline{y})=-\sum_{i=1}^Ny_{i}\log\overline{y}_i$$
 
-For the experiment on each dataset, $32$ training sample data are randomly selected as the initial rule
+For the experiment on each dataset, $32$ samples are randomly selected from training set as the initial rule
 and convert the classification result into the corresponding belief result distribution according to the above conversion method.
 The rule corresponding to the $k$-th training sample is:
 \begin{equation}
@@ -631,6 +679,7 @@ There are $128$ training samples in each batch, and $2000$ trainings are perform
 \begin{table*}
     \caption{Accuracy of SGDM-BRB compare with conventional classification approaches}
     \centering
+    \normalsize
     \label{tab5}
     \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
         \hline
@@ -674,137 +723,156 @@ Due to its good fitting performance, future research will focus on using integra
 
 \begin{thebibliography}{00}
 
-    \bibitem{a1} YANG J B, LIU J, WANG J, et al. ``Belief rule-base inference methodology
+    \bibitem{a1} J. B. Yang, J. Liu, J. Wang, ``Belief rule-base inference methodology
     using the evidential reasoning approach-rimer,''
     \emph{IEEE Transactions on Systems, Man, and Cybernetics - Part A: Systems and Humans},
     2006, 2(36):266-285.
 
-    \bibitem{a2} SUN R. ``Robust reasoning: integrating rule-based and similarity-based
+    \bibitem{a2} R. Sun, ``Robust reasoning: integrating rule-based and similarity-based
     reasoning,'' \emph{Artificial Intelligence},
     1995, 2(75):241-295.
 
-    \bibitem{a3} DEMPSTER A P. ``A generalization of bayesian inference,''
+    \bibitem{a3}  A. P. Dempster, ``A generalization of bayesian inference,''
     \emph{Journal of the Royal Statistical Society: Series B (Methodological)},
     1968, 2(30): 205-232.
 
-    \bibitem{a4} SHAFER G, SMITH A F M. ``A mathematical theory of evidence[J],''
+    \bibitem{a4} G. Shafer, A. F. M. Smith, ``A mathematical theory of evidence[J],''
     \emph{Biometrics},
     1976, 3(32):703.
 
-    \bibitem{a5} YOON K, HWANG C L. ``Multiple attribute decision making,''
+    \bibitem{a5} K. Yoon, C. L. Hwang, ``Multiple attribute decision making,''
     \emph{Thousand Oaks, CA: Sage Publications},
     1995.
 
-    \bibitem{a6} ZADEH L. ``Fuzzy sets,''
+    \bibitem{a6} L. Zadeh, ``Fuzzy sets,''
     \emph{Information and Control},
     1965, 3(8):338-353.
 
-    \bibitem{a7} ZHOU Z J, HU C H, YANG J B, et al. ``Online updating belief rule based
+    \bibitem{a7} Z. J. Zhou, C. H. HU, J. B. Yang, , ``Online updating belief rule based
     system for pipeline leak detection under expert intervention,''
     \emph{Expert Systems with Applications},
     2009, 4(36):7700-7709.
 
-    \bibitem{a8} JIANG J, LI X, JIE ZHOU Z, et al. ``Weapon system capability assessment
+    \bibitem{a8} J. Jiang, X. Li, Z. J. Zhou, ``Weapon system capability assessment
     under uncertainty based on the evidential reasoning approach,''
     \emph{Expert Systems with Applications},
     2011.
 
-    \bibitem{a9} YANG Y, FU C, CHEN Y W, et al. ``A belief rule based expert system
+    \bibitem{a9} Y. Yang, C. Fu, Y. W. Chen, ``A belief rule based expert system
     for predicting consumer preference in new product development,''
     \emph{Knowledge-Based Systems},
     2016(94):105-113.
 
-    \bibitem{a10} YANG J B, LIU J, XU D L, et al. ``Optimization models for training
+    \bibitem{a10} J. B. Yang, J. Liu, D. L. Xu, ``Optimization models for training
     belief-rule-based systems,''
     \emph{IEEE Transactions on Systems, Man, and Cybernetics - Part A: Systems and Humans},
     2007, 4(37):569-585.
 
-    \bibitem{a11} CHANG R, ZHANG S. ``An Algorithm for Training Param eters in Belief Rule-bases Based on
+    \bibitem{a11} R. Chang, S. Zhang, ``An Algorithm for Training Param eters in Belief Rule-bases Based on
     Gradient Methods with Optimization Step Size,''
     \emph{Journal of North China Institute of Water Conservancy and Hydroelectric Power},
     2011, 1(32):154-157.
 
-    \bibitem{a12} CHANG R Y, WANG H, YANG J B. ``An algorithm for training parameters
+    \bibitem{a12} R. Chang Y, H. Wang, J. B. Yang, ``An algorithm for training parameters
     in belief rule-bases based on the gradient and dichotomy methods,''
     \emph{Systems Engineering},
     2007.
 
-    \bibitem{a13} WU W K, YANG L H, FU Y G, et al. ``Parameter Training Approach for Belief Rule Base Using the Accelerating of Gradient
+    \bibitem{a13} W. K. Wu, L. H. Yang, Y. G. FU, ``Parameter Training Approach for Belief Rule Base Using the Accelerating of Gradient
     Algorithm,''
     \emph{Journal of Frontiers of Computer Science and Technology},
     2014, 8(8):989-1001.
 
-    \bibitem{a14} SU Q, YANG L H, FU Y G,et al. ``Parameter training approach based on variable particle swarm optimization
+    \bibitem{a14} SU Q, L. H. Yang, Y. G. FU, ``Parameter training approach based on variable particle swarm optimization
     for belief rule base,''
     \emph{Journal of Computer Applications},
     2014, 34(8):2161-2165.
 
-    \bibitem{a15} WANG H J, YANG L H, FU Y G H, et al. ``Differential Evolutionary Algorithm for Parameter Training of Belief Rule Base under Expert Intervention,''
+    \bibitem{a15} H. J. Wang, L. H. Yang, Y. G. FU , ``Differential Evolutionary Algorithm for Parameter Training of Belief Rule Base under Expert Intervention,''
     \emph{Computer Science},
     2015, 42(5):88-93.
 
-    \bibitem{a16} LIU J, MARTINEZ L, CALZADA A C, et al. ``A novel beliefrule base representation, generation and its inference methodology,''
+    \bibitem{a16} J. Liu, L. Martinez, A. C. Calzada, ``A novel beliefrule base representation, generation and its inference methodology,''
     \emph{Knowledge-Based Systems},
     2013(53):129-141.
 
-    \bibitem{a17} ROBBINS H, MONRO S. ``A stochastic approximation method,''
+    \bibitem{a17} H. Robbins, S. Monro, ``A stochastic approximation method,''
     \emph{The Annals of Mathematical Statistics},
     1951, 3(22):400-407.
 
-    \bibitem{a18} KIWIEL K C. ``Convergence and efficiency of subgradient methods for quasiconvex minimization,''
+    \bibitem{a18} K. C. Kiwiel, ``Convergence and efficiency of subgradient methods for quasiconvex minimization,''
     \emph{Mathematical Programming},
     2001,1(90):1-25.
 
-    \bibitem{a19} RUMELHART D E, HINTON G E, WILLIAMS R J. ``Learning representations
+    \bibitem{a19} D. E. Rumelhart, G. E. Hinton, R. J. Williams, ``Learning representations
     by back-propagating errors,''
     \emph{Nature},
     1986, 6088(323):533-536.
 
-    \bibitem{a20} LIN Y Q, FU Y G. ``A rule activation method for extended belief rule base based on improved similarity measures,''
+    \bibitem{a35} Y. W. Chen, J. B. Yang, D. L. Xu, ``On the inference and approximation properties of belief rule based system,''
+    \emph{Information Sciences}, 2013, 234(11):121-135.
+
+    \bibitem{a36} M. Li, Y. G. Fu, W. L. Liu, Y. J. Wu, ``Parameter Training  Approach for Belief Rule Base Based on the Cuckoo Search Algorithm,''
+    \emph{Journal of Chinese Computer Systems}, 2018, 39(6):1149-1155.
+
+    \bibitem{a20} Y. Q. Lin, Y. G. FU, ``A rule activation method for extended belief rule base based on improved similarity measures,''
     \emph{Journal of University of Science and Technology of China},
     2018, 48(1):21-27.
 
-    \bibitem{a21} LIN Y Q, FU Y G, SU Q, et al. ``A rule activation method for extended
-    belief rule base with vp-tree and mvp-tree,''
+    \bibitem{a21} Y. Q. Lin, Y. G. FU, SU Q, ``A rule activation method for extended belief rule base with vp-tree and mvp-tree,''
     \emph{Journal of Intelligent and Fuzzy Systems},
     2017, 33(6):3695-3705.
 
-    \bibitem{a22} FANG W, GONG X, LIU G, et al. ``A balance adjusting approach of extended
+    \bibitem{a22} W. Fang, X. Gong, Liu G, ``A balance adjusting approach of extended
     belief-rule-based system for imbalanced classification problem,''
     \emph{IEEE Access},
     2020, 8(19419049):41201-41212.
 
-    \bibitem{a23} SHANNON C E. ``A mathematical theory of communication,''
+    \bibitem{a23} C. E. Shannon, ``A mathematical theory of communication,''
     \emph{Bell System Technical Journal},
     1948, 4(27):623-656.
 
-    \bibitem{a24} CALZADA A, LIU J, WANG H, et al. ``A new dynamic rule activation
+    \bibitem{a24} A. Calzada, J. Liu, H. Wang, ``A new dynamic rule activation
     method for extended belief rule-based systems,''
     \emph{IEEE Transactions on Knowledge and Data Engineering},
     2015, 4(27):880-894.
 
-    \bibitem{a25} YANG L H. ``New activation weight calculation and parameter optimization
+    \bibitem{a25} L. H. Yang, J. Liu, ``New activation weight calculation and parameter optimization
     for extended belief rule-based system based on sensitivity analysis,''
     \emph{Knowledge and Information Systems},
     2018, 60(2):837-878.
 
-    \bibitem{a26} WANG Y. ``Parameter learning for an intuitionistic fuzzy belief rulebased
+    \bibitem{a26} Y. Wang, ``Parameter learning for an intuitionistic fuzzy belief rulebased
     systems based on weight and reliability,''
     \emph{Journal of Advanced Computational Intelligence and Intelligent Informatics},
     2019, 23(2):219-228.
 
-    \bibitem{a27} ZHU H. ``A minimum centre distance rule activation method for extended
+    \bibitem{a27} H. Zhu, M. Xiao, L. H. Yang, X. Tang, Y. Liang, J. Li, ``A minimum centre distance rule activation method for extended
     belief rule-based classification systems,''
     \emph{Applied Soft Computing},
     2020, 91:106214.
 
-    \bibitem{a28} JIA Q. ``A novel fault detection model based on atanassov’s intervalvalued
+    \bibitem{a28} Q. Jia, J. Hu, W. Zhang, ``A novel fault detection model based on atanassov’s intervalvalued
     intuitionistic fuzzy sets, belief rule base and evidential reasoning,''
     \emph{IEEE Access}, 2020, 8:4551-4567.
 
-    \bibitem{a29} G. Holmes, A. Donkin, I.H. Witten. ``WEKA: A machine learning workbench,
-    in: Conference on Intelligent Information Systems,'' 2002.
+    \bibitem{a30} D. L. Xu, J. Liu, J. B. Yang, G. P. Liu, J. Wang, L. Jenkinson, R. Jun, ``Inference and learning methodology of belief-rule-based expert system for pipeline leak detection,''
+    \emph{Expert System with Applications}, 2007, 32:103–113.
 
+    \bibitem{a31} Y. W. Chen, J. B. Yang, D. L. Xu, Z. J. Zhou , D. W. Tang, ``Inference analysis and adaptive training for belief rule based system,''
+    \emph{Expert System with Applications}, 2011,38:12845–12860.
+
+    \bibitem{a32} Y. Wang M, L. H. Yang, Y. G. Fu, L. L. Chang, K. S. Chin, ``Dynamic rule adjustment approach for optimizing belief rule-base expert system,''
+    \emph{Knowledge-Based Systems}, 2016, 96:40–60.
+
+    \bibitem{a33} L. L. Chang, Z. J. Zhou, T. J. Liao, Y. W. Chen, H. Yu, L. H. Yang, ``Belief rule base structure and parameter joint learning under disjunctive assumption for non- linear complex system modeling,''
+    \emph{IEEE Transactions on Systems, Man, and Cybernetics, Part A}, 2017, 99:1–13.
+
+    \bibitem{a34} L. H. Yang, Y. Wang M, J. Liu, L. Mart´ınez, ``A joint optimization method on parameter and structure for belief-rulebased systems,''
+    \emph{Knowledge-Based Systems}, 2018, 142:220–240.
+
+    \bibitem{a29} G. Holmes, A. Donkin, I. H. Witten, ``WEKA: A machine learning workbench,
+    in: Conference on Intelligent Information Systems,'' 2002.
 
 \end{thebibliography}
 
