@@ -34,20 +34,19 @@
 
 \begin{abstract}
 
-    The belief-rule-base (BRB) inference methodology using evidential reasonging (ER)
-    approach is widely used in different fields, such as  fault diagnosis, system
-    identification and decision analysis.
-    Since the calculation of the individual matching degree in the inference process needs to set the reference value of the antecedent attribute parameter,
-    it is easy to cause the rule zero activation problem, and the intelligent algorithm for parameter training is not as efficient and accurate as the gradient method,
-    but the partial derivative of the gradient method is difficult to construct.
-    In this paper, we propose a new belief rule structure and its gradient training method,
-    aiming to solve zero activation during the inference process and improve inference accuray.
-    We first used the Gaussian function to calculate the similarity of each attribute instead of the original method to
-    avoid the zero activation problem caused by the non-adjacent reference values of the antecedent attributes.
-    Then, according to the new activation weight calculation method, the corresponding distance-sensitive parameter is set for each attribute, and the weight parameter of each rule is cancelled.
-    Is simplifies the calculation of rule weights in the inference process and enables the partial derivatives of the parameters of the inference system to be easily constructed.
-    Finally, we use the momentum optimization gradient stochastic descent method to train the new BRB system, which improves the training speed and accuracy compared to the ordinary gradient method.
-    Experiments on function fitting, oil pipeline leak detection and several public classification datasets are conducted to validate
+    The belief-rule-base (BRB) inference methodology using evidential reasonging (ER) approach is widely used in different fields,
+    such as  fault diagnosis, system identification and decision analysis.
+    Since the calculation of the individual matching degree in the inference process needs to set the reference value of the antecedent attribute,
+    it is likely to cause the rule zero activation problem, and the intelligent algorithm for parameter training is not as efficient and accurate as the gradient method,
+    but the partial derivative of inference system is difficult to construct.
+    This paper propose a new belief rule structure and its gradient training method,
+    aiming to solve zero activation problem during the inference process and improve inference accuray.
+    Use Gaussian function to calculate the similarity of each attribute of the new rule structure instead of the original method.
+    The characteristics of the Gaussian function avoid avoid the zero activation problem caused by the attribute reference value setting in the original method.
+    On the basis of the new method, the corresponding distance-sensitive parameter is set for each attribute, and the weight parameter of each rule is discarded.
+    It simplifies the calculation of rule activation weights in the inference process and enables the partial derivatives of the parameters of the inference system to be easily constructed.
+    In the parameter optimization, the momentum optimization gradient stochastic descent method is used to train the new BRB system, which improves the training speed and accuracy compared with the conventional method.
+    Experiments on non-linear function fitting, oil pipeline leak detection and several public classification datasets are conducted to validate
     the new BRB system trained by stochastic gradient descent with momentum (SGDM-BRB) has better performence compared with others conventional methods.
     The experimental results show that the SGDM-BRB has higher accuray and faster training speed than conventional method.
 
@@ -70,52 +69,54 @@ and at the same time has the flexibility to deal with ambiguity, incompleteness,
 In various rule-based systems for solving complex problems, belief rule-based inference methodology using evidential reasonging approach (ER) proposed by Yang \textit{et al}.\cite{a1}
 baesd on conventional IF-THEN rules\cite{a2}, Dempster-Shafer theory of evidence\cite{a3,a4}, decision theory\cite{a5}
 and fuzzy set theory\cite{a6} shows its powerful function of representing and processing uncertain information.
-By introducing a belief distribution structure in the rules, this methodology can
-effectively handle incomplete and uncertain information involved in the datasets and widely used in various problem in
-different fields such as oil pipeline leak detection\cite{a7}, military capability estimation\cite{a8}, consumer behavior
-prediction\cite{a9} and so on.
+By introducing a belief distribution structure in the rules,
+this methodology can effectively handle incomplete and uncertain information involved in the datasets and
+widely used in various problem in different fields such as
+oil pipeline leak detection\cite{a7}, military capability estimation\cite{a8}, consumer behavior prediction\cite{a9} and so on.
 
 In the inference process of the belief rule base (BRB) system, the attribute weight, rule weight, belief distribution and other parameters
 directly affect the final accuray. Yang \textit{et al}.\cite{a10} proposed optimization models for training BRB system using fmincon solver in
 Matlab, Chang \textit{et al}.\cite{a11,a12} proposed an algorithm for training parameters in BRB system based on gradient and dichotomy methods,
 Wu \textit{et al}.\cite{a13} used the accelerating of gradient algorithm to improve the convergence accuray and convergence speed. There are also
 a series of intelligent algorithms such as the particle swarm algorithm proposed by Su \textit{et al}.\cite{a14} and the differential evolution
-algorithm proposed by Wang \textit{et al}.\cite{a15} have excellent training effects on the BRB system. Liu \textit{et al}.\cite{a16} introduces the belief distribution
-structure into the antecedent attributes and uses training data to build an extended belief rule base (EBRB) system, which simplifies the construction of
-the rule base and improves the inference speed.
+algorithm proposed by Wang \textit{et al}.\cite{a15} have excellent training performance on the BRB system.
+Liu \textit{et al}.\cite{a16} introduces the belief distribution structure into the antecedent attributes and
+uses training data to build an extended belief rule base (EBRB) system,
+which simplifies the construction of the rule base and improves the inference speed.
 
-At present, the parameter optimization model of the BRB system is mostly based on various intelligent algorithms.
+At present, the parameter optimization of the BRB system is mostly based on various intelligent algorithms.
 However, the process of those intelligent algorithms is complicated and there are many intermediate training parameters.
 When the conventional gradient method trains the parameters of the BRB system, the partial derivative of each parameter is difficult to construct,
 and the limit method is needed to solve the approximate value of the partial derivative\cite{a13}.
 The step size is limited by the corresponding parameter constraints and a search is required to find the best effective step size\cite{a11,a12,a13}.
 The EBRB system does not introduce a parameter training process, which makes the system have higher requirements for the representativeness of the training data used to construct the rule base.
-In the case of a large number of rules, it is necessary to perform rule reduction or
-use the data structure to optimize the storage and activation process of the rules. Because the conventional BRB system includes the rule attribute
-reference level setting, its potential zero activation problem may lead to the failure of the inference system.
+For a large number of rules, it is necessary to perform rule reduction or use the data structure to optimize the storage and activation process of the rules.
+Due to the conventional BRB system rule attribute reference level setting, its potential zero activation problem may cause the inference system to malfunction.
 
 In response to the above problems, a series of optimization modifications are proposed for the system structure and reasoning process, including:
 
-\quad 1) We propose a new antecedent structure that does not need to set the attribute reference level, and propose a Gaussian function-based
-rule weight activation method for the new rule antecedent structure, which can effectively avoid the zero activation problem and has the feature of
+\quad 1) A new antecedent structure that does not need to set the attribute reference level is proposed, and a Gaussian function-based
+rule weight activation method is proposed for the new rule antecedent structure. It effectively avoid the zero activation problem and has the feature of
 generating rules from the training data like EBRB.
 
-\quad 2) We change the method of setting the weight of the global same antecedent attribute in the
-conventional BRB system, and set the corresponding rule attribute weight parameter for each rule, so that each rule has a finer activation granularity.
-On this basis, the rule weight and its related normalization process are cancelled, which simplifies the evidential reasoning process.
+\quad 2) Setting the global weight parameters for antecedent attributes is cancelled,
+and each rule is set with its own antecedent attribute weight parameters,
+so that each rule has a better activation granularity.
+On this basis, the setting of rule weight parameters and the related normalization process are cancelled,
+which simplifies the evidential reasoning process.
 
-\quad 3) We further present a normalized exponential function to preprocess the restricted parameters to avoid the problem of
-parameter failure during the training process.
+\quad 3) Aa normalized exponential function is proposed to preprocess the restricted parameters to
+avoid the problem of parameter failure during the training process.
 
 The remainder of this paper is organized as follows: Section II introduces the conventional BRB system and our further improvements for common problems in the system.
-In Section III, we give the preprocessing method of the training model and prove that the gradient descent method can be effectively applied to the newly proposed BRB system.
-In Section IV, we compare the effects of different gradient descent parameters on training speed and inference accuracy. Experiments on a series of public data sets prove that
-the newly proposed BRB model and its training method have the best performance. Section V concludes this paper.
+Section III gives the preprocessing method of the training model and prove that the gradient descent method can be effectively applied to the newly proposed BRB system.
+Section IV compares the performance of different gradient descent parameters on training speed and inference accuracy. Experiments on a series of public datasets prove that
+the newly proposed BRB model and its training method have a better performance than other conventional methods. Section V concludes this paper.
 
 
 \section{BRB system with new attribute structure and rule activation weight calculation method}
-The BRB system proposed by Yang \textit{et al}.\cite{a1} mainly refers to the rule activation and evidence reasoning method on the belief rule base. This section will briefly introduce
-the related concepts of the BRB system and propose the solutions for the common defects of the conventional BRB system.
+The BRB system proposed by Yang \textit{et al}.\cite{a1} mainly refers to the rule activation and evidence reasoning method on the belief rule base.
+This section will briefly introduce the related concepts of the BRB system and propose the solutions for the common defects of the conventional BRB system.
 \subsection{representation of belief rule base}
 On the basis of the conventional production rules, Yang \textit{et al}.\cite{a1} proposed the expression form of the belief rules by introducing the belief distribution structure,
 the rule antecedent attribute parameter and the rule weight parameter. The specific expression is as follows:
@@ -126,7 +127,7 @@ the rule antecedent attribute parameter and the rule weight parameter. The speci
     \end{split}
 \end{equation}
 
-The equal sign is obtained when the rule information is complete. Each rule has its rule weight $\theta_k$, antecedent attribute weight $\delta_{1},\delta_{2},\cdots,\delta_{T_k}$.
+The equal sign is obtained when the rule information is complete. Each rule has its rule weight $\theta_k$ and each antecedent attribute has its weight $\delta_{1},\delta_{2},\cdots,\delta_{T_k}$.
 $A_i^k$ represents the reference value selected by the rule on the $i$-th attribute and $\beta_i^k$ represents the belief degree of the rule in the $i$-th consequent attribute.
 On this basis, the extended belief rule base system introduces a belief distribution structure to the antecedent attributes, and its rule form is expressed as follows:
 \begin{equation}
@@ -137,7 +138,7 @@ On this basis, the extended belief rule base system introduces a belief distribu
     \end{split}
 \end{equation}
 The extended belief rule base converts the original training data into antecedent attributes with a belief distribution form.
-For the input data $X^k=(x_1^k,\cdots,x_T^k)$, convert the $i$-th attribute parameter to construct the $i$-th antecedent attribute of the corresponding rule with a belief distribution form:
+For the input data $X^k=(x_1^k,\cdots,x_T^k)$, convert the $i$-th attribute parameter to construct the $i$-th antecedent attribute of the corresponding rule in the form of belief distribution:
 \begin{equation}
     \begin{split}
         &\alpha_{ij}^k=\frac{\gamma_{i(j+1)-x_i^k}}{\gamma_{i(j+1)-\gamma_{ij}}},\gamma_{ij}\leq x_i^k\leq \gamma_{i(j+1)}\\
@@ -145,13 +146,13 @@ For the input data $X^k=(x_1^k,\cdots,x_T^k)$, convert the $i$-th attribute para
         &\alpha_{it}^k=0,t=1,\cdots,(j-1),(j+2),\cdots,J_i
     \end{split}
 \end{equation}
-According to the same conversion method, the values of original data on other attributes can be converted into the corresponding berlief distribution form.
-We can also obtain the belief distribution form of the rule consequent attribute according to this method.
+Using the same conversion method, the values of original data on other attributes can be converted into the corresponding belief distribution form.
+It is also possible to obtain the belief distribution form of the rule consequent attribute according to this method.
 
 \subsection{evidence reasoning approach based on belief rule base}
 The calculation and synthesis of activation weights for each rule in the rule base is the core part of the inference system of the belief rule base.
-The whole process mainly includes two steps: calculate the activation weight, and synthesize the rules according to the activation weight.
-The calculation of the activation weight of each rule in the belief rule base can be regarded as calculating the belief distribution similarity on each attribute and combining their results.
+The whole process mainly includes two steps: calculate the activation weight, and synthesize the rules activation weight to get the result.
+The calculation of the activation weight of each rule in the belief rule base can be regarded as calculating the belief distribution similarity on each attribute and combining the results.
 Euclidean distance is used to calculate the individual matching degree of the $i$-th attribute. After converting the input data to have the same belief distribution form as the corresponding attribute,
 the individual matching degree of the attribute is calculated as:
 \begin{equation}
@@ -195,8 +196,9 @@ Synthesize the credibility information of all rules and obtain the final belief 
 \subsection{new attribute structure and rule activation weight calculation method}
 The reference value of antecedent attribute information needs to be set before generating rules.
 If the input is not in the neighborhood of the reference value of the antecedent attribute of a rule, the rule cannot be activated.
-If all the rules in the library are not activated, the reasoning system will fail.
-In order to solve the above problems, we propose an improved form of belief rules and corresponding activation weight calculation method as follows:
+If all the rules in rule base are not activated, the inference system will fail.
+A simplified belief rules structure and corresponding activation weight calculation method is proposed to solve the above problems.
+Its structure is as follows:
 \begin{equation}
     \begin{split}
         &R_k:if(x_1^k , \cdots , x_{T_k}^k)\\
@@ -204,10 +206,10 @@ In order to solve the above problems, we propose an improved form of belief rule
     \end{split}
 \end{equation}
 
-The simplified belief rule structure can directly use the training data to generate the rule antecedent attribute information without manually setting the reference values of the antecedent attributes.
+The simplified belief rule structure can directly use the training data to generate the rule antecedent attribute without manually setting the reference values of the antecedent attributes.
 
 The conventional activation weight calculation method is no longer suitable for the simplified form of belief rules.
-In order to perform the weight activation, we use Gaussian function to calculate the individual matching degree for activation weight calculation.
+The use of Gaussian function to calculate individual matching degree for activation weight calculation is proposed to perform weight activation.
 The degree of individual matching of input $X(x_1,\cdots,x_{T_k})$ and rule $R_k:if(x_1^k , \cdots , x_{T_k}^k)then\{(D_1,\beta_1^k),\cdots,(D_N,\beta_N^k)\}$ on $i$-th attribute is calculated using the Gaussian function as:
 \begin{equation}
     S_i^k=e^{-[a_i^k\times(x_i-x_i^k)]^2}
@@ -228,12 +230,12 @@ The activation weight of a single rule under conjunctive conditions is calculate
 {Activation weight calculated by Gaussian function methods with distance-sensitive parameter $a$ set to $0.5$\label{fig3}}
 Assuming a rule with two attributes x and y located at the $(0,0)$, the conventional method and Gaussian function method are used to calculate the activation weights.
 Set the reference reference values on the x-attributes and y-attributes to be $[-4,-3,-2,-1,0,1,2,3,4]$.
-We ignore setting rule weights for both methods.
+Ignore the rule weight setting of the two methods.
 The activation weight distributions shown in Figure \ref{fig1},
 Figure \ref{fig2} with distance-sensitive parameter $a$ set to $1.0$ and
 Figure \ref{fig3} with distance-sensitive parameter $a$ set to $0.5$ can be obtained.
 
-According to Figure \ref{fig1} we can know that if the input on a certain attribute is not in the neighborhood of the rule attribute,
+Figure \ref{fig1} shows that if the input on a certain attribute is not in the neighborhood of the rule attribute,
 the activation weight of this rule fluctuates around zero and gets zero when the attribute gets a reference value.
 If the activation weight of all rules is zero, the inference cannot be performed.
 However, the weight in Figure \ref{fig2} and Figure \ref{fig3} smoothly drops close to zero according to the distance from the rule and will not take a value of zero.
@@ -253,20 +255,20 @@ When the conventional gradient method is applied to the parameter training proce
 it is difficult to construct the partial derivative formula of the rule attribute and the training step is restricted by the parameter constraints.
 Compared with the conventional BRB system, the newly proposed rule structure with its activation weight calculation methid make it easier to construct the partial derivative of each part of the parameter.
 
-In this section, we will:
+There are four subsections in this section, including:
 
-\quad 1) Calculate the partial derivatives of the parameters of the new BRB system.
+\quad 1) Calculating the partial derivatives of the parameters of the new BRB system.
 
-\quad 2) Prove that the new BRB system is differentiate.
+\quad 2) Proving the differentiability of new BRB system.
 
-\quad 3) Propose exponential normalization function for preprocessing to avoid specific constraints during parameter training.
+\quad 3) Proposing exponential normalization function for preprocessing to avoid specific constraints during parameter training.
 
-\quad 4) Propose a parameter training method using stochastic gradient descent with momentum optimization.
+\quad 4) Proposing a parameter training method using stochastic gradient descent with momentum optimization.
 
 
 \subsection{Partial derivative of the parameters of the brb system}
-The reasoning process of the improved BRB system is shown in Figure \ref{infsys}.
-According to the inference process and compound function chain derivation rules, we can obtain the partial derivatives of the output to the different parameters of the system.
+The inference process of the improved BRB system is shown in Figure \ref{infsys}.
+According to the inference process and compound function chain derivation rules, the partial derivatives of the output to the different parameters of the system can be obtained.
 \Figure[!t](topskip=0pt, botskip=0pt, midskip=0pt)[width=3.3 in]{process1.png}
 {Inference system operation process\label{infsys}}
 
@@ -290,7 +292,7 @@ Substitute $m_{j,i}=w_i\beta_{j,i}$ and $m_{D,i}=1-w_i$ into the $j$-th conseque
 \begin{equation}
     \overline{\beta}_j = \prod_{i=1}^L(w_i\beta_j^i+1-w_i)-\prod_{i=1}^L{(1-w_i)}
 \end{equation}
-We can get the partial derivative of the $i$-th consequent attribute $\beta_i$ to the $j$-th unnormalized consequent attribute $\overline{\beta}_j$ as:
+Obtain the partial derivative of the $i$-th consequent attribute $\beta_i$ to the $j$-th unnormalized consequent attribute $\overline{\beta}_j$:
 \begin{equation}
     \frac{d\beta_i}{d\overline{\beta}_j}=
     \left\{
@@ -305,13 +307,13 @@ Similarly, the partial derivative of the $j$-th unnormalized consequent attribut
      & \frac{d\overline{\beta}_j}{dw_k}=(\beta_j^k-1)\prod_{i=1,i\neq k}^L(w_i\beta_j^i+1-w_i)+\prod_{i=1,i\neq k}^L(1-w_i) \\
      & \frac{d\overline{\beta}_j}{d\beta_j^k}=w_k\prod_{i=1,i\neq k}^L(w_i\beta_j^i+1-w_i)
 \end{align}
-According to the activation weight expression of the $k$-th rule, we can obtain its partial derivatives of the rule antecedent attribute parameter and the corresponding attribute distance-sensitive parameter respectively:
+According to the activation weight expression of the $k$-th rule, the partial derivatives of the rule antecedent attribute parameter and the corresponding attribute distance-sensitive parameter can be obtained respectively:
 \begin{align}
      & \frac{dw_k}{dx_l^k}=2(a_l^k)^2(x_l-x_l^k)e^{-\sum_{i=1}^{T_k}[a_i^k(x_i-x_i^k)]^2}  \\
      & \frac{dw_k}{da_l^k}=2a_l^kx_l^k(x_l-x_l^k)e^{-\sum_{i=1}^{T_k}[a_i^k(x_i-x_i^k)]^2}
 \end{align}
 Set the loss function expression of the final output to be $loss=Loss(\beta_1,\cdots,\beta_N)$.
-According to the compound function chain derivation rule, we can obtain the partial derivative of the final loss on each parameter.
+According to the compound function chain derivation rule, the partial derivative of the final loss on each parameter can be obtained.
 \begin{align}
      & \frac{dloss}{d\beta_j^k}=\sum_{i=1}^N\sum_{j=1}^N\frac{dloss}{d\beta_i}\frac{d\beta_i}{d\overline{\beta}_j}\frac{d\overline{\beta}_j}{d\beta_j^k}          \\
      & \frac{dloss}{dx_l^k}=\sum_{i=1}^N\sum_{j=1}^N\frac{dloss}{d\beta_i}\frac{d\beta_i}{d\overline{\beta}_j}\frac{d\overline{\beta}_j}{dw_k}\frac{dw_k}{dx_l^k} \\
@@ -319,14 +321,17 @@ According to the compound function chain derivation rule, we can obtain the part
 \end{align}
 
 \subsection{Differentiable proof of BRB system}
-The evidential reasoning process of the belief rule base is a multivariate compound function process. According to the differentiable condition of the multivariate compound function, each intermediate function must satisfy the differential condition,
-and the partial derivative of each variable must exist and be continuous.
+The evidential reasoning process of the belief rule base system is a multivariate compound function process.
+According to the differentiable condition of the multivariate compound function, each intermediate function must satisfy the differential condition,
+and the partial derivative of each parameter must exist and be continuous.
 Since any of the partial derivatives above are only obtained by elementary functions through four arithmetic operations and compound,
 the partial derivatives of any parameter are continuous in its domain.
 The existence and continuous partial derivative of any parameter can prove that the whole inference system is differentiable.
 
-When the appropriate loss function is selected, the final output loss is differentiable to all the parameters of the model, which provides conditions for using the gradient method to optimize the model parameters.
-The gradient of the loss result on the parameters of each part of the model can be obtained. The gradient of the loss function on all the rule antecedent attribute parameters is:
+When the appropriate loss function is selected, the final output loss is differentiable to all the parameters of the model,
+which provides conditions for using the gradient method to optimize the model parameters.
+The gradient of the loss result on the parameters of each part of the model can be obtained.
+The gradient of the loss function on all the rule antecedent attribute parameters is:
 \begin{equation}
     \nabla_{x}loss=\left[\begin{matrix}
             \frac{dloss}{dx_1^1} & \cdots & \frac{dloss}{dx_{T_k}^1} \\
@@ -355,8 +360,8 @@ According to the belief distribution output by the inference system and the loss
 the gradient of each part of the parameters can be optimized by updating the parameters along the negative gradient direction.
 
 \subsection{Exponential normalization function preprocessing}
-In the training process, in order to meet the restriction that the sum of the consequent attributes of each rule is one and each result attribute is non-negative,
-we use the exponential normalization function to preprocess the consequent attribute parameters during the training process:
+In the training process, in order to satisfy the restriction that the sum of the consequent attributes of each rule is one and each consequent attribute is non-negative,
+the exponential normalization function is used to preprocess the consequent attributes:
 \begin{equation}
     \beta_j^k=\frac{e^{\overline{\beta_j^k}}}{\sum_{i=1}^Ne^{\overline{\beta_i^k}}}(\sum_{i=1}^N\beta_j^k=1,\beta_j^k>0)
 \end{equation}
@@ -391,11 +396,12 @@ The optimization process of using the gradient descent method to update the para
     M_{new}(x,a,\beta)=M_{old}-\mu\nabla_{M_{old}}loss
 \end{equation}
 
-The gradient information is given according to the loss function of the final output, and the learning rate $\mu$ is the updated step length information that needs to be set.
+The gradient is given according to the loss function of the final output,
+and the learning rate $\mu$ is the updated step length that needs to be set.
 Chang and Zhang\cite{a11} and Wu \textit{et al}.\cite{a13} used dichotomy in the gradient training process to iteratively find the optimal step size in the constraint space and
 added perturbation parameters when the gradient is zero to avoid the training process stagnation.
 For the application of new rule structures, activation methods and preprocessing steps, the gradient training update step size is no longer limited.
-We propose the momentum-optimized stochastic gradient descent method for faster training.
+The momentum-optimized stochastic gradient descent method is proposed for faster training.
 
 The stochastic gradient descent method is an iterative optimization method when the objective function is differentiable.
 It used a random subset of the training data to calculate the gradient value as the estimated value of the entire training data gradient,
@@ -406,7 +412,7 @@ and the model parameters are updated according to its gradient:
 \begin{equation}
     loss=\frac{1}{n}\sum_i^nLoss(\beta_1^i,...,\beta_N^i)
 \end{equation}
-We randomly select a single sample as the estimated value of the average value of the loss function output on all samples to update the model parameters:
+Randomly select a single sample as the estimated value of the average value of the loss function output on all samples to update the model parameters:
 \begin{equation}
     loss=Loss(\beta_1^r,...,\beta_N^r)
 \end{equation}
@@ -425,13 +431,13 @@ The same direction of the current gradient and the historical gradient will incr
 The different directions of the current gradient and the historical gradient will inhibit the current gradient from causing parameter training oscillations.
 
 \section{experimental results}
-In this section, we first compare the training performance of the gradient method under different momentum parameters through a nonlinear function fitting experiment,
-and then we compare the performance of the SGDM-BRB system under different parameter settings through the oil leak detection experiment.
-Finally we compared the SGDM-BRB system with conventional machine learning algorithms on several public datasets and summarize all the experimental results.
+This section first compares the training performance of the gradient method under different momentum parameters through a nonlinear function fitting experiment,
+and then compares the performance of the SGDM-BRB system under different parameter settings through the oil leak detection experiment.
+Finally the SGDM-BRB system is compared with conventional machine learning algorithms on several public classification datasets and all experimental results are summarized.
 
 \subsection{experimental enviroment}
 The experiment runs on a Ubuntu 20.04 system equipped with Intel$^{\copyright}$ Core$^{\text{TM}}$ i5 8500@3.0GHz CPU, 16GB RAM and GeForce GTX 1060 Graphics.
-Use TensorFlow 2.0 to build the evidential reasoning framework of the BRB system and use Scikit-learn machine learning library to collect and clean datasets.
+Use TensorFlow 2 to build the evidential reasoning framework of the BRB system and use Scikit-learn machine learning library to collect and clean datasets.
 
 \subsection{performance of gradient descent method with different momentum parameters}
 Liu \textit{et al}.\cite{a16} proved that the belief rule base system can approximate any function.
@@ -478,7 +484,7 @@ Set the momentum optimization parameters $\nu$ to be 0.0 (non momentum optimizat
 {Mean square error loss under different momentum parameters\label{fig5}}
 Figure \ref{fig5} shows the mean square error loss of each batch under different momentum parameters.
 Through the decreasing curve of the mean square error loss function,
-we can find that smaller momentum optimization parameters can significantly improve the model performance.
+it can be found that smaller momentum optimization parameters can significantly improve the model performance.
 The loss of the model with the momentum parameter set to $0.5$ has never been lower than 0.001 during the training process.
 The loss of the model with the momentum parameter set to $0.9$ and $0.99$ dropped rapidly to $1\times10^{-4}$,
 and reached the level of $1\times10^{-5}$ when the training is over.
@@ -511,8 +517,8 @@ The antecedent attribute information of each rule is only slightly adjusted afte
     \end{tabular}
 \end{table*}
 
-We compare the performance of the SGDM-BRB with several conventional BRB system in Table \ref{tab3},
-include the final mean square error results and training time of these models.
+Table \ref{tab3} compares the performance of the SGDM-BRB with several conventional BRB system,
+including the final mean square error results and training time of these models.
 It is obvious that the gradient method after the momentum optimization has excellent performance in improving the inference accuracy of the BRB system,
 but the training model without the effective momentum parameter optimization cannot reach the loss level of the conventional method.
 And the running speed of gradient method is much lower than the conventional BRB system optimized by intelligent algorithm and other gradient descent algorithm.
@@ -538,17 +544,17 @@ And the running speed of gradient method is much lower than the conventional BRB
 \end{table}
 
 \subsection{oil pipeline leak detection of BRB system with different settings}
-In this section, oil pipeline leak detection are applied to validate the SGDM-BRB and reveal its practicability.
-We also compare the performance of the model under different types of distance-sensitive parameters.
+In this section, oil pipeline leak detection are applied to validate the SGDM-BRB and reveal its practicability,
+and compare the performance of models under different types of distance-sensitive parameters.
 
 The oil pipeline leak detection dataset is a common benchmark used for testing BRB system and its improvements.
 There are $2008$ sets of sample data collect every $10$ seconds. Each sample includes three continuous variables: flow difference, pressure difference and leak size.
 The flow difference and pressure difference are used as independent variables, and the leak size is used as the dependent variable.
-In order to verify that the model with distance-sensitive parameters for each rule have better performance than the model with uniform distance-sensitive parameters for each attribute,
-we compare the mean square errors of these two parameter settings and other conventional BRB system optimization methods.
+By comparing the mean square errors of these two parameter settings and other conventional BRB system optimization methods,
+it is verified that the model with distance-sensitive parameters for each rule have better performance than the model with uniform distance-sensitive parameters for each attribute.
 
 \subsubsection{Basic Settings And Optimization}
-We randomly select $500$ samples as the training set.
+Randomly select $500$ samples as the training set.
 The distance-sensitive of flow difference and pressure difference are set to be $1.0$ and $0.01$.
 There are 5 reference levels for leak size, including zero (Z), very small (VS), medium (M), high (H) and very high (VH).
 The reference values are:
@@ -588,7 +594,7 @@ which may be caused by noisy data.
 {Absolute error between estimated output and samples\label{oil_ae}}
 
 
-To further verify the validity of SGDM-BRB, we conducted 20 independent experiments on two different distance-sensitive parameters settings methods.
+To further verify the validity of SGDM-BRB, $20$ independent experiments on two different distance-sensitive parameters settings methods are conducted.
 Tabel \ref{oil_tab} list the comparison of results of some existing works and two proposed methods,
 where the mean square error and mean absolute error are obtained from $2008$ samples.
 
@@ -627,9 +633,9 @@ and a large number of parameters are reduced through simplification based on the
 
 
 \subsection{Experiment on public classification datasets}
-In this section, we select 7 UCI public classification datasets that are widely used to valid the inference performance of SGDM-BRB method.
+This section selects 7 UCI public classification datasets that are widely used to valid the inference performance of SGDM-BRB method.
 Table \ref{tab4} shows the detailed information of these classification datasets.
-We repeat independent 10-fold cross-validation experiments for 20 times to obtain the final results.
+Repeat independent 10-fold cross-validation experiments for 20 times to obtain the final results.
 The results for comparison are measured by average accuracy.
 
 The results obtained by SGDM-BRB method will be compared with the results obtained by
@@ -683,14 +689,14 @@ The BRB systems used for comparison include SRA-EBRB\cite{a20}, MVP-EBRB\cite{a2
 
 
 \subsubsection{Basic Settings And Optimization}
-To enable a unified classification process, we perform a standardized operation on each dataset:
+To enable a unified classification process,  standardized operation are performed on each dataset:
 \begin{equation}
     x'=\frac{x-\overline{x}}{\delta}
 \end{equation}
 where $\overline{x}$ is the mean of $x$ and $\delta$ is the standard deviation of $x$.
-After standardization, the data on each attribute can be approximated to the standard normal distribution.
-In this way, we can conveniently set the distance-sensitive parameter on all attributes to $1.0$.
-Then we select cross entropy as the loss function to train the BRB system.
+After standardization, the data on each attribute can be approximated to the standard normal distribution,
+and the distance-sensitive parameter on all attributes can be conveniently set to $1.0$.
+Then choose cross entropy as the loss function to train the BRB system.
 For a multi-classification task with $N$ categories, the loss function on each sample $y$ and the corresponding prediction result $\overline{y}$ is defined as follows:
 \begin{equation}
     Loss(y,\overline{y})=-\sum_{i=1}^Ny_{i}\log\overline{y}_i
