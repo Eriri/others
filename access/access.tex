@@ -272,10 +272,12 @@ According to the inference process and compound function chain derivation rules,
 
 Since the model construction and experiment in this paper are carried out with complete data and
 the rule consequent attribute does not include uncertain information, for any $k$-th rule:
-\begin{align}
-     & \sum_{i=1}^N\beta_{ik}=1(k=1,\cdots,L)           \\
-     & m_{D,k}=\overline{m}_{D,k},\widetilde{m}_{D,k}=0
-\end{align}
+\begin{equation}
+    \sum_{i=1}^N\beta_{ik}=1(k=1,\cdots,L)
+\end{equation}
+\begin{equation}
+    m_{D,k}=\overline{m}_{D,k},\widetilde{m}_{D,k}=0
+\end{equation}
 In the case of completeness, the $j$-th consequent attribute is expressed as:
 \begin{equation}
     \beta_j=\frac{\prod_{i=1}^L(m_{j,i}+m_{D,i})-\prod_{i=1}^Lm_{D,i}}{\sum_{t=1}^N\prod_{i=1}^L(m_{t,i}+m_{D,i})-N\times\prod_{i=1}^Lm_{D,i}}
@@ -423,26 +425,28 @@ The same direction of the current gradient and the historical gradient will incr
 The different directions of the current gradient and the historical gradient will inhibit the current gradient from causing parameter training oscillations.
 
 \section{experimental results}
-In this section, we first conduct a comparison test of the training performance of the gradient method under different momentum parameters,
-and then we compare the performance of the SGDM-BRB system under different parameter and normalized settings through the oil leak detection experiment.
-Finally we conduct a comparison test of the SGDM-BRB system and conventional machine learning algorithms on several public datasets and summarize all the experimental results.
+In this section, we first compare the training performance of the gradient method under different momentum parameters through a nonlinear function fitting experiment,
+and then we compare the performance of the SGDM-BRB system under different parameter settings through the oil leak detection experiment.
+Finally we compared the SGDM-BRB system with conventional machine learning algorithms on several public datasets and summarize all the experimental results.
 
 \subsection{experimental enviroment}
 The experiment runs on a Ubuntu 20.04 system equipped with Intel$^{\copyright}$ Core$^{\text{TM}}$ i5 8500@3.0GHz CPU, 16GB RAM and GeForce GTX 1060 Graphics.
 Use TensorFlow 2.0 to build the evidential reasoning framework of the BRB system and use Scikit-learn machine learning library to collect and clean datasets.
 
 \subsection{performance of gradient descent method with different momentum parameters}
-Liu \textit{et al}.\cite{a16} proved that the confidence rule library can approximate any function.
+Liu \textit{et al}.\cite{a16} proved that the belief rule base system can approximate any function.
 In this section, a nonlinear multi-extreme function is introduced to compare the training performance of the stochastic gradient descent method under different momentum parameters.
 The nonlinear multi-extreme function is as follows:
 \begin{equation}
     f(x)=e^{-(x-2)^2}+0.5e^{-(x+2)^2},x\in[-5,5]
+    \label{f_exp}
 \end{equation}
 
-In the defined domain, $1000$ pieces of data are uniformly selected as the fitting data set and the mean square error is used as the loss function.
+\subsubsection{Basic Settings And Optimization}
+In the domain defined by function \eqref{f_exp}, $1000$ sample data are uniformly selected as the fitting dataset and the mean square error is used as the loss function.
 According to each extreme point on the function curve, the rule base consequent attribute evaluation level and corresponding utility value can be set:
 $$\{D_1,D_2,D_3,D_4,D_5\}=\{-0.5,0,0.5,1,1.5\}$$
-Select the five extreme points on the function curve to convert to the corresponding rule structure to build a belief rule library.
+Select the five extreme points on the function curve to convert to the corresponding rule structure to build a belief rule base.
 Set the default distance-sensitive parameter of each rule to $1.0$.
 The initial rule information is shown in Table \ref{tab1}. Figure \ref{fig4} shows the untrained brb system output.
 Set the number of training samples in each batch to be $128$ and the learning rate $\mu$ to be $0.001$ for $1000$ rounds of training.
@@ -466,10 +470,11 @@ Set the momentum optimization parameters $\nu$ to be 0.0 (non momentum optimizat
     \end{tabular}
 \end{table*}
 
-\Figure[!t](topskip=0pt, botskip=0pt, midskip=0pt)[width=3.3 in]{initial_brb.png}
+\Figure[!t](topskip=-10pt, botskip=-10pt, midskip=0pt)[width=3.3 in]{initial_brb.png}
 {Untrained BRB system output\label{fig4}}
 
-\Figure[!t](topskip=0pt, botskip=0pt, midskip=0pt)[width=3.3 in]{mse.png}
+\subsubsection{Results And Analysis}
+\Figure[!t](topskip=-10pt, botskip=-10pt, midskip=0pt)[width=3.3 in]{mse.png}
 {Mean square error loss under different momentum parameters\label{fig5}}
 Figure \ref{fig5} shows the mean square error loss of each batch under different momentum parameters.
 Through the decreasing curve of the mean square error loss function,
@@ -480,7 +485,7 @@ and reached the level of $1\times10^{-5}$ when the training is over.
 
 Figure \ref{fig6} shows that higher momentum parameter values can obtain better fitting performance,
 greatly reducing the distance between the fitted curve and the original curve.
-\Figure[!t](topskip=0pt, botskip=0pt, midskip=0pt)[width=3.3 in]{fit.png}
+\Figure[!t](topskip=-10pt, botskip=-10pt, midskip=0pt)[width=3.3 in]{fit.png}
 {Fitting performance of different momentum parameter models\label{fig6}}
 
 Table \ref{tab2} records the information of each rule in the model with the momentum parameter set to $0.99$ when the training is completed.
@@ -542,7 +547,7 @@ The flow difference and pressure difference are used as independent variables, a
 In order to verify that the model with distance-sensitive parameters for each rule have better performance than the model with uniform distance-sensitive parameters for each attribute,
 we compare the mean square errors of these two parameter settings and other conventional BRB system optimization methods.
 
-\subsubsection{basic settings and optimization}
+\subsubsection{Basic Settings And Optimization}
 We randomly select $500$ samples as the training set.
 The distance-sensitive of flow difference and pressure difference are set to be $1.0$ and $0.01$.
 There are 5 reference levels for leak size, including zero (Z), very small (VS), medium (M), high (H) and very high (VH).
@@ -571,14 +576,15 @@ and a model with uniform distance-sensitive parameters for each attribute has a 
 The output of the model with distance-sensitive parameters for each rule after training is shown in Figure \ref{oil_compare_after}.
 \Figure[!t](topskip=0pt, botskip=0pt, midskip=0pt)[width=3.3 in]{oil_compare_after.eps}
 {Comparison of the trained model output and the leak size on all samples\label{oil_compare_after}}
-\subsubsection{result and comparison}
+
+\subsubsection{Results And Analysis}
 All of $2008$ samples and estimated output are shown in Figure \ref{oil_compare}, it can be observed that the results of the two are roughly the same,
 especially during the time when the leak occurred.
 Note that there is a large leak estimation error around the $1000$th sample,
 which may be caused by noisy data.
-\Figure[!t](topskip=0pt, botskip=0pt, midskip=0pt)[width=7 in]{oil_compare.eps}
+\Figure[!t](topskip=-10pt, botskip=-10pt, midskip=0pt)[width=7 in]{oil_compare.eps}
 {Estimated output and samples\label{oil_compare}}
-\Figure[!t](topskip=0pt, botskip=0pt, midskip=0pt)[width=7 in]{oil_ae.eps}
+\Figure[!t](topskip=-10pt, botskip=-10pt, midskip=0pt)[width=7 in]{oil_ae.eps}
 {Absolute error between estimated output and samples\label{oil_ae}}
 
 
@@ -621,15 +627,38 @@ and a large number of parameters are reduced through simplification based on the
 
 
 \subsection{Experiment on public classification datasets}
-In this section, we select 7 UCI public classification datasets that are widely used to test the performance of various classifiers to evaluate the inference performance of our BRB system.
+In this section, we select 7 UCI public classification datasets that are widely used to valid the inference performance of SGDM-BRB method.
 Table \ref{tab4} shows the detailed information of these classification datasets.
 We repeat independent 10-fold cross-validation experiments for 20 times to obtain the final results.
+The results for comparison are measured by average accuracy.
 
-The final inference results obtained by the belief rule inference system trained using momentum optimization stochastic gradient method (SGDM-BRB) will be compared with the results obtained by
+The results obtained by SGDM-BRB method will be compared with the results obtained by
 other machine learning methods and belief rule base inference system.
 The machine methods for comparison include KNN, Naive Bayes (NB) and C4.5, support vector machine (SVM)
 and their results are cited from previous papers\cite{a22,a27}.
-The BRB systems for comparison include SRA-EBRB\cite{a20}, MVP-EBRB\cite{a21} and BA-EBRB\cite{a22}.
+The BRB systems used for comparison include SRA-EBRB\cite{a20}, MVP-EBRB\cite{a21} and BA-EBRB\cite{a22}.
+
+\begin{table*}
+    \caption{Accuracy of SGDM-BRB compare with conventional classification approaches}
+    \centering
+    \normalsize
+    \label{tab5}
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+        \hline
+                     & KNN               & NB                & C4.5     & SVM               & SRA-EBRB & MVP-EBRB & BA-EBRB  & SGDM-BRB          \\
+        \hline
+        iris         & 96.67(\textbf{1}) & 96.00(4)          & 96.00(4) & 96.67(\textbf{1}) & 94.80(8) & 95.87(6) & 95.26(7) & 96.50(3)          \\
+        wine         & 96.05(5)          &                   &          & 96.40(4)          & 96.85(3) &          & 97.02(2) & 97.44(\textbf{1}) \\
+        diabetes     & 74.09(3)          & 76.30(\textbf{1}) & 73.82(4) & 65.10(8)          & 71.71(7) & 72.59(5) & 72.32(6) & 75.29(2)          \\
+        ecoli        & 85.71(\textbf{1}) & 85.42(4)          & 84.23(5) & 75.60(7)          & 84.85(5) & 85.61(2) &          & 85.43(3)          \\
+        glass        & 66.63(7)          & 48.60(8)          & 66.82(6) & 68.69(5)          & 73.08(2) & 72.06(4) & 72.32(3) & 74.75(\textbf{1}) \\
+        seeds        & 92.38(3)          & 91.43(5)          & 91.90(6) & 90.48(8)          & 91.24(7) & 92.38(3) & 93.95(2) & 94.02(\textbf{1}) \\
+        yeast        & 58.22(3)          & 57.61(4)          & 55.39(7) & 43.26(8)          & 56.85(6) & 57.49(5) & 58.63(2) & 59.49(\textbf{1}) \\
+        \hline
+        Average rank & 3.28(2)           & 4.33(5)           & 5.33(6)  & 6.44(8)           & 5.42(7)  & 4.16(4)  & 3.66(3)  & 1.71(\textbf{1})  \\
+        \hline
+    \end{tabular}
+\end{table*}
 
 \begin{table}
     \caption{Details of the classification datasets}
@@ -651,73 +680,74 @@ The BRB systems for comparison include SRA-EBRB\cite{a20}, MVP-EBRB\cite{a21} an
     \end{tabular}
 \end{table}
 
-To enable a unified classification process, first perform a standardized operation on the original data:
-$$x'=\frac{x-\overline{x}}{\delta}$$
+
+
+\subsubsection{Basic Settings And Optimization}
+To enable a unified classification process, we perform a standardized operation on each dataset:
+\begin{equation}
+    x'=\frac{x-\overline{x}}{\delta}
+\end{equation}
 where $\overline{x}$ is the mean of $x$ and $\delta$ is the standard deviation of $x$.
-After standardization, the distance-sensitive parameter on all attributes are set to be $1.0$.
-Then we select cross entropy as the loss function to train the BRB inference system to improve the classification accuracy.
+After standardization, the data on each attribute can be approximated to the standard normal distribution.
+In this way, we can conveniently set the distance-sensitive parameter on all attributes to $1.0$.
+Then we select cross entropy as the loss function to train the BRB system.
 For a multi-classification task with $N$ categories, the loss function on each sample $y$ and the corresponding prediction result $\overline{y}$ is defined as follows:
-$$Loss(y,\overline{y})=-\sum_{i=1}^Ny_{i}\log\overline{y}_i$$
+\begin{equation}
+    Loss(y,\overline{y})=-\sum_{i=1}^Ny_{i}\log\overline{y}_i
+\end{equation}
 
 For the experiment on each dataset, $32$ samples are randomly selected from training set as the initial rule
 and convert the classification result into the corresponding belief result distribution according to the above conversion method.
-The rule corresponding to the $k$-th training sample is:
+The rule corresponding to the $k$-th training sample
 \begin{equation}
     X_k:(x_1,...,x_{T_k}),Y_k:c,1\leq c\leq N
 \end{equation}
+is expressed as:
 \begin{equation}
     \begin{split}
-        &R_k:if(x'_1,...,x'_{T_k})\\
-        &then\{(\overline{\beta_1^k},-1),...,(\overline{\beta_c^k},1),...,(\overline{\beta_N^k},-1)\}
+        &R_k:if(x'_1,\cdots,x'_{T_k})\\
+        &then\{(\overline{\beta_1^k},-1),\cdots,(\overline{\beta_{c-1}^k},-1),(\overline{\beta_c^k},1),(\overline{\beta_{c+1}^k},-1),\\
+        &\cdots,(\overline{\beta_N^k},-1)\}\\
+        &with\, distance-sensitive\, parameter(a^k_1,\cdots,a^k_{T_k})
     \end{split}
 \end{equation}
+Assign each rule its own distance-sensitive parameters on all attributes to obtain a finer inference granularity by increasing the number of parameters.
 
 In the process of parameter optimization using momentum optimization stochastic gradient descent method,
-the learning rate is set to $0.001$, the momentum optimization parameter is $0.99$.
-There are $128$ training samples in each batch, and $2000$ trainings are performed on each dataset.
+the learning rate is set to $0.001$ and the momentum optimization parameter is set to $0.99$.
+There are $128$ training samples in each batch, and $2000$ rounds trainings are performed on each dataset.
 
-\begin{table*}
-    \caption{Accuracy of SGDM-BRB compare with conventional classification approaches}
-    \centering
-    \normalsize
-    \label{tab5}
-    \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-        \hline
-                     & KNN               & NB                & C4.5     & SVM               & SRA-EBRB & MVP-EBRB & BA-EBRB  & SGDM-BRB          \\
-        \hline
-        iris         & 96.67(\textbf{1}) & 96.00(4)          & 96.00(4) & 96.67(\textbf{1}) & 94.80(8) & 95.87(6) & 95.26(7) & 96.50(3)          \\
-        wine         & 96.05(5)          &                   &          & 96.40(4)          & 96.85(3) &          & 97.02(2) & 97.44(\textbf{1}) \\
-        diabetes     & 74.09(3)          & 76.30(\textbf{1}) & 73.82(4) & 65.10(8)          & 71.71(7) & 72.59(5) & 72.32(6) & 75.29(2)          \\
-        ecoli        & 85.71(\textbf{1}) & 85.42(4)          & 84.23(5) & 75.60(7)          & 84.85(5) & 85.61(2) &          & 85.43(3)          \\
-        glass        & 66.63(7)          & 48.60(8)          & 66.82(6) & 68.69(5)          & 73.08(2) & 72.06(4) & 72.32(3) & 74.75(\textbf{1}) \\
-        seeds        & 92.38(2)          & 91.43(6)          & 91.90(8) & 90.48(7)          & 91.24(7) & 92.38(2) & 93.95(4) & 94.02(\textbf{1}) \\
-        yeast        & 58.22(3)          & 57.61(4)          & 55.39(7) & 43.26(8)          & 56.85(6) & 57.49(5) & 58.63(2) & 59.49(\textbf{1}) \\
-        \hline
-        average rank & 3.14(2)           & 4.5(5)            & 5.66(7)  & 5.71(8)           & 5.42(6)  & 4(3)     & 4(3)     & 1.71(\textbf{1})  \\
-        \hline
-    \end{tabular}
-\end{table*}
+\subsubsection{Results And Analysis}
+Table \ref{tab5} lists the classification accuracy of SGDM-BRB method and other machine learning methods include several conventional improved BRB methods.
+Although the SGDM-BRB method is not always the best method, its ranking never fell out of the top $3$, and it is also the method with the highest average ranking.
+As shown in Table \ref{tab5}, our method achieves higher accuracy than any other methods on the four datasets of
+wine, glass, seeds, and yeast.
+For the other results shown in Table \ref{tab5},
+SGDM-BRB method achieves
+an accuracy of $96.50\%$ on tthe dataset iris
+which is worse than the $96.67\%$ accuracies obtained from KNN and SVM,
+an accuracy of $85.43\%$ on dataset ecoli
+which is worse than the $85.71\%$ accuracy obtained from KNN and the $85.61\%$ accuracy obtained from MVP-BRB,
+and an accuracy of $75.29\%$ on dataset pima is worse than the $76.30\%$ accuracy obtained from NB.
 
-As shown in Table \ref{tab5}, by comparing with the accuracies of some machine learning approaches as well as the improved BRB systems, it is proved that the SGDM-BRB system can produce satisfactory accuracies.
-For the SGDM-BRB system, it is clear from Table \ref{tab5} that
-the $96.50\%$ accuracy of dataset iris is worse than the $96.67\%$ accuracies obtained from KNN and SVM,
-the $85.43\%$ accuracy of dataset ecoli is worse than the $85.71\%$ accuracy obtained from KNN and the $85.61\%$ accuracy obtained from MVP-BRB,
-and the $75.29\%$ accuracy of dataset pima is worse than the $76.30\%$ accuracy obtained from NB.
-For the remaining four datasets, the accuracy of the proposed BRB system outperforms all listed studies.
-Among conventional machine learning methods and other improved BRB systems, SGDM-BRB has the highest average ranking.
+Thanks to the fixed number of rules to be trained, the number of parameters for each data set experiment only increases linearly with the number of antecedent attributes and the number of consequent attributes,
+It effectively avoids the problem of parameter explosion that the conventional BRB method may encounter.
 
 \section{conclusion}
-This paper proposes a new rule structure and its activation method and the corresponding momentum optimization gradient training method.
-Avoid the rule zero activation problem and improve the inference accuracy at the same time,
-and achieves performance beyond conventional machine learning algorithms and improved BRB system.
+This paper proposes a new rule structure and its activation method with the corresponding momentum optimization gradient training method.
+The new rule structure uses original data to directly form rules, it the problem of parameter explosion caused by too many reference value settings.
+The rule activation weight calculation method improved by using Gaussian function has effectively improved the inference accuracy by introducing distance-sensitive parameters,
+the characteristic of Gaussian function avoids the rule zero activation problem and simplifies the process of normalizing rule activation weights.
+The new structure and optimization method make it easier to construct the partial derivatives of the inference system,
+providing conditions for high-performance gradient training methods.
 The further conclusions of this paper are summarized as follow:
 
-\quad 1): Using the method of combining attribute distance-sensitive parameters and Gaussian function instead of
+\quad 1) Using the method of combining attribute distance-sensitive parameters and Gaussian function instead of
 the conventional belief distribution method to calculate the individual matching degree effectively avoids the defect that
 the conventional method may cause the individual matching degree to be 0.
 This makes the activation weight change more gentle and has good fitting performance.
 
-\quad 2): The stochastic gradient method combined with larger momentum optimization parameters greatly improves the accuracy and convergence speed of the model.
+\quad 2) The stochastic gradient method combined with larger momentum optimization parameters greatly improves the accuracy and convergence speed of the model.
 
 Due to its good fitting performance, future research will focus on using integrated methods to further improve inference performance and reduce potential over-fitting risks.
 
