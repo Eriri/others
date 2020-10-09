@@ -11,20 +11,14 @@
 \doi{10.1109/ACCESS.2017.DOI}
 
 \title{Belief-Rule-Base Inference Method Based on Gradient Descent with Momentum}
-\author{\uppercase{First A. Author}\authorrefmark{1}, \IEEEmembership{Fellow, IEEE},
-    \uppercase{Second B. Author\authorrefmark{2}, and Third C. Author,
-        Jr}.\authorrefmark{3},
-    \IEEEmembership{Member, IEEE}}
-\address[1]{National Institute of Standards and
-    Technology, Boulder, CO 80305 USA (e-mail: author@boulder.nist.gov)}
-\address[2]{Department of Physics, Colorado State University, Fort Collins,
-    CO 80523 USA (e-mail: author@lamar.colostate.edu)}
-\address[3]{Electrical Engineering Department, University of Colorado, Boulder, CO
-    80309 USA}
-\tfootnote{This paragraph of the first footnote will contain support
-    information, including sponsor and financial support acknowledgment. For
-    example, ``This work was supported in part by the U.S. Department of
-    Commerce under Grant BS123456.''}
+\author{\uppercase{Yu Guan},
+    \uppercase{YangGeng Fu},
+    \uppercase{LongJiang Chen},
+    \uppercase{Genggeng Liu},\IEEEmembership{Member, IEEE},
+    \uppercase{and Lan Sun}}
+\address{College of Mathematics and Computer Science, Fuzhou University, Fuzhou 350116, China}
+\tfootnote{This paragraph of the first footnote will contain support information, including sponsor and financial support acknowledgment. For
+    example, “This work was supported in part by the U.S. Department of Commerce under Grant BS123456.”}
 
 \markboth
 {Author \headeretal: Preparation of Papers for IEEE TRANSACTIONS and JOURNALS}
@@ -36,19 +30,18 @@
 
     The belief-rule-base (BRB) inference methodology using the evidential reasoning (ER) approach is widely used in different fields,
     such as fault diagnosis, system identification, and decision analysis.
-    Since the calculation of the individual matching degree in the inference process needs to set the reference value of the antecedent attribute,
-    it is likely to cause the rule zero activation problem, and the intelligent algorithm for parameter training is not as efficient and accurate as of the gradient method,
-    but the partial derivative of the inference system is difficult to construct.
-    This paper proposes a new belief rule structure and its gradient training method,
-    aiming to solve the rule zero activation problem during the inference process and improve inference accuracy.
-    Use the Gaussian function to calculate the similarity of each attribute of the new rule structure instead of the original method.
-    The characteristics of the Gaussian function avoid the zero activation problem caused by the attribute reference value set in the original method.
-    Based on the new method, the corresponding distance-sensitive parameter is set for each attribute, and the weight parameter of each rule is discarded.
+    The calculation characteristic of the conventional rule activation weight makes the inference system have the rule zero activation problem.
+    The difficulty of constructing partial derivatives restricts the optimization of parameters using the gradient method.
+    This paper proposes a new belief rule structure and its gradient training method
+    to solve the rule zero activation problem during the inference process and improve inference accuracy.
+    The Gaussian function is applied to calculate the activation weight of the rule with the new structure.
+    Its characteristics avoid the zero activation problem caused by the attribute reference value set in the original method.
+    Based on the newly proposed method, the corresponding distance-sensitive parameter is set for each attribute, and the weight parameter of each rule is discarded.
     It simplifies the calculation of rule activation weights in the inference process and enables the partial derivatives of the parameters of the inference system to be easily constructed.
     In the parameter optimization, the momentum optimization gradient stochastic descent method is used to train the new BRB system, which improves the training speed and accuracy compared with the conventional method.
-    Experiments on non-linear function fitting, oil pipeline leak detection, and several public classification datasets are conducted to validate
-    the new BRB system trained by stochastic gradient descent with momentum (SGDM-BRB) has a better performance compared with other conventional methods.
-    The experimental results show that the SGDM-BRB has higher accuracy and faster training speed than the conventional method.
+    Experiments with nonlinear function fitting, oil pipeline leak detection, and classification of several public datasets are carried out to verify whether
+    the new BRB system trained with momentum stochastic gradient descent (SGDM-BRB) has better performance than other conventional methods.
+    The experimental results show that the SGDM-BRB has higher accuracy and faster training speed than the conventional methods.
 
 \end{abstract}
 
@@ -66,9 +59,9 @@
 It is well known that rule-based intelligent systems are one of the most common frameworks for expressing various types of knowledge.
 The rule-based system has certain expression and processing capabilities through the use of existing human knowledge,
 and at the same time has the flexibility to deal with ambiguity, incompleteness, uncertainty, and to combine different types of input data formats.
-In various rule-based systems for solving complex problems, belief rule-based inference methodology using the evidential reasoning approach (ER) proposed by Yang \textit{et al}.\cite{a1}
+Yang \textit{et al}.\cite{a1} proposed belief rule-based inference methodology using the evidential reasoning approach (ER)
 based on conventional IF-THEN rules\cite{a2}, Dempster-Shafer theory of evidence\cite{a3,a4}, decision theory\cite{a5}
-and fuzzy set theory\cite{a6} shows its powerful function of representing and processing uncertain information.
+and fuzzy set theory\cite{a6}. It shows a powerful function of representing and processing uncertain information.
 By introducing a belief distribution structure in the rules,
 this methodology can effectively handle incomplete and uncertain information involved in the datasets and
 widely used in various problems in different fields such as
@@ -76,35 +69,35 @@ oil pipeline leak detection\cite{a7}, military capability estimation\cite{a8}, c
 
 In the inference process of the belief rule base (BRB) system, the attribute weight, rule weight, belief distribution, and other parameters
 directly affect the final accuracy. Yang \textit{et al}.\cite{a10} proposed optimization models for training BRB system using fmincon solver in
-Matlab, Chang \textit{et al}.\cite{a11,a12} proposed an algorithm for training parameters in the BRB system based on the gradient and dichotomy methods,
-Wu \textit{et al}.\cite{a13} used the accelerating of the gradient algorithm to improve the convergence accuracy and convergence speed. There are also
-a series of intelligent algorithms such as the particle swarm algorithm proposed by Su \textit{et al}.\cite{a14} and the differential evolution
-algorithm proposed by Wang \textit{et al}.\cite{a15} have excellent training performance on the BRB system.
-Liu \textit{et al}.\cite{a16} introduces the belief distribution structure into the antecedent attributes and
-uses training data to build an extended belief rule base (EBRB) system,
+Matlab. Chang \textit{et al}.\cite{a11,a12} proposed an algorithm for training parameters in the BRB system based on the gradient and dichotomy methods.
+Wu \textit{et al}.\cite{a13} used the accelerating of the gradient algorithm to improve the convergence accuracy and convergence speed.
+There are also a series of intelligent algorithms such as the particle swarm optimization algorithm proposed by Su \textit{et al}.\cite{a14} and the differential evolution
+algorithm proposed by Wang \textit{et al}.\cite{a15} which have excellent training performance on the BRB system.
+Liu \textit{et al}.\cite{a16} introduced the belief distribution structure into the antecedent attributes and
+used training data to build an extended belief rule base (EBRB) system,
 which simplifies the construction of the rule base and improves the inference speed.
 
 At present, the parameter optimization of the BRB system is mostly based on various intelligent algorithms.
 However, the process of those intelligent algorithms is complicated and there are many intermediate training parameters.
 When the conventional gradient method trains the parameters of the BRB system, the partial derivative of each parameter is difficult to construct,
 and the limit method is needed to solve the approximate value of the partial derivative\cite{a13}.
-The step size is limited by the corresponding parameter constraints and a search is required to find the best effective step size\cite{a11,a12,a13}.
+Additional algorithms are needed to search the efficient update step size for the restricted parameters\cite{a11,a12,a13}.
 The EBRB system does not introduce a parameter training process, which makes the system have higher requirements for the representativeness of the training data used to construct the rule base.
 For a large number of rules, it is necessary to perform rule reduction or use the data structure to optimize the storage and activation process of the rules.
 Due to the conventional BRB system rule attribute reference level setting, its potential zero activation problem may cause the inference system to malfunction.
 
 In response to the above problems, a series of optimization modifications are proposed for the system structure and reasoning process, including:
 
-\quad 1) A new antecedent structure that does not need to set the attribute reference level is proposed, and a Gaussian function-based
+1) A new antecedent structure that does not need to set the attribute reference level is proposed, and a Gaussian function-based
 rule weight activation method is proposed for the new rule antecedent structure. It effectively avoids the rule zero activation problem and has the feature of
 generating rules from the training data like EBRB.
 
-\quad 2) Setting the global weight parameters for antecedent attributes is canceled,
+2) Setting the global weight parameters for antecedent attributes are canceled,
 and each rule is set with its own antecedent attribute weight parameters so that each rule has a better activation granularity.
-On this basis, the setting of rule weight parameters and the related normalization process is canceled,
-which simplifies the evidential reasoning process.
+On this basis, the setting of rule weight parameters and the related normalization process are canceled,
+which simplify the evidential reasoning process.
 
-\quad 3) A normalized exponential function is proposed to preprocess the restricted parameters to
+3) A normalized exponential function is proposed to preprocess the restricted parameters to
 avoid the problem of parameter failure during the training process.
 
 The remainder of this paper is organized as follows: Section II introduces the conventional BRB system and our further improvements for common problems in the system.
@@ -177,9 +170,8 @@ First, the belief distribution of the rule is transformed into the corresponding
      & \overline{m}_{D,k}=1-w_k                                   \\
      & \widetilde{m}_{D,k}=w_k(1-\sum_{j=1}^N\beta_j^k)
 \end{align}
-
-$m_{j,k}$ represents the credibility of the $k$ rule on the $j$ consequent attribute,
-where $\overline{m}_{D,k}$ represents the credibility that the $k$th rule is not assigned to any consequent attribute,
+where $m_{j,k}$ represents the credibility of the $k$ rule on the $j$ consequent attribute,
+$\overline{m}_{D,k}$ represents the credibility that the $k$th rule is not assigned to any consequent attribute,
 and $\widetilde{m}_{D,k}$  represents the credibility of the missing reference attribute of the $k$th rule.
 The total uncertainty credibility is given by $m_{D,k}=\overline{m}_{D,k}+\widetilde{m}_{D,k}$.
 Synthesize the credibility information of all rules and obtain the final belief result of each consequent attribute:
@@ -228,7 +220,7 @@ The activation weight of a single rule under conjunctive conditions is calculate
 \Figure[!t](topskip=0pt, botskip=0pt, midskip=0pt)[width=3.3 in]{fig_exp_half.eps}
 {Activation weight calculated by Gaussian function methods with distance-sensitive parameter $a$ set to $0.5$\label{fig3}}
 Assuming a rule with two attributes x and y located at the $(0,0)$, the conventional method and Gaussian function method are used to calculate the activation weights.
-Set the reference reference values on the x-attributes and y-attributes to be $[-4,-3,-2,-1,0,1,2,3,4]$.
+Set the reference values on the x-attributes and y-attributes to be $[-4,-3,-2,-1,0,1,2,3,4]$.
 Ignore the rule weight setting of the two methods.
 The activation weight distributions shown in Figure \ref{fig1},
 Figure \ref{fig2} with distance-sensitive parameter $a$ set to $1.0$ and
@@ -239,8 +231,8 @@ the activation weight of this rule fluctuates around zero and gets zero when the
 If the activation weight of all rules is zero, the inference cannot be performed.
 However, the weight in Figure \ref{fig2} and Figure \ref{fig3} smoothly drops close to zero according to the distance from the rule and will not take a value of zero.
 Moreover, different distance-sensitive parameters enable the rule to adapt to the calculation of activation weights at different scales.
-It eliminates the impact of rule zero activation on system inference performance,
-improves the fitting performance of the inference system by adding the distance-sensitive parameters.
+It eliminates the impact of rule zero activation on system inference performance
+and improves the fitting performance of the inference system by adding the distance-sensitive parameters.
 
 Another benefit brought by the new rule structure and activation weight calculation method is that
 there is no need to adjust the activation weight of the rule by the attribute weight and rule weight.
@@ -264,11 +256,10 @@ There are four subsections in this section, including:
 
 \quad 4) Proposing a parameter training method using stochastic gradient descent with momentum optimization.
 
-
 \subsection{The partial derivative of the parameters of the brb system}
 The inference process of the improved BRB system is shown in Figure \ref{infsys}.
 According to the inference process and compound function chain derivation rules, the partial derivatives of the output to the different parameters of the system can be obtained.
-\Figure[!t](topskip=0pt, botskip=0pt, midskip=0pt)[width=3.3 in]{process1.png}
+\Figure[!t](topskip=0pt, botskip=0pt, midskip=0pt)[width=3.3 in]{process.png}
 {Inference system operation process\label{infsys}}
 
 Since the model construction and experiment in this paper are carried out with complete data and
@@ -419,18 +410,17 @@ Since the update direction completely depends on the gradient of the current sam
 The momentum method improves the stability and speed by retaining a certain degree of historical gradient information and combining it with the current sample gradient.
 It also enhances the ability to get rid of locally optimal solutions.
 
-The momentum method uses a weighted fusion method to synthesize the historical gradient information and the current sample gradient,
-and use it as an update parameter for each round of training:
+The momentum method uses a weighted fusion method to synthesize the historical gradient information and the current sample gradient
+and uses the result as an update parameter for each round of training:
 \begin{equation}
     v_t=\nu v_{t-1}+\mu\nabla_{loss}M,M=M-v_t
 \end{equation}
-
 The initial value of $v_0$ is set to zero and $\nu$ represents the ratio of retaining historical gradient information.
 The same direction of the current gradient and the historical gradient will increase the speed of parameter training in this gradient direction.
 The different directions of the current gradient and the historical gradient will inhibit the current gradient from causing parameter training oscillations.
 
 \section{experimental results}
-This section first compares the training performance of the gradient method under different momentum parameters through a nonlinear function fitting experiment,
+This section first compares the training performance of the gradient method under different momentum parameters through a nonlinear function fitting experiment
 and then compares the performance of the SGDM-BRB system under different parameter settings through the oil leak detection experiment.
 Finally, the SGDM-BRB system is compared with conventional machine learning algorithms on several public classification datasets and all experimental results are summarized.
 
@@ -448,12 +438,12 @@ The nonlinear multi-extreme function is as follows:
 \end{equation}
 
 \subsubsection{Basic Settings And Optimization}
-In the domain defined by function \eqref{f_exp}, $1000$ sample data are uniformly selected as the fitting dataset, and the mean square error is used as the loss function.
+In the domain defined by function \eqref{f_exp}, $1000$ samples are uniformly selected as the fitting dataset, and the mean square error is used as the loss function.
 According to each extreme point on the function curve, the rule base consequent attribute evaluation level and corresponding utility value can be set:
 $$\{D_1,D_2,D_3,D_4,D_5\}=\{-0.5,0,0.5,1,1.5\}$$
-Select the five extreme points on the function curve to convert to the corresponding rule structure to build a belief rule base.
-Set the default distance-sensitive parameter of each rule to $1.0$.
-The initial rule information is shown in Table \ref{tab1}. Figure \ref{fig4} shows the untrained brb system output.
+Select the five extreme points on the function curve and convert them into corresponding rules as the rules of the rule base.
+Set the default distance-sensitive parameter of each rule to be $1.0$.
+The initial rule information is shown in Table \ref{tab1}. Figure \ref{fig4} shows the untrained BRB system output.
 Set the number of training samples in each batch to be $128$ and the learning rate $\mu$ to be $0.001$ for $1000$ rounds of training.
 Set the momentum optimization parameters $\nu$ to be 0.0 (non momentum optimization), $0.5$, $0.9$ and $0.99$ to compare their fitting performance.
 
@@ -484,9 +474,9 @@ Set the momentum optimization parameters $\nu$ to be 0.0 (non momentum optimizat
 Figure \ref{fig5} shows the mean square error loss of each batch under different momentum parameters.
 Through the decreasing curve of the mean square error loss function,
 it can be found that smaller momentum optimization parameters can significantly improve model performance.
-The loss of the model with the momentum parameter set to $0.5$ has never been lower than 0.001 during the training process.
-The loss of the model with the momentum parameter set to $0.9$ and $0.99$ dropped rapidly to $1\times10^{-4}$,
-and reached the level of $1\times10^{-5}$ when the training is over.
+The loss value of the model with the momentum parameter set to $0.5$ has never been lower than 0.001 during the training process.
+The loss of the model with the momentum parameter set to $0.9$ and $0.99$ rapidly decreased to about $1\times10^{-4}$,
+and decreased to about $1\times10^{-5}$ after training.
 
 Figure \ref{fig6} shows that higher momentum parameter values can obtain better fitting performance,
 greatly reducing the distance between the fitted curve and the original curve.
@@ -555,10 +545,10 @@ it is verified that the model with distance-sensitive parameters for each rule h
 \subsubsection{Basic Settings And Optimization}
 Randomly select $500$ samples as the training set.
 The distance-sensitive parameters of flow difference and pressure difference are set to be $1.0$ and $0.01$.
-There are 5 reference levels for leak size, including zero (Z), very small (VS), medium (M), high (H), and very high (VH).
+There are 5 reference levels for leak size, including zero ($Z$), very small ($VS$), medium ($M$), high ($H$), and very high ($VH$).
 The reference values are:
 \begin{equation}
-    D_{LS}\in \{(Z,0),(VS,2),(M,4),(H,6),(Vh,8)\}
+    D_{LS}\in \{(Z,0),(VS,2),(M,4),(H,6),(VH,8)\}
 \end{equation}
 Randomly select $16$ samples from the training set and convert them into the belief rule form and build the corresponding rule base.
 For flow difference and pressure difference information, convert them into the antecedent attribute.
@@ -576,8 +566,8 @@ The initial belief rule-base inference system results for the training set are s
 {Comparison of the initial model output and the leak size of the training set\label{oil_compare_before}}
 
 In the training process, the mean square error is used as the loss function, each batch uses $32$ samples, and a total of $1000$ rounds of training.
-A model with distance-sensitive parameters for each rule has a total of 144(16$\times$(2+2+5)) parameters to be trained,
-and a model with uniform distance-sensitive parameters for each attribute has a total of 114(16$\times$(2+5)+2) parameters to be trained.
+A model with distance-sensitive parameters for each rule has a total of 144(No. rule $\times$ (No. antecedent + No. distance-sensitive + No. consequent)=16$\times$(2+2+5)) parameters to be trained,
+and a model with uniform distance-sensitive parameters for each attribute has a total of 114(No. rule $\times$ (No. antecedent + No. consequent) + No. distance-sensitive=16$\times$(2+5)+2) parameters to be trained.
 The output of the model with distance-sensitive parameters for each rule after training is shown in Figure \ref{oil_compare_after}.
 \Figure[!t](topskip=0pt, botskip=0pt, midskip=0pt)[width=3.3 in]{oil_compare_after.eps}
 {Comparison of the trained model output and the leak size on all samples\label{oil_compare_after}}
@@ -646,7 +636,6 @@ The BRB systems used for comparison include SRA-EBRB\cite{a20}, MVP-EBRB\cite{a2
 \begin{table*}
     \caption{Accuracy of the SGDM-BRB method compare with conventional machine learning methods}
     \centering
-    \normalsize
     \label{tab5}
     \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
         \hline
@@ -668,7 +657,6 @@ The BRB systems used for comparison include SRA-EBRB\cite{a20}, MVP-EBRB\cite{a2
 \begin{table}
     \caption{Details of the classification datasets}
     \centering
-    \normalsize
     \label{tab4}
     \begin{tabular}{cccc}
         \hline
@@ -724,8 +712,8 @@ There are $128$ training samples in each batch, and $2000$ rounds training are p
 
 \subsubsection{Results And Analysis}
 Table \ref{tab5} lists the classification accuracy of the SGDM-BRB method and other machine learning methods include several conventional improved BRB methods.
-Although the SGDM-BRB method is not always the best method, it's ranking never fell out of the top $3$, and it is also the method with the highest average ranking.
-As shown in Table \ref{tab5}, our method achieves higher accuracy than any other methods on the four datasets of
+Although the SGDM-BRB method is not always the best, it's ranking never fell out of the top $3$, and it is also the method with the highest average ranking.
+As shown in Table \ref{tab5}, our method achieves higher accuracy than any other method on the four datasets of
 wine, glass, seeds, and yeast.
 For the other results shown in Table \ref{tab5},
 the SGDM-BRB method achieves an accuracy of $96.50\%$ on the dataset iris
@@ -734,24 +722,22 @@ and accuracy of $85.43\%$ on dataset ecoli
 which is worse than the $85.71\%$ accuracy obtained from KNN and the $85.61\%$ accuracy obtained from MVP-BRB,
 and accuracy of $75.29\%$ on dataset pima is worse than the $76.30\%$ accuracy obtained from NB.
 
-Thanks to the fixed number of rules to be trained, the number of parameters for each data set experiment only increases linearly with the number of antecedent attributes and the number of consequent attributes,
+Thanks to the fixed number of rules to be trained, the number of parameters for each data set experiment only increases linearly with the number of antecedent attributes and the number of consequent attributes.
 It effectively avoids the problem of parameter explosion that the conventional BRB method may encounter.
 
-\section{conclusion}
+\section{conclusions}
 This paper proposes a new rule structure and its activation method with the corresponding momentum optimization gradient training method.
 The new rule structure uses original data to form rules directly, avoiding the parameter explosion problem caused by excessive reference value settings.
-The rule activation weight calculation method improved by using Gaussian function has effectively improved the inference accuracy by introducing distance-sensitive parameters,
+The rule activation weight calculation method improved by using the Gaussian function has effectively improved the inference accuracy by introducing distance-sensitive parameters,
 the characteristic of the Gaussian function avoids the rule zero activation problem and simplifies the process of normalizing rule activation weights.
 The new structure and optimization method makes it easier to construct the partial derivatives of the inference system,
 providing conditions for high-performance gradient training methods.
 The further conclusions of this paper are summarized as follow:
 
-\quad 1) Using the method of combining attribute distance-sensitive parameters and Gaussian function instead of
-the conventional belief distribution method to calculate the individual matching degree effectively avoids the defect that
-the conventional method may cause the individual matching degree to be 0.
-This makes the activation weight change more gentle and has a good fitting performance.
+1) The method of combining attribute distance-sensitive parameters and Gaussian function avoids the rule zero activation problem.
+It also makes the activation weight change more gentle and has a good fitting performance.
 
-\quad 2) The stochastic gradient method combined with larger momentum optimization parameters greatly improves the accuracy and convergence speed of the model.
+2) The stochastic gradient method combined with larger momentum optimization parameters greatly improves the accuracy and convergence speed of the model.
 
 Due to its good fitting performance, future research will focus on using integrated methods to further improve inference performance and reduce potential over-fitting risks.
 
@@ -782,7 +768,7 @@ Due to its good fitting performance, future research will focus on using integra
     \emph{Information and Control},
     1965, 3(8):338-353.
 
-    \bibitem{a7} Z. J. Zhou, C. H. Hu, J. B. Yang, , ``Online updating belief rule based
+    \bibitem{a7} Z. J. Zhou, C. H. Hu, J. B. Yang, ``Online updating belief rule based
     system for pipeline leak detection under expert intervention,''
     \emph{Expert Systems with Applications},
     2009, 4(36):7700-7709.
@@ -790,7 +776,7 @@ Due to its good fitting performance, future research will focus on using integra
     \bibitem{a8} J. Jiang, X. Li, Z. J. Zhou, ``Weapon system capability assessment
     under uncertainty based on the evidential reasoning approach,''
     \emph{Expert Systems with Applications},
-    2011.
+    2011, 38(11): 13773-13784.
 
     \bibitem{a9} Y. Yang, C. Fu, Y. W. Chen, ``A belief rule based expert system
     for predicting consumer preference in new product development,''
@@ -807,10 +793,10 @@ Due to its good fitting performance, future research will focus on using integra
     \emph{Journal of North China Institute of Water Conservancy and Hydroelectric Power},
     2011, 1(32):154-157.
 
-    \bibitem{a12} R. Chang Y, H. Wang, J. B. Yang, ``An algorithm for training parameters
+    \bibitem{a12} R. Chang, Y. H. Wang, J. B. Yang, ``An algorithm for training parameters
     in belief rule-bases based on the gradient and dichotomy methods,''
     \emph{Systems Engineering},
-    2007.
+    2007, 25:287-291.
 
     \bibitem{a13} W. K. Wu, L. H. Yang, Y. G. Fu, ``Parameter Training Approach for Belief Rule Base Using the Accelerating of Gradient
     Algorithm,''
@@ -902,7 +888,7 @@ Due to its good fitting performance, future research will focus on using integra
     \bibitem{a33} L. L. Chang, Z. J. Zhou, T. J. Liao, Y. W. Chen, H. Yu, L. H. Yang, ``Belief rule base structure and parameter joint learning under disjunctive assumption for non- linear complex system modeling,''
     \emph{IEEE Transactions on Systems, Man, and Cybernetics, Part A}, 2017, 99:1–13.
 
-    \bibitem{a34} L. H. Yang, Y. Wang M, J. Liu, L. Mart´ınez, ``A joint optimization method on parameter and structure for belief-rule based systems,''
+    \bibitem{a34} L. H. Yang, Y. Wang M, J. Liu, L. Martinez, ``A joint optimization method on parameter and structure for belief-rule based systems,''
     \emph{Knowledge-Based Systems}, 2018, 142:220–240.
 
     \bibitem{a29} G. Holmes, A. Donkin, I. H. Witten, ``WEKA: A machine learning workbench,
@@ -910,70 +896,28 @@ Due to its good fitting performance, future research will focus on using integra
 
 \end{thebibliography}
 
-\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{a1.png}}]{First A. Author} (M'76--SM'81--F'87) and all authors may include
-    biographies. Biographies are often not included in conference-related
-    papers. This author became a Member (M) of IEEE in 1976, a Senior
-    Member (SM) in 1981, and a Fellow (F) in 1987. The first paragraph may
-    contain a place and/or date of birth (list place, then date). Next,
-    the author's educational background is listed. The degrees should be
-    listed with type of degree in what field, which institution, city,
-    state, and country, and year the degree was earned. The author's major
-    field of study should be lower-cased.
-
-    The second paragraph uses the pronoun of the person (he or she) and not the
-    author's last name. It lists military and work experience, including summer
-    and fellowship jobs. Job titles are capitalized. The current job must have a
-    location; previous positions may be listed
-    without one. Information concerning previous publications may be included.
-    Try not to list more than three books or published articles. The format for
-    listing publishers of a book within the biography is: title of book
-    (publisher name, year) similar to a reference. Current and previous research
-    interests end the paragraph. The third paragraph begins with the author's
-    title and last name (e.g., Dr.\ Smith, Prof.\ Jones, Mr.\ Kajor, Ms.\ Hunter).
-    List any memberships in professional societies other than the IEEE. Finally,
-    list any awards and work for IEEE committees and publications. If a
-    photograph is provided, it should be of good quality, and
-    professional-looking. Following are two examples of an author's biography.
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{a1.jpg}}]{YU GUAN}
+    received the B.S. degree from Fuzhou University, in 2018, where he is currently pursuing the master’s degree.
+    His research interests include intelligent decision technology, rule-based inference, big data analysis, and machine learning.
+\end{IEEEbiography}
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{a2.png}}]{YANGGENG FU}
+    received the Ph.D. degree from Fuzhou University, Fuzhou, China, in 2013.
+    He is currently an Associate Professor of computer science with Fuzhou University. His research interests include data mining, machine learning, and intelligent decision support systems.
+\end{IEEEbiography}
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{a3.jpg}}]{LONGJIANG CHEN}
+    received the B.S. degree in computer science from Fuzhou University, in 2019, where he is currently pursuing the master's degree. His research interests include intelligent decision technology, rule-based inference, and graph neural networks.
+\end{IEEEbiography}
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{a4.jpg}}]{GENGGENG LIU}
+    received the B.S. degree in computer science and the Ph.D. degree in applied mathematics from Fuzhou University, Fuzhou, China, in 2009 and 2015, respectively.
+    He is currently an Associate Professor with the College of Mathematics and Computer Science, Fuzhou University.
+    His research interest includes computational intelligence and its application.
+\end{IEEEbiography}
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{a5.jpg}}]{LAN SUN}
+    received the master’s degree from Xi’an Jiaotong University, Xi’an, China, in 2003.
+    She is currently a lecturers of computer science with Fuzhou University.
+    Her main research interests include data mining, privacy preserving and intelligent decision support systems.
 \end{IEEEbiography}
 
-\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{a2.png}}]{Second B. Author} was born in Greenwich Village, New York, NY, USA in
-    1977. He received the B.S. and M.S. degrees in aerospace engineering from
-    the University of Virginia, Charlottesville, in 2001 and the Ph.D. degree in
-    mechanical engineering from Drexel University, Philadelphia, PA, in 2008.
-
-    From 2001 to 2004, he was a Research Assistant with the Princeton Plasma
-    Physics Laboratory. Since 2009, he has been an Assistant Professor with the
-    Mechanical Engineering Department, Texas A{\&}M University, College Station.
-    He is the author of three books, more than 150 articles, and more than 70
-    inventions. His research interests include high-pressure and high-density
-    nonthermal plasma discharge processes and applications, microscale plasma
-    discharges, discharges in liquids, spectroscopic diagnostics, plasma
-    propulsion, and innovation plasma applications. He is an Associate Editor of
-    the journal \emph{Earth, Moon, Planets}, and holds two patents.
-
-    Dr. Author was a recipient of the International Association of Geomagnetism
-    and Aeronomy Young Scientist Award for Excellence in 2008, and the IEEE
-    Electromagnetic Compatibility Society Best Symposium Paper Award in 2011.
-\end{IEEEbiography}
-
-\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{a3.png}}]{Third C. Author, Jr.} (M'87) received the B.S. degree in mechanical
-    engineering from National Chung Cheng University, Chiayi, Taiwan, in 2004
-    and the M.S. degree in mechanical engineering from National Tsing Hua
-    University, Hsinchu, Taiwan, in 2006. He is currently pursuing the Ph.D.
-    degree in mechanical engineering at Texas A{\&}M University, College
-    Station, TX, USA.
-
-    From 2008 to 2009, he was a Research Assistant with the Institute of
-    Physics, Academia Sinica, Tapei, Taiwan. His research interest includes the
-    development of surface processing and biological/medical treatment
-    techniques using nonthermal atmospheric pressure plasmas, fundamental study
-    of plasma sources, and fabrication of micro- or nanostructured surfaces.
-
-    Mr. Author's awards and honors include the Frew Fellowship (Australian
-    Academy of Science), the I. I. Rabi Prize (APS), the European Frequency and
-    Time Forum Award, the Carl Zeiss Research Award, the William F. Meggers
-    Award and the Adolph Lomb Medal (OSA).
-\end{IEEEbiography}
 
 \EOD
 

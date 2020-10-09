@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.7.26)  25 SEP 2020 00:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.7.26)  26 SEP 2020 21:04
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -296,9 +296,9 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 <bullet.png, id=3, 12.045pt x 35.38219pt>
 File: bullet.png Graphic file (type png)
 <use bullet.png>
-Package pdftex.def Info: bullet.png  used on input line 35.
+Package pdftex.def Info: bullet.png  used on input line 29.
 (pdftex.def)             Requested size: 5.0pt x 14.6871pt.
-LaTeX Font Info:    Trying to load font information for T1+phv on input line 35.
+LaTeX Font Info:    Trying to load font information for T1+phv on input line 29.
  (/usr/local/texlive/2020/texmf-dist/tex/latex/psnfss/t1phv.fd
 File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
 
@@ -325,29 +325,27 @@ LaTeX Warning: Font shape declaration has incorrect series value `mc'.
 )
 
 LaTeX Font Warning: Font shape `T1/phv/n/n' undefined
-(Font)              using `T1/phv/m/n' instead on input line 35.
+(Font)              using `T1/phv/m/n' instead on input line 29.
 
 File: bullet.png Graphic file (type png)
 <use bullet.png>
-Package pdftex.def Info: bullet.png  used on input line 55.
+Package pdftex.def Info: bullet.png  used on input line 48.
 (pdftex.def)             Requested size: 5.0pt x 14.6871pt.
-LaTeX Font Info:    Calculating math sizes for size <9.9> on input line 61.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 61.
+LaTeX Font Info:    Calculating math sizes for size <6.6> on input line 54.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 54.
 (/usr/local/texlive/2020/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 61.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 54.
  (/usr/local/texlive/2020/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Calculating math sizes for size <6.6> on input line 61.
-
-Overfull \hbox (9.2679pt too wide) in paragraph at lines 61--61
+Overfull \hbox (9.2679pt too wide) in paragraph at lines 54--54
 []  
  []
 
 
-Overfull \hbox (9.2679pt too wide) in paragraph at lines 61--61
+Overfull \hbox (9.2679pt too wide) in paragraph at lines 54--54
 []  
  []
 
@@ -360,7 +358,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 <logo.png, id=4, 206.27063pt x 53.44969pt>
 File: logo.png Graphic file (type png)
 <use logo.png>
-Package pdftex.def Info: logo.png  used on input line 76.
+Package pdftex.def Info: logo.png  used on input line 79.
 (pdftex.def)             Requested size: 91.32pt x 23.66309pt.
 
 Overfull \hbox (505.12177pt too wide) has occurred while \output is active
@@ -389,7 +387,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 <notaglinelogo.png, id=14, 169.38281pt x 42.91031pt>
 File: notaglinelogo.png Graphic file (type png)
 <use notaglinelogo.png>
-Package pdftex.def Info: notaglinelogo.png  used on input line 147.
+Package pdftex.def Info: notaglinelogo.png  used on input line 143.
 (pdftex.def)             Requested size: 91.32pt x 23.1352pt.
 
 Overfull \hbox (505.12177pt too wide) has occurred while \output is active
@@ -407,8 +405,6 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [2 </home/iakwal/others/access/notaglinelogo.png>]
-Underfull \vbox (badness 2469) has occurred while \output is active []
-
 File: notaglinelogo.png Graphic file (type png)
 <use notaglinelogo.png>
 Package pdftex.def Info: notaglinelogo.png  used on input line 213.
@@ -436,12 +432,12 @@ Package epstopdf Info: Source file: <fig_brb.eps>
 (epstopdf)                    date: 2020-09-18 20:35:08
 (epstopdf)                    size: 102397 bytes
 (epstopdf)             Command: <repstopdf --outfile=fig_brb-eps-converted-to.pdf fig_brb.eps>
-(epstopdf)             \includegraphics on input line 225.
+(epstopdf)             \includegraphics on input line 217.
 Package epstopdf Info: Output file is already uptodate.
 <fig_brb-eps-converted-to.pdf, id=32, 462.52798pt x 346.89601pt>
 File: fig_brb-eps-converted-to.pdf Graphic file (type pdf)
 <use fig_brb-eps-converted-to.pdf>
-Package pdftex.def Info: fig_brb-eps-converted-to.pdf  used on input line 225.
+Package pdftex.def Info: fig_brb-eps-converted-to.pdf  used on input line 217.
 (pdftex.def)             Requested size: 238.49121pt x 178.86781pt.
 Package epstopdf Info: Source file: <fig_brb.eps>
 (epstopdf)                    date: 2020-09-18 20:35:08
@@ -450,11 +446,11 @@ Package epstopdf Info: Source file: <fig_brb.eps>
 (epstopdf)                    date: 2020-09-18 20:35:08
 (epstopdf)                    size: 102397 bytes
 (epstopdf)             Command: <repstopdf --outfile=fig_brb-eps-converted-to.pdf fig_brb.eps>
-(epstopdf)             \includegraphics on input line 225.
+(epstopdf)             \includegraphics on input line 217.
 Package epstopdf Info: Output file is already uptodate.
 File: fig_brb-eps-converted-to.pdf Graphic file (type pdf)
 <use fig_brb-eps-converted-to.pdf>
-Package pdftex.def Info: fig_brb-eps-converted-to.pdf  used on input line 225.
+Package pdftex.def Info: fig_brb-eps-converted-to.pdf  used on input line 217.
 (pdftex.def)             Requested size: 238.49121pt x 178.86781pt.
 Package epstopdf Info: Source file: <fig_exp.eps>
 (epstopdf)                    date: 2020-09-18 20:35:08
@@ -463,12 +459,12 @@ Package epstopdf Info: Source file: <fig_exp.eps>
 (epstopdf)                    date: 2020-09-18 20:35:08
 (epstopdf)                    size: 105116 bytes
 (epstopdf)             Command: <repstopdf --outfile=fig_exp-eps-converted-to.pdf fig_exp.eps>
-(epstopdf)             \includegraphics on input line 227.
+(epstopdf)             \includegraphics on input line 219.
 Package epstopdf Info: Output file is already uptodate.
 <fig_exp-eps-converted-to.pdf, id=33, 462.52798pt x 346.89601pt>
 File: fig_exp-eps-converted-to.pdf Graphic file (type pdf)
 <use fig_exp-eps-converted-to.pdf>
-Package pdftex.def Info: fig_exp-eps-converted-to.pdf  used on input line 227.
+Package pdftex.def Info: fig_exp-eps-converted-to.pdf  used on input line 219.
 (pdftex.def)             Requested size: 238.49121pt x 178.86781pt.
 Package epstopdf Info: Source file: <fig_exp.eps>
 (epstopdf)                    date: 2020-09-18 20:35:08
@@ -477,11 +473,11 @@ Package epstopdf Info: Source file: <fig_exp.eps>
 (epstopdf)                    date: 2020-09-18 20:35:08
 (epstopdf)                    size: 105116 bytes
 (epstopdf)             Command: <repstopdf --outfile=fig_exp-eps-converted-to.pdf fig_exp.eps>
-(epstopdf)             \includegraphics on input line 227.
+(epstopdf)             \includegraphics on input line 219.
 Package epstopdf Info: Output file is already uptodate.
 File: fig_exp-eps-converted-to.pdf Graphic file (type pdf)
 <use fig_exp-eps-converted-to.pdf>
-Package pdftex.def Info: fig_exp-eps-converted-to.pdf  used on input line 227.
+Package pdftex.def Info: fig_exp-eps-converted-to.pdf  used on input line 219.
 (pdftex.def)             Requested size: 238.49121pt x 178.86781pt.
 Package epstopdf Info: Source file: <fig_exp_half.eps>
 (epstopdf)                    date: 2020-09-18 20:35:08
@@ -490,12 +486,12 @@ Package epstopdf Info: Source file: <fig_exp_half.eps>
 (epstopdf)                    date: 2020-09-18 20:35:08
 (epstopdf)                    size: 110597 bytes
 (epstopdf)             Command: <repstopdf --outfile=fig_exp_half-eps-converted-to.pdf fig_exp_half.eps>
-(epstopdf)             \includegraphics on input line 229.
+(epstopdf)             \includegraphics on input line 221.
 Package epstopdf Info: Output file is already uptodate.
 <fig_exp_half-eps-converted-to.pdf, id=34, 462.52798pt x 346.89601pt>
 File: fig_exp_half-eps-converted-to.pdf Graphic file (type pdf)
 <use fig_exp_half-eps-converted-to.pdf>
-Package pdftex.def Info: fig_exp_half-eps-converted-to.pdf  used on input line 229.
+Package pdftex.def Info: fig_exp_half-eps-converted-to.pdf  used on input line 221.
 (pdftex.def)             Requested size: 238.49121pt x 178.86781pt.
 Package epstopdf Info: Source file: <fig_exp_half.eps>
 (epstopdf)                    date: 2020-09-18 20:35:08
@@ -504,15 +500,15 @@ Package epstopdf Info: Source file: <fig_exp_half.eps>
 (epstopdf)                    date: 2020-09-18 20:35:08
 (epstopdf)                    size: 110597 bytes
 (epstopdf)             Command: <repstopdf --outfile=fig_exp_half-eps-converted-to.pdf fig_exp_half.eps>
-(epstopdf)             \includegraphics on input line 229.
+(epstopdf)             \includegraphics on input line 221.
 Package epstopdf Info: Output file is already uptodate.
 File: fig_exp_half-eps-converted-to.pdf Graphic file (type pdf)
 <use fig_exp_half-eps-converted-to.pdf>
-Package pdftex.def Info: fig_exp_half-eps-converted-to.pdf  used on input line 229.
+Package pdftex.def Info: fig_exp_half-eps-converted-to.pdf  used on input line 221.
 (pdftex.def)             Requested size: 238.49121pt x 178.86781pt.
 File: notaglinelogo.png Graphic file (type png)
 <use notaglinelogo.png>
-Package pdftex.def Info: notaglinelogo.png  used on input line 256.
+Package pdftex.def Info: notaglinelogo.png  used on input line 258.
 (pdftex.def)             Requested size: 91.32pt x 23.1352pt.
 
 Overfull \hbox (505.12177pt too wide) has occurred while \output is active
@@ -530,26 +526,23 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [4 </home/iakwal/others/access/fig_brb-eps-converted-to.pdf> </home/iakwal/others/access/fig_exp-eps-converted-to.pdf> </home/iakwal/others/access/fig_exp_half-eps-converted-to.pdf>]
-<process1.png, id=48, 767.5074pt x 511.6716pt>
-File: process1.png Graphic file (type png)
-<use process1.png>
-Package pdftex.def Info: process1.png  used on input line 272.
+<process.png, id=48, 767.5074pt x 511.6716pt>
+File: process.png Graphic file (type png)
+<use process.png>
+Package pdftex.def Info: process.png  used on input line 263.
 (pdftex.def)             Requested size: 238.49121pt x 158.9913pt.
-File: process1.png Graphic file (type png)
-<use process1.png>
-Package pdftex.def Info: process1.png  used on input line 272.
+File: process.png Graphic file (type png)
+<use process.png>
+Package pdftex.def Info: process.png  used on input line 263.
 (pdftex.def)             Requested size: 238.49121pt x 158.9913pt.
 
-Overfull \hbox (1.32936pt too wide) detected at line 308
+Overfull \hbox (1.32936pt too wide) detected at line 299
 []
  []
 
-
-Underfull \vbox (badness 1097) has occurred while \output is active []
-
 File: notaglinelogo.png Graphic file (type png)
 <use notaglinelogo.png>
-Package pdftex.def Info: notaglinelogo.png  used on input line 320.
+Package pdftex.def Info: notaglinelogo.png  used on input line 325.
 (pdftex.def)             Requested size: 91.32pt x 23.1352pt.
 
 Overfull \hbox (505.12177pt too wide) has occurred while \output is active
@@ -566,10 +559,10 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 []
  []
 
-[5 </home/iakwal/others/access/process1.png>]
+[5 </home/iakwal/others/access/process.png>]
 File: notaglinelogo.png Graphic file (type png)
 <use notaglinelogo.png>
-Package pdftex.def Info: notaglinelogo.png  used on input line 413.
+Package pdftex.def Info: notaglinelogo.png  used on input line 421.
 (pdftex.def)             Requested size: 91.32pt x 23.1352pt.
 
 Overfull \hbox (505.12177pt too wide) has occurred while \output is active
@@ -587,45 +580,45 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [6]
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 438.
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 428.
  (/usr/local/texlive/2020/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
 
 LaTeX Font Warning: Font shape `TS1/ptm/n/n' undefined
 (Font)              using `TS1/ptm/m/n' instead
-(Font)              for symbol `textcopyright' on input line 438.
+(Font)              for symbol `textcopyright' on input line 428.
 
 <initial_brb.png, id=57, 462.528pt x 346.896pt>
 File: initial_brb.png Graphic file (type png)
 <use initial_brb.png>
-Package pdftex.def Info: initial_brb.png  used on input line 479.
+Package pdftex.def Info: initial_brb.png  used on input line 469.
 (pdftex.def)             Requested size: 238.49121pt x 178.8678pt.
 File: initial_brb.png Graphic file (type png)
 <use initial_brb.png>
-Package pdftex.def Info: initial_brb.png  used on input line 479.
+Package pdftex.def Info: initial_brb.png  used on input line 469.
 (pdftex.def)             Requested size: 238.49121pt x 178.8678pt.
 <mse.png, id=58, 462.528pt x 346.896pt>
 File: mse.png Graphic file (type png)
 <use mse.png>
-Package pdftex.def Info: mse.png  used on input line 483.
+Package pdftex.def Info: mse.png  used on input line 473.
 (pdftex.def)             Requested size: 238.49121pt x 178.8678pt.
 File: mse.png Graphic file (type png)
 <use mse.png>
-Package pdftex.def Info: mse.png  used on input line 483.
+Package pdftex.def Info: mse.png  used on input line 473.
 (pdftex.def)             Requested size: 238.49121pt x 178.8678pt.
 <fit.png, id=59, 462.528pt x 346.896pt>
 File: fit.png Graphic file (type png)
 <use fit.png>
-Package pdftex.def Info: fit.png  used on input line 494.
+Package pdftex.def Info: fit.png  used on input line 484.
 (pdftex.def)             Requested size: 238.49121pt x 178.8678pt.
 File: fit.png Graphic file (type png)
 <use fit.png>
-Package pdftex.def Info: fit.png  used on input line 494.
+Package pdftex.def Info: fit.png  used on input line 484.
 (pdftex.def)             Requested size: 238.49121pt x 178.8678pt.
 File: notaglinelogo.png Graphic file (type png)
 <use notaglinelogo.png>
-Package pdftex.def Info: notaglinelogo.png  used on input line 495.
+Package pdftex.def Info: notaglinelogo.png  used on input line 507.
 (pdftex.def)             Requested size: 91.32pt x 23.1352pt.
 
 Overfull \hbox (505.12177pt too wide) has occurred while \output is active
@@ -642,19 +635,137 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 []
  []
 
-[7 </home/iakwal/others/access/initial_brb.png>]
-Overfull \hbox (2.42082pt too wide) in paragraph at lines 529--543
+[7 </home/iakwal/others/access/initial_brb.png> </home/iakwal/others/access/mse.png>]
+Overfull \hbox (2.42082pt too wide) in paragraph at lines 519--533
  [][] 
  []
 
 
-Underfull \hbox (badness 1590) in paragraph at lines 556--560
+Underfull \hbox (badness 1590) in paragraph at lines 546--550
 \T1/ptm/n/n/10 Randomly se-lect $\OT1/cmr/m/n/10 500$ \T1/ptm/n/n/10 sam-ples as the train-ing set. The
  []
 
+Package epstopdf Info: Source file: <oil_compare_before.eps>
+(epstopdf)                    date: 2020-09-21 00:18:52
+(epstopdf)                    size: 1858474 bytes
+(epstopdf)             Output file: <oil_compare_before-eps-converted-to.pdf>
+(epstopdf)                    date: 2020-09-21 00:19:34
+(epstopdf)                    size: 79989 bytes
+(epstopdf)             Command: <repstopdf --outfile=oil_compare_before-eps-converted-to.pdf oil_compare_before.eps>
+(epstopdf)             \includegraphics on input line 566.
+Package epstopdf Info: Output file is already uptodate.
+<oil_compare_before-eps-converted-to.pdf, id=66, 462.52798pt x 346.89601pt>
+File: oil_compare_before-eps-converted-to.pdf Graphic file (type pdf)
+<use oil_compare_before-eps-converted-to.pdf>
+Package pdftex.def Info: oil_compare_before-eps-converted-to.pdf  used on input line 566.
+(pdftex.def)             Requested size: 238.49121pt x 178.86781pt.
+Package epstopdf Info: Source file: <oil_compare_before.eps>
+(epstopdf)                    date: 2020-09-21 00:18:52
+(epstopdf)                    size: 1858474 bytes
+(epstopdf)             Output file: <oil_compare_before-eps-converted-to.pdf>
+(epstopdf)                    date: 2020-09-21 00:19:34
+(epstopdf)                    size: 79989 bytes
+(epstopdf)             Command: <repstopdf --outfile=oil_compare_before-eps-converted-to.pdf oil_compare_before.eps>
+(epstopdf)             \includegraphics on input line 566.
+Package epstopdf Info: Output file is already uptodate.
+File: oil_compare_before-eps-converted-to.pdf Graphic file (type pdf)
+<use oil_compare_before-eps-converted-to.pdf>
+Package pdftex.def Info: oil_compare_before-eps-converted-to.pdf  used on input line 566.
+(pdftex.def)             Requested size: 238.49121pt x 178.86781pt.
+Package epstopdf Info: Source file: <oil_compare_after.eps>
+(epstopdf)                    date: 2020-09-21 00:18:36
+(epstopdf)                    size: 1858473 bytes
+(epstopdf)             Output file: <oil_compare_after-eps-converted-to.pdf>
+(epstopdf)                    date: 2020-09-21 00:26:16
+(epstopdf)                    size: 81086 bytes
+(epstopdf)             Command: <repstopdf --outfile=oil_compare_after-eps-converted-to.pdf oil_compare_after.eps>
+(epstopdf)             \includegraphics on input line 573.
+Package epstopdf Info: Output file is already uptodate.
+<oil_compare_after-eps-converted-to.pdf, id=67, 462.52798pt x 346.89601pt>
+File: oil_compare_after-eps-converted-to.pdf Graphic file (type pdf)
+<use oil_compare_after-eps-converted-to.pdf>
+Package pdftex.def Info: oil_compare_after-eps-converted-to.pdf  used on input line 573.
+(pdftex.def)             Requested size: 238.49121pt x 178.86781pt.
+Package epstopdf Info: Source file: <oil_compare_after.eps>
+(epstopdf)                    date: 2020-09-21 00:18:36
+(epstopdf)                    size: 1858473 bytes
+(epstopdf)             Output file: <oil_compare_after-eps-converted-to.pdf>
+(epstopdf)                    date: 2020-09-21 00:26:16
+(epstopdf)                    size: 81086 bytes
+(epstopdf)             Command: <repstopdf --outfile=oil_compare_after-eps-converted-to.pdf oil_compare_after.eps>
+(epstopdf)             \includegraphics on input line 573.
+Package epstopdf Info: Output file is already uptodate.
+File: oil_compare_after-eps-converted-to.pdf Graphic file (type pdf)
+<use oil_compare_after-eps-converted-to.pdf>
+Package pdftex.def Info: oil_compare_after-eps-converted-to.pdf  used on input line 573.
+(pdftex.def)             Requested size: 238.49121pt x 178.86781pt.
+Package epstopdf Info: Source file: <oil_compare.eps>
+(epstopdf)                    date: 2020-09-23 23:49:32
+(epstopdf)                    size: 66863 bytes
+(epstopdf)             Output file: <oil_compare-eps-converted-to.pdf>
+(epstopdf)                    date: 2020-09-23 23:49:32
+(epstopdf)                    size: 26328 bytes
+(epstopdf)             Command: <repstopdf --outfile=oil_compare-eps-converted-to.pdf oil_compare.eps>
+(epstopdf)             \includegraphics on input line 581.
+Package epstopdf Info: Output file is already uptodate.
+<oil_compare-eps-converted-to.pdf, id=68, 867.24pt x 346.89601pt>
+File: oil_compare-eps-converted-to.pdf Graphic file (type pdf)
+<use oil_compare-eps-converted-to.pdf>
+Package pdftex.def Info: oil_compare-eps-converted-to.pdf  used on input line 581.
+(pdftex.def)             Requested size: 505.89pt x 202.35902pt.
+Package epstopdf Info: Source file: <oil_compare.eps>
+(epstopdf)                    date: 2020-09-23 23:49:32
+(epstopdf)                    size: 66863 bytes
+(epstopdf)             Output file: <oil_compare-eps-converted-to.pdf>
+(epstopdf)                    date: 2020-09-23 23:49:32
+(epstopdf)                    size: 26328 bytes
+(epstopdf)             Command: <repstopdf --outfile=oil_compare-eps-converted-to.pdf oil_compare.eps>
+(epstopdf)             \includegraphics on input line 581.
+Package epstopdf Info: Output file is already uptodate.
+File: oil_compare-eps-converted-to.pdf Graphic file (type pdf)
+<use oil_compare-eps-converted-to.pdf>
+Package pdftex.def Info: oil_compare-eps-converted-to.pdf  used on input line 581.
+(pdftex.def)             Requested size: 505.89pt x 202.35902pt.
+
+Overfull \hbox (0.76823pt too wide) in paragraph at lines 581--581
+ [][] 
+ []
+
+Package epstopdf Info: Source file: <oil_ae.eps>
+(epstopdf)                    date: 2020-09-23 23:49:32
+(epstopdf)                    size: 52466 bytes
+(epstopdf)             Output file: <oil_ae-eps-converted-to.pdf>
+(epstopdf)                    date: 2020-09-23 23:49:32
+(epstopdf)                    size: 23131 bytes
+(epstopdf)             Command: <repstopdf --outfile=oil_ae-eps-converted-to.pdf oil_ae.eps>
+(epstopdf)             \includegraphics on input line 583.
+Package epstopdf Info: Output file is already uptodate.
+<oil_ae-eps-converted-to.pdf, id=69, 867.24pt x 346.89601pt>
+File: oil_ae-eps-converted-to.pdf Graphic file (type pdf)
+<use oil_ae-eps-converted-to.pdf>
+Package pdftex.def Info: oil_ae-eps-converted-to.pdf  used on input line 583.
+(pdftex.def)             Requested size: 505.89pt x 202.35902pt.
+Package epstopdf Info: Source file: <oil_ae.eps>
+(epstopdf)                    date: 2020-09-23 23:49:32
+(epstopdf)                    size: 52466 bytes
+(epstopdf)             Output file: <oil_ae-eps-converted-to.pdf>
+(epstopdf)                    date: 2020-09-23 23:49:32
+(epstopdf)                    size: 23131 bytes
+(epstopdf)             Command: <repstopdf --outfile=oil_ae-eps-converted-to.pdf oil_ae.eps>
+(epstopdf)             \includegraphics on input line 583.
+Package epstopdf Info: Output file is already uptodate.
+File: oil_ae-eps-converted-to.pdf Graphic file (type pdf)
+<use oil_ae-eps-converted-to.pdf>
+Package pdftex.def Info: oil_ae-eps-converted-to.pdf  used on input line 583.
+(pdftex.def)             Requested size: 505.89pt x 202.35902pt.
+
+Overfull \hbox (0.76823pt too wide) in paragraph at lines 583--583
+ [][] 
+ []
+
 File: notaglinelogo.png Graphic file (type png)
 <use notaglinelogo.png>
-Package pdftex.def Info: notaglinelogo.png  used on input line 567.
+Package pdftex.def Info: notaglinelogo.png  used on input line 584.
 (pdftex.def)             Requested size: 91.32pt x 23.1352pt.
 
 Overfull \hbox (505.12177pt too wide) has occurred while \output is active
@@ -671,128 +782,10 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 []
  []
 
-[8 </home/iakwal/others/access/mse.png> </home/iakwal/others/access/fit.png>]
-Package epstopdf Info: Source file: <oil_compare_before.eps>
-(epstopdf)                    date: 2020-09-21 00:18:52
-(epstopdf)                    size: 1858474 bytes
-(epstopdf)             Output file: <oil_compare_before-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-09-21 00:19:34
-(epstopdf)                    size: 79989 bytes
-(epstopdf)             Command: <repstopdf --outfile=oil_compare_before-eps-converted-to.pdf oil_compare_before.eps>
-(epstopdf)             \includegraphics on input line 576.
-Package epstopdf Info: Output file is already uptodate.
-<oil_compare_before-eps-converted-to.pdf, id=70, 462.52798pt x 346.89601pt>
-File: oil_compare_before-eps-converted-to.pdf Graphic file (type pdf)
-<use oil_compare_before-eps-converted-to.pdf>
-Package pdftex.def Info: oil_compare_before-eps-converted-to.pdf  used on input line 576.
-(pdftex.def)             Requested size: 238.49121pt x 178.86781pt.
-Package epstopdf Info: Source file: <oil_compare_before.eps>
-(epstopdf)                    date: 2020-09-21 00:18:52
-(epstopdf)                    size: 1858474 bytes
-(epstopdf)             Output file: <oil_compare_before-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-09-21 00:19:34
-(epstopdf)                    size: 79989 bytes
-(epstopdf)             Command: <repstopdf --outfile=oil_compare_before-eps-converted-to.pdf oil_compare_before.eps>
-(epstopdf)             \includegraphics on input line 576.
-Package epstopdf Info: Output file is already uptodate.
-File: oil_compare_before-eps-converted-to.pdf Graphic file (type pdf)
-<use oil_compare_before-eps-converted-to.pdf>
-Package pdftex.def Info: oil_compare_before-eps-converted-to.pdf  used on input line 576.
-(pdftex.def)             Requested size: 238.49121pt x 178.86781pt.
-Package epstopdf Info: Source file: <oil_compare_after.eps>
-(epstopdf)                    date: 2020-09-21 00:18:36
-(epstopdf)                    size: 1858473 bytes
-(epstopdf)             Output file: <oil_compare_after-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-09-21 00:26:16
-(epstopdf)                    size: 81086 bytes
-(epstopdf)             Command: <repstopdf --outfile=oil_compare_after-eps-converted-to.pdf oil_compare_after.eps>
-(epstopdf)             \includegraphics on input line 583.
-Package epstopdf Info: Output file is already uptodate.
-<oil_compare_after-eps-converted-to.pdf, id=71, 462.52798pt x 346.89601pt>
-File: oil_compare_after-eps-converted-to.pdf Graphic file (type pdf)
-<use oil_compare_after-eps-converted-to.pdf>
-Package pdftex.def Info: oil_compare_after-eps-converted-to.pdf  used on input line 583.
-(pdftex.def)             Requested size: 238.49121pt x 178.86781pt.
-Package epstopdf Info: Source file: <oil_compare_after.eps>
-(epstopdf)                    date: 2020-09-21 00:18:36
-(epstopdf)                    size: 1858473 bytes
-(epstopdf)             Output file: <oil_compare_after-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-09-21 00:26:16
-(epstopdf)                    size: 81086 bytes
-(epstopdf)             Command: <repstopdf --outfile=oil_compare_after-eps-converted-to.pdf oil_compare_after.eps>
-(epstopdf)             \includegraphics on input line 583.
-Package epstopdf Info: Output file is already uptodate.
-File: oil_compare_after-eps-converted-to.pdf Graphic file (type pdf)
-<use oil_compare_after-eps-converted-to.pdf>
-Package pdftex.def Info: oil_compare_after-eps-converted-to.pdf  used on input line 583.
-(pdftex.def)             Requested size: 238.49121pt x 178.86781pt.
-Package epstopdf Info: Source file: <oil_compare.eps>
-(epstopdf)                    date: 2020-09-23 23:49:32
-(epstopdf)                    size: 66863 bytes
-(epstopdf)             Output file: <oil_compare-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-09-23 23:49:32
-(epstopdf)                    size: 26328 bytes
-(epstopdf)             Command: <repstopdf --outfile=oil_compare-eps-converted-to.pdf oil_compare.eps>
-(epstopdf)             \includegraphics on input line 591.
-Package epstopdf Info: Output file is already uptodate.
-<oil_compare-eps-converted-to.pdf, id=72, 867.24pt x 346.89601pt>
-File: oil_compare-eps-converted-to.pdf Graphic file (type pdf)
-<use oil_compare-eps-converted-to.pdf>
-Package pdftex.def Info: oil_compare-eps-converted-to.pdf  used on input line 591.
-(pdftex.def)             Requested size: 505.89pt x 202.35902pt.
-Package epstopdf Info: Source file: <oil_compare.eps>
-(epstopdf)                    date: 2020-09-23 23:49:32
-(epstopdf)                    size: 66863 bytes
-(epstopdf)             Output file: <oil_compare-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-09-23 23:49:32
-(epstopdf)                    size: 26328 bytes
-(epstopdf)             Command: <repstopdf --outfile=oil_compare-eps-converted-to.pdf oil_compare.eps>
-(epstopdf)             \includegraphics on input line 591.
-Package epstopdf Info: Output file is already uptodate.
-File: oil_compare-eps-converted-to.pdf Graphic file (type pdf)
-<use oil_compare-eps-converted-to.pdf>
-Package pdftex.def Info: oil_compare-eps-converted-to.pdf  used on input line 591.
-(pdftex.def)             Requested size: 505.89pt x 202.35902pt.
-
-Overfull \hbox (0.76823pt too wide) in paragraph at lines 591--591
- [][] 
- []
-
-Package epstopdf Info: Source file: <oil_ae.eps>
-(epstopdf)                    date: 2020-09-23 23:49:32
-(epstopdf)                    size: 52466 bytes
-(epstopdf)             Output file: <oil_ae-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-09-23 23:49:32
-(epstopdf)                    size: 23131 bytes
-(epstopdf)             Command: <repstopdf --outfile=oil_ae-eps-converted-to.pdf oil_ae.eps>
-(epstopdf)             \includegraphics on input line 593.
-Package epstopdf Info: Output file is already uptodate.
-<oil_ae-eps-converted-to.pdf, id=73, 867.24pt x 346.89601pt>
-File: oil_ae-eps-converted-to.pdf Graphic file (type pdf)
-<use oil_ae-eps-converted-to.pdf>
-Package pdftex.def Info: oil_ae-eps-converted-to.pdf  used on input line 593.
-(pdftex.def)             Requested size: 505.89pt x 202.35902pt.
-Package epstopdf Info: Source file: <oil_ae.eps>
-(epstopdf)                    date: 2020-09-23 23:49:32
-(epstopdf)                    size: 52466 bytes
-(epstopdf)             Output file: <oil_ae-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-09-23 23:49:32
-(epstopdf)                    size: 23131 bytes
-(epstopdf)             Command: <repstopdf --outfile=oil_ae-eps-converted-to.pdf oil_ae.eps>
-(epstopdf)             \includegraphics on input line 593.
-Package epstopdf Info: Output file is already uptodate.
-File: oil_ae-eps-converted-to.pdf Graphic file (type pdf)
-<use oil_ae-eps-converted-to.pdf>
-Package pdftex.def Info: oil_ae-eps-converted-to.pdf  used on input line 593.
-(pdftex.def)             Requested size: 505.89pt x 202.35902pt.
-
-Overfull \hbox (0.76823pt too wide) in paragraph at lines 593--593
- [][] 
- []
-
+[8 </home/iakwal/others/access/fit.png>]
 File: notaglinelogo.png Graphic file (type png)
 <use notaglinelogo.png>
-Package pdftex.def Info: notaglinelogo.png  used on input line 609.
+Package pdftex.def Info: notaglinelogo.png  used on input line 635.
 (pdftex.def)             Requested size: 91.32pt x 23.1352pt.
 
 Overfull \hbox (505.12177pt too wide) has occurred while \output is active
@@ -810,9 +803,11 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [9 </home/iakwal/others/access/oil_compare_before-eps-converted-to.pdf> </home/iakwal/others/access/oil_compare_after-eps-converted-to.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
 File: notaglinelogo.png Graphic file (type png)
 <use notaglinelogo.png>
-Package pdftex.def Info: notaglinelogo.png  used on input line 700.
+Package pdftex.def Info: notaglinelogo.png  used on input line 706.
 (pdftex.def)             Requested size: 91.32pt x 23.1352pt.
 
 Overfull \hbox (505.12177pt too wide) has occurred while \output is active
@@ -830,11 +825,9 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [10 </home/iakwal/others/access/oil_compare-eps-converted-to.pdf> </home/iakwal/others/access/oil_ae-eps-converted-to.pdf>]
-Underfull \vbox (badness 2302) has occurred while \output is active []
-
 File: notaglinelogo.png Graphic file (type png)
 <use notaglinelogo.png>
-Package pdftex.def Info: notaglinelogo.png  used on input line 736.
+Package pdftex.def Info: notaglinelogo.png  used on input line 741.
 (pdftex.def)             Requested size: 91.32pt x 23.1352pt.
 
 Overfull \hbox (505.12177pt too wide) has occurred while \output is active
@@ -852,9 +845,27 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [11]
+<a1.jpg, id=163, 1664.2175pt x 2355.80125pt>
+File: a1.jpg Graphic file (type jpg)
+<use a1.jpg>
+Package pdftex.def Info: a1.jpg  used on input line 899.
+(pdftex.def)             Requested size: 63.81482pt x 90.33377pt.
+File: a1.jpg Graphic file (type jpg)
+<use a1.jpg>
+Package pdftex.def Info: a1.jpg  used on input line 899.
+(pdftex.def)             Requested size: 63.81482pt x 90.33377pt.
+<a2.png, id=166, 202.7575pt x 253.94875pt>
+File: a2.png Graphic file (type png)
+<use a2.png>
+Package pdftex.def Info: a2.png  used on input line 903.
+(pdftex.def)             Requested size: 72.12637pt x 90.33649pt.
+File: a2.png Graphic file (type png)
+<use a2.png>
+Package pdftex.def Info: a2.png  used on input line 903.
+(pdftex.def)             Requested size: 72.12637pt x 90.33649pt.
 File: notaglinelogo.png Graphic file (type png)
 <use notaglinelogo.png>
-Package pdftex.def Info: notaglinelogo.png  used on input line 904.
+Package pdftex.def Info: notaglinelogo.png  used on input line 907.
 (pdftex.def)             Requested size: 91.32pt x 23.1352pt.
 
 Overfull \hbox (505.12177pt too wide) has occurred while \output is active
@@ -871,59 +882,41 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 []
  []
 
-[12]
-Package textcomp Info: Symbol \textasciiacute not provided by
-(textcomp)             font family ptm in TS1 encoding.
-(textcomp)             Default family used instead on input line 905.
-
-
-LaTeX Font Warning: Font shape `T1/cmr/n/n' undefined
-(Font)              using `T1/cmr/m/n' instead on input line 905.
-
-
-LaTeX Font Warning: Font shape `TS1/cmr/n/n' undefined
-(Font)              using `TS1/cmr/m/n' instead
-(Font)              for symbol `textasciiacute' on input line 905.
-
-<a1.png, id=166, 72.27pt x 90.3375pt>
-File: a1.png Graphic file (type png)
-<use a1.png>
-Package pdftex.def Info: a1.png  used on input line 913.
-(pdftex.def)             Requested size: 72.2709pt x 90.33864pt.
-File: a1.png Graphic file (type png)
-<use a1.png>
-Package pdftex.def Info: a1.png  used on input line 913.
-(pdftex.def)             Requested size: 72.2709pt x 90.33864pt.
-<a2.png, id=169, 72.27pt x 90.3375pt>
-File: a2.png Graphic file (type png)
-<use a2.png>
-Package pdftex.def Info: a2.png  used on input line 939.
-(pdftex.def)             Requested size: 72.2709pt x 90.33864pt.
-File: a2.png Graphic file (type png)
-<use a2.png>
-Package pdftex.def Info: a2.png  used on input line 939.
-(pdftex.def)             Requested size: 72.2709pt x 90.33864pt.
-
-Underfull \hbox (badness 2189) in paragraph at lines 939--957
-\T1/ptm/n/n/8 lottesville, in 2001 and the Ph.D. de-gree in
- []
-
-<a3.png, id=172, 72.27pt x 90.3375pt>
-File: a3.png Graphic file (type png)
-<use a3.png>
-Package pdftex.def Info: a3.png  used on input line 959.
-(pdftex.def)             Requested size: 72.2709pt x 90.33864pt.
-File: a3.png Graphic file (type png)
-<use a3.png>
-Package pdftex.def Info: a3.png  used on input line 959.
-(pdftex.def)             Requested size: 72.2709pt x 90.33864pt.
+[12 </home/iakwal/others/access/a1.jpg> </home/iakwal/others/access/a2.png (PNG copy)>]
+<a3.jpg, id=174, 3168.83875pt x 4436.575pt>
+File: a3.jpg Graphic file (type jpg)
+<use a3.jpg>
+Package pdftex.def Info: a3.jpg  used on input line 907.
+(pdftex.def)             Requested size: 64.50226pt x 90.30725pt.
+File: a3.jpg Graphic file (type jpg)
+<use a3.jpg>
+Package pdftex.def Info: a3.jpg  used on input line 907.
+(pdftex.def)             Requested size: 64.50226pt x 90.30725pt.
+<a4.jpg, id=177, 99.37125pt x 144.54pt>
+File: a4.jpg Graphic file (type jpg)
+<use a4.jpg>
+Package pdftex.def Info: a4.jpg  used on input line 910.
+(pdftex.def)             Requested size: 62.10687pt x 90.33727pt.
+File: a4.jpg Graphic file (type jpg)
+<use a4.jpg>
+Package pdftex.def Info: a4.jpg  used on input line 910.
+(pdftex.def)             Requested size: 62.10687pt x 90.33727pt.
+<a5.jpg, id=180, 105.2733pt x 153.6942pt>
+File: a5.jpg Graphic file (type jpg)
+<use a5.jpg>
+Package pdftex.def Info: a5.jpg  used on input line 915.
+(pdftex.def)             Requested size: 61.8794pt x 90.34106pt.
+File: a5.jpg Graphic file (type jpg)
+<use a5.jpg>
+Package pdftex.def Info: a5.jpg  used on input line 915.
+(pdftex.def)             Requested size: 61.8794pt x 90.34106pt.
 File: bullet.png Graphic file (type png)
 <use bullet.png>
-Package pdftex.def Info: bullet.png  used on input line 978.
+Package pdftex.def Info: bullet.png  used on input line 922.
 (pdftex.def)             Requested size: 5.0pt x 14.6871pt.
 File: notaglinelogo.png Graphic file (type png)
 <use notaglinelogo.png>
-Package pdftex.def Info: notaglinelogo.png  used on input line 980.
+Package pdftex.def Info: notaglinelogo.png  used on input line 924.
 (pdftex.def)             Requested size: 91.32pt x 23.1352pt.
 
 Overfull \hbox (505.12177pt too wide) has occurred while \output is active
@@ -940,24 +933,26 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 []
  []
 
-[13 </home/iakwal/others/access/a1.png> </home/iakwal/others/access/a2.png> </home/iakwal/others/access/a3.png>] (/home/iakwal/others/access/access.aux)
+[13
+
+ </home/iakwal/others/access/a3.jpg> </home/iakwal/others/access/a4.jpg> </home/iakwal/others/access/a5.jpg>] (/home/iakwal/others/access/access.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 4223 strings out of 480608
- 61843 string characters out of 5903615
+ 4197 strings out of 480608
+ 61431 string characters out of 5903615
  316896 words of memory out of 5000000
- 20010 multiletter control sequences out of 15000+600000
- 636194 words of font info for 158 fonts, out of 8000000 for 9000
+ 19986 multiletter control sequences out of 15000+600000
+ 626514 words of font info for 142 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,17n,53p,273b,492s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on /home/iakwal/others/access/access.pdf (13 pages, 1208949 bytes).
+ 38i,17n,53p,286b,410s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on /home/iakwal/others/access/access.pdf (13 pages, 2965363 bytes).
 PDF statistics:
- 258 PDF objects out of 1000 (max. 8388607)
- 126 compressed objects within 2 object streams
+ 261 PDF objects out of 1000 (max. 8388607)
+ 124 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 130 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 164 words of extra memory for PDF output out of 10000 (max. 10000000)
 
